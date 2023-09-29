@@ -7,10 +7,14 @@
     <ClCompile Include="Render\Render.cpp">
       <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="RenderUtils.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="callbacks.cpp" />
-    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Core\RenderUtils.cpp" />
+    <ClCompile Include="Core\main.cpp" />
+    <ClCompile Include="Core\callbacks.cpp" />
+    <ClCompile Include="Objects\Particle.cpp" />
+    <ClCompile Include="Structure\Object.cpp" />
+    <ClCompile Include="Structure\Scene.cpp" />
+    <ClCompile Include="EntryPoint.cpp" />
+    <ClCompile Include="Objects\Shooter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -20,9 +24,13 @@
     <ClInclude Include="Render\Render.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="RenderUtils.hpp" />
-    <ClInclude Include="callbacks.hpp" />
-    <ClInclude Include="Particle.h" />
+    <ClInclude Include="Core\RenderUtils.hpp" />
+    <ClInclude Include="Core\callbacks.hpp" />
+    <ClInclude Include="Objects\Particle.h" />
+    <ClInclude Include="Structure\Object.h" />
+    <ClInclude Include="Objects\AxisSphere.h" />
+    <ClInclude Include="Structure\Scene.h" />
+    <ClInclude Include="Objects\Shooter.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
