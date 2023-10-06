@@ -256,20 +256,25 @@
     <ClCompile Include="Core\callbacks.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
+    <ClCompile Include="Objects\GaussianPartGen.cpp" />
     <ClCompile Include="Objects\ParticleGen.cpp" />
     <ClCompile Include="Objects\Shooter.cpp" />
+    <ClCompile Include="Systems\ParticleSystem.cpp" />
     <ClCompile Include="Structure\Object.cpp" />
     <ClCompile Include="Objects\Particle.cpp" />
     <ClCompile Include="Core\RenderUtils.cpp" />
     <ClCompile Include="Render\Camera.cpp" />
     <ClCompile Include="Render\Render.cpp" />
     <ClCompile Include="Structure\Scene.cpp" />
+    <ClCompile Include="Structure\System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\callbacks.hpp" />
     <ClInclude Include="core.hpp" />
+    <ClInclude Include="Objects\GaussianPartGen.h" />
     <ClInclude Include="Objects\ParticleGen.h" />
     <ClInclude Include="Objects\Shooter.h" />
+    <ClInclude Include="Systems\ParticleSystem.h" />
     <ClInclude Include="Structure\Object.h" />
     <ClInclude Include="Objects\AxisSphere.h" />
     <ClInclude Include="Objects\Particle.h" />
@@ -277,6 +282,7 @@
     <ClInclude Include="Render\Camera.h" />
     <ClInclude Include="Render\Render.h" />
     <ClInclude Include="Structure\Scene.h" />
+    <ClInclude Include="Structure\System.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

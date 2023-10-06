@@ -16,6 +16,9 @@
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Objects\Shooter.cpp" />
     <ClCompile Include="Objects\ParticleGen.cpp" />
+    <ClCompile Include="Structure\System.cpp" />
+    <ClCompile Include="Systems\ParticleSystem.cpp" />
+    <ClCompile Include="Objects\GaussianPartGen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -33,6 +36,9 @@
     <ClInclude Include="Structure\Scene.h" />
     <ClInclude Include="Objects\Shooter.h" />
     <ClInclude Include="Objects\ParticleGen.h" />
+    <ClInclude Include="Structure\System.h" />
+    <ClInclude Include="Systems\ParticleSystem.h" />
+    <ClInclude Include="Objects\GaussianPartGen.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

@@ -1,7 +1,7 @@
 #include "Particle.h"
 
-Particle::Particle(const Vector3& pos, const Vector3& vel, const Vector3& acc, float damp, float mass, float grav)
-	: Object(pos), vel(vel), acc(acc + Vector3(0, grav, 0)), damp(damp), mass(0) {
+Particle::Particle(const Vector3& pos, const Vector3& vel, const Vector3& acc, float damp, float mass)
+	: Object(pos), vel(vel), acc(acc), damp(damp), mass(0) {
 
 	physx::PxSphereGeometry a; a.radius = 3;
 	physx::PxShape* shape = CreateShape(a);
