@@ -6,7 +6,7 @@ class Scene;
 
 class Object {
 public:
-	Object(Vector3 pos = Vector3(0));
+	Object(const Vector3& pos = Vector3(0));
 	virtual ~Object();
 
 	virtual void update(double t) { }

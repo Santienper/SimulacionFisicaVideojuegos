@@ -15,6 +15,7 @@
     <ClCompile Include="Structure\Scene.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Objects\Shooter.cpp" />
+    <ClCompile Include="Objects\ParticleGen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -31,6 +32,7 @@
     <ClInclude Include="Objects\AxisSphere.h" />
     <ClInclude Include="Structure\Scene.h" />
     <ClInclude Include="Objects\Shooter.h" />
+    <ClInclude Include="Objects\ParticleGen.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
