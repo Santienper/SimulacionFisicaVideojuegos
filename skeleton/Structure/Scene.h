@@ -15,9 +15,11 @@ public:
 
 	void update(double t);
 	void keyPressed(unsigned char key);
+	void addObjects();
 	Shooter* shoot;
 protected:
 	std::vector<Object*> objects;
+	std::vector<Object*> toAdd;
 private:
 	void addObject(Object* obj);
 

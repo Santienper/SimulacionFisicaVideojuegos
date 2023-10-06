@@ -74,6 +74,7 @@ void stepPhysics(bool interactive, double t)
 	gScene->simulate(t);
 	gScene->fetchResults(true);
 
+	sc->addObjects();
 	sc->update(t);
 }
 

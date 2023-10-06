@@ -29,16 +29,20 @@ void Scene::update(double t) {
 }
 
 void Scene::keyPressed(unsigned char key) {
-	/*auto it = objects.begin();
-	while(it != objects.end()) {
-		(*it)->keyPressed(key);
-		++it;
-	}*/
-	shoot->keyPressed(key);
+	for(auto obj : objects) {
+		obj->keyPressed(key);
+	}
+}
+
+void Scene::addObjects() {
+	for(auto obj : toAdd) {
+		objects.push_back(obj);
+	}
+	toAdd.clear();
 }
 
 void Scene::addObject(Object* obj) {
-	objects.push_back(obj);
+	toAdd.push_back(obj);
 }
 
 Scene* Scene::instance = nullptr;
