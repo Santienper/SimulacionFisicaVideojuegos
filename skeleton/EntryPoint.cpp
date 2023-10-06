@@ -8,5 +8,5 @@ void createScene() {
 	new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
 	new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
 	
-	new Shooter();
+	Scene::get()->shoot = new Shooter();
 }

@@ -2,6 +2,7 @@
 #include "Core/RenderUtils.hpp"
 
 void createScene();
+class Shooter;
 
 class Scene {
 	friend class Object;
@@ -14,6 +15,7 @@ public:
 
 	void update(double t);
 	void keyPressed(unsigned char key);
+	Shooter* shoot;
 protected:
 	std::vector<Object*> objects;
 private:

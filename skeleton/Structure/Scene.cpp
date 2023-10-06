@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Object.h"
+#include "Objects/Shooter.h"
 
 Scene::Scene() {
 	cam = GetCamera();
@@ -28,11 +29,12 @@ void Scene::update(double t) {
 }
 
 void Scene::keyPressed(unsigned char key) {
-	auto it = objects.begin();
+	/*auto it = objects.begin();
 	while(it != objects.end()) {
 		(*it)->keyPressed(key);
 		++it;
-	}
+	}*/
+	shoot->keyPressed(key);
 }
 
 void Scene::addObject(Object* obj) {
