@@ -256,9 +256,12 @@
     <ClCompile Include="Core\callbacks.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
+    <ClCompile Include="Objects\FireworkGen.cpp" />
+    <ClCompile Include="Objects\Fireworks.cpp" />
     <ClCompile Include="Objects\GaussianPartGen.cpp" />
     <ClCompile Include="Objects\ParticleGen.cpp" />
     <ClCompile Include="Objects\Shooter.cpp" />
+    <ClCompile Include="Objects\UniformPartGen.cpp" />
     <ClCompile Include="Systems\ParticleSystem.cpp" />
     <ClCompile Include="Structure\Object.cpp" />
     <ClCompile Include="Objects\Particle.cpp" />
@@ -271,9 +274,12 @@
   <ItemGroup>
     <ClInclude Include="Core\callbacks.hpp" />
     <ClInclude Include="core.hpp" />
+    <ClInclude Include="Objects\FireworkGen.h" />
+    <ClInclude Include="Objects\Fireworks.h" />
     <ClInclude Include="Objects\GaussianPartGen.h" />
     <ClInclude Include="Objects\ParticleGen.h" />
     <ClInclude Include="Objects\Shooter.h" />
+    <ClInclude Include="Objects\UniformPartGen.h" />
     <ClInclude Include="Systems\ParticleSystem.h" />
     <ClInclude Include="Structure\Object.h" />
     <ClInclude Include="Objects\AxisSphere.h" />

@@ -7,9 +7,6 @@ ParticleGen::ParticleGen(const Vector3& pos, double rate) : Object(pos), time(0)
 }
 
 void ParticleGen::update(double t) {
-	// Almacenar partículas creadas y eliminarlas si abandonan el "espacio de acción"
-	// Velocidad de partícula aleatoria (con distribución normal independiente)
-
 	time += t;
 
 	if(time > rate) {

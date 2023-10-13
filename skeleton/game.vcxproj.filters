@@ -19,6 +19,9 @@
     <ClCompile Include="Structure\System.cpp" />
     <ClCompile Include="Systems\ParticleSystem.cpp" />
     <ClCompile Include="Objects\GaussianPartGen.cpp" />
+    <ClCompile Include="Objects\UniformPartGen.cpp" />
+    <ClCompile Include="Objects\Fireworks.cpp" />
+    <ClCompile Include="Objects\FireworkGen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -39,6 +42,9 @@
     <ClInclude Include="Structure\System.h" />
     <ClInclude Include="Systems\ParticleSystem.h" />
     <ClInclude Include="Objects\GaussianPartGen.h" />
+    <ClInclude Include="Objects\UniformPartGen.h" />
+    <ClInclude Include="Objects\Fireworks.h" />
+    <ClInclude Include="Objects\FireworkGen.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
