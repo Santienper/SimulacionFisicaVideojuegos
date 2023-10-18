@@ -9,7 +9,7 @@ Firework1::Firework1(FIREWORK_ARGS)
 }
 
 Firework1::~Firework1() {
-	new FireworkGen<Firework2>(trans.p, 0, 3, 1, 3, vel, Vector3(1, 1, 1));
+	new FireworkGen<Firework2>(trans.p, 0, 3, 1, 3, vel, Vector3(1, 1, 1), true);
 }
 
 Firework2::Firework2(FIREWORK_ARGS)

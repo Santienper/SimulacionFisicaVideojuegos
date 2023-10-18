@@ -17,5 +17,5 @@ void createScene() {
 	
 	//new GaussianPartGen(Vector3(0), 0.1, 5);
 	//new UniformPartGen(Vector3(0), 0.1);
-	new FireworkGen<Firework3>(Vector3(0), 1.5, 5, -1, Vector3(0, 30, 0), Vector3(1, 1, 1));
+	new FireworkGen<Firework3>(Vector3(0), 1.5, 5, 2, -1, Vector3(0, 30, 0), Vector3(1, 1, 1));
 }

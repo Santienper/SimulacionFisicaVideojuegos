@@ -14,4 +14,5 @@ protected:
 	float damp, mass;
 	bool disappearing;
 	physx::PxShape* shape;
+	Vector4 color;
 };

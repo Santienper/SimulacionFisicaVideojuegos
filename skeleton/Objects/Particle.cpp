@@ -20,13 +20,16 @@ void Particle::update(double t) {
 
 	if(disappearing) {
 		physx::PxSphereGeometry a;
-		a.radius = 2;
-		shape->setGeometry(a);
-		a.radius -= 0.1;
+		shape->getSphereGeometry(a);
+		a.radius -= 0.05;
 		if(a.radius <= 0) {
 			alive = false;
+		} else {
+			shape = CreateShape(a);
+			auto color = render->color;
+			render->release();
+			render = new RenderItem(shape, &trans, color);
 		}
-		
 	}
 }
 
