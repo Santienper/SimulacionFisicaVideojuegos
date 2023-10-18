@@ -9,7 +9,8 @@ public:
 
 	void update(double t);
 protected:
-	virtual void createParticle(Particle*& particle, double& maxTime) = 0;
+	using ParticleData = ParticleSystem::PartManaging;
+	virtual void createParticle(ParticleData& data) = 0;
 private:
 	double time, rate;
 	ParticleSystem* sys;

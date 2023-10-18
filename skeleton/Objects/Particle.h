@@ -8,7 +8,10 @@ public:
 	~Particle();
 
 	void update(double t);
+	void disappear();
 protected:
 	Vector3 vel, acc;
 	float damp, mass;
+	bool disappearing;
+	physx::PxShape* shape;
 };

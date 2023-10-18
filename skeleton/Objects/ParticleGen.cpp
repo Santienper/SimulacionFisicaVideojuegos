@@ -11,9 +11,8 @@ void ParticleGen::update(double t) {
 
 	if(time > rate) {
 		time -= rate;
-		Particle* part = nullptr;
-		double maxTime = 0;
-		createParticle(part, maxTime);
-		sys->addParticle(part, maxTime);
+		ParticleSystem::PartManaging data{ nullptr, 0, 0, false };
+		createParticle(data);
+		sys->addParticle(data);
 	}
 }

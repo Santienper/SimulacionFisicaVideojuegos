@@ -7,14 +7,17 @@ public:
 	ParticleSystem() : System("particles") { }
 	~ParticleSystem();
 
-	void addParticle(Particle* part, double maxTime);
+	void addParticle(Particle* part, double maxTime, bool disappear);
+
+	struct PartManaging {
+		Particle* particle;
+		double time, maxTime;
+		bool disappear;
+	};
+	void addParticle(PartManaging data);
 
 	void update(double t);
-protected:
-	struct PartManaging {
-		Particle* part;
-		double time, maxTime;
-	};
 
+protected:
 	std::vector<PartManaging> particles;
 };

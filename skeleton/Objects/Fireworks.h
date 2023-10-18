@@ -11,7 +11,7 @@ public:
 
 class Firework2 : public Particle {
 public:
-	Firework2(const Vector3& pos = Vector3(0), const Vector3& vel = Vector3(0), const Vector3& acc = Vector3(0), float damp = 0.998f, float mass = 1);
+	Firework2(FIREWORK_ARGS);
 	~Firework2();
 };
 

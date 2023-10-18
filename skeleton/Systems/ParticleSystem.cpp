@@ -2,12 +2,17 @@
 
 ParticleSystem::~ParticleSystem() {
 	for(auto& data : particles) {
-		data.part->alive = false;
+		data.particle->alive = false;
 	}
 }
 
-void ParticleSystem::addParticle(Particle* part, double maxTime) {
-	PartManaging data = { part, 0, maxTime };
+void ParticleSystem::addParticle(Particle* part, double maxTime, bool disappear) {
+	PartManaging data = { part, 0, maxTime, disappear };
+	particles.push_back(data);
+}
+
+void ParticleSystem::addParticle(PartManaging data) {
+	data.time = 0;
 	particles.push_back(data);
 }
 
@@ -16,7 +21,7 @@ void ParticleSystem::update(double t) {
 	while(it != particles.end()) {
 		it->time += t;
 		if(it->time > it->maxTime) {
-			it->part->alive = false;
+			it->disappear ? it->particle->disappear() : it->particle->alive = false;
 			it = particles.erase(it);
 		} else ++it;
 	}
