@@ -21,4 +21,22 @@ public:
 	~Firework3();
 };
 
+class Firework4 : public Particle {
+public:
+	Firework4(FIREWORK_ARGS);
+	~Firework4();
+};
+
+class Firework5 : public Particle {
+public:
+	Firework5(FIREWORK_ARGS);
+	~Firework5();
+};
+
+class Firework6 : public Particle {
+public:
+	Firework6(FIREWORK_ARGS);
+	~Firework6();
+};
+
 #undef FIREWORK_ARGS

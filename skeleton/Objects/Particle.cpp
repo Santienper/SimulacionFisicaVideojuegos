@@ -1,9 +1,9 @@
 #include "Particle.h"
 
-Particle::Particle(const Vector3& pos, const Vector3& vel, const Vector3& acc, float damp, float mass)
+Particle::Particle(const Vector3& pos, const Vector3& vel, const Vector3& acc, float radius, float damp, float mass)
 	: Object(pos), vel(vel), acc(acc), damp(damp), mass(0), disappearing(false) {
 
-	physx::PxSphereGeometry a; a.radius = 3;
+	physx::PxSphereGeometry a; a.radius = radius;
 	shape = CreateShape(a);
 	render = new RenderItem(shape, &trans, Vector4{0.5, 1, 1, 1});
 }

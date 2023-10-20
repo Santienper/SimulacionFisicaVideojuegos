@@ -7,6 +7,6 @@ UniformPartGen::UniformPartGen(const Vector3& pos, double rate) : ParticleGen(po
 
 void UniformPartGen::createParticle(ParticleData& data) {
 	Vector3 vel(rnd(gen), 20, rnd(gen));
-	data.particle = new Particle(trans.p, vel, Vector3(0, -10, 0), 0.998f, 1);
+	data.particle = new Particle(trans.p, vel, Vector3(0, -10, 0), 3, 0.998f, 1);
 	data.maxTime = 5;
 }
