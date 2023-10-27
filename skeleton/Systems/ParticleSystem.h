@@ -2,6 +2,8 @@
 #include "Structure/System.h"
 #include "Objects/Particle.h"
 
+class ForceGenerator;
+
 class ParticleSystem : public System {
 public:
 	ParticleSystem() : System("particles") { }
@@ -20,4 +22,5 @@ public:
 
 protected:
 	std::vector<PartManaging> particles;
+	std::vector<ForceGenerator*> forces;
 };

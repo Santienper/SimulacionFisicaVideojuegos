@@ -257,6 +257,8 @@
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
     <ClCompile Include="Objects\Fireworks.cpp" />
+    <ClCompile Include="Objects\ForceGenerators\ForceGenerator.cpp" />
+    <ClCompile Include="Objects\ForceGenerators\GravityForce.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianPartGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\ParticleGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\UniformPartGen.cpp" />
@@ -276,6 +278,8 @@
     <ClInclude Include="Objects\FireworkGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\FireworkGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\Fireworks.h" />
+    <ClInclude Include="Objects\ForceGenerators\ForceGenerator.h" />
+    <ClInclude Include="Objects\ForceGenerators\GravityForce.h" />
     <ClInclude Include="Objects\ParticleGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\GaussianPartGen.h" />

@@ -9,9 +9,14 @@ public:
 
 	void update(double t);
 	void disappear();
+
+	void addForce(const Vector3&);
+	void clearAcum();
+	float getMass() const { return mass; }
 protected:
-	Vector3 vel, acc;
-	float damp, mass;
+	Vector3 vel, acc, force;
+	float damp, mass, inv_mass;
+
 	bool disappearing;
 	physx::PxShape* shape;
 	Vector4 color;

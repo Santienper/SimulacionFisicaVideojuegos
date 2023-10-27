@@ -1,8 +1,12 @@
 #include "ParticleSystem.h"
+#include "Objects/ForceGenerators/ForceGenerator.h"
 
 ParticleSystem::~ParticleSystem() {
 	for(auto& data : particles) {
 		data.particle->alive = false;
+	}
+	for(auto force : forces) {
+		force->alive = false;
 	}
 }
 
