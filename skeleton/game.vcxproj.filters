@@ -47,7 +47,6 @@
     <ClInclude Include="Objects\ParticleGenerators\GaussianPartGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\ParticleGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\UniformPartGen.h" />
-    <ClInclude Include="ids.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
