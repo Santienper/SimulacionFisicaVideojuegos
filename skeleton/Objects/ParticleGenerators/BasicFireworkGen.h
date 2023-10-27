@@ -1,5 +1,5 @@
 #pragma once
-#include "../GaussianPartGen.h"
+#include "GaussianPartGen.h"
 
 template<typename Firework>
 class BasicFireworkGen : public GaussianPartGen {

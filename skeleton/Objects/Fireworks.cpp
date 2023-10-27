@@ -1,6 +1,6 @@
 #include "Fireworks.h"
-#include "FireworkGenerators/BasicFireworkGen.h"
-#include "FireworkGenerators/CircleFWGen.h"
+#include "ParticleGenerators/BasicFireworkGen.h"
+#include "ParticleGenerators/CircleFWGen.h"
 
 #define FIREWORK_ARGS const Vector3& pos, const Vector3& vel, const Vector3& acc, float damp, float mass
 

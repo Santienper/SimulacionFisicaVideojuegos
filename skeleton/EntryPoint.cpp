@@ -3,9 +3,9 @@
 #include "Systems/ParticleSystem.h"
 
 #include "Objects/AxisSphere.h"
-#include "Objects/GaussianPartGen.h"
-#include "Objects/UniformPartGen.h"
-#include "Objects/FireworkGenerators/BasicFireworkGen.h"
+#include "Objects/ParticleGenerators/GaussianPartGen.h"
+#include "Objects/ParticleGenerators/UniformPartGen.h"
+#include "Objects/ParticleGenerators/BasicFireworkGen.h"
 #include "Objects/Fireworks.h"
 
 void createScene() {
@@ -17,5 +17,5 @@ void createScene() {
 	
 	new GaussianPartGen(Vector3(0), 0.1, 5);
 	//new UniformPartGen(Vector3(0), 0.1);
-	new BasicFireworkGen<Firework5>(Vector3(0), 1.5, 5, 2, -1, Vector3(0, 70, 0), Vector3(1, 5, 1));
+	new BasicFireworkGen<Firework4>(Vector3(0), 1.5, 5, 2, -1, Vector3(0, 70, 0), Vector3(1, 5, 1));
 }
