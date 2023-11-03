@@ -1,6 +1,8 @@
 #pragma once
 #include "Structure/System.h"
 #include "Objects/Particle.h"
+#include <unordered_map>
+#include <unordered_set>
 
 class ForceGenerator;
 
@@ -23,4 +25,6 @@ public:
 protected:
 	std::vector<PartManaging> particles;
 	std::vector<ForceGenerator*> forces;
+	std::unordered_map<ForceGenerator*, std::unordered_set<Particle*>> mapParticle;
+	std::unordered_map<Particle*, std::unordered_set<ForceGenerator*>> mapForce;
 };
