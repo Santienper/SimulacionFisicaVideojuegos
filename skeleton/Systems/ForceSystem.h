@@ -1,15 +1,15 @@
 #pragma once
 #include "Structure/System.h"
-#include "Objects/Particle.h"
+#include "Objects/Particle.h" // Movable Object
 #include <unordered_map>
 #include <unordered_set>
 
 class ForceGenerator;
 
-class ParticleSystem : public System {
+class ForceSystem : public System {
 public:
-	ParticleSystem() : System("particles") { }
-	~ParticleSystem();
+	ForceSystem() : System("forces") { }
+	~ForceSystem();
 
 	void addParticle(Particle* part, double maxTime, bool disappear);
 
@@ -22,7 +22,7 @@ public:
 
 	void update(double t);
 
-protected:
-	std::vector<PartManaging> particles;
-	std::unordered_map<Particle*, std::unordered_set<ForceGenerator*>> map;
+private:
+	std::vector<ForceGenerator*> forces;
+	std::unordered_map<ForceGenerator*, std::unordered_set<Particle*>> map;
 };

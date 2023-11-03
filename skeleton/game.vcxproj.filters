@@ -51,6 +51,8 @@
     <ClInclude Include="Objects\ParticleGenerators\UniformPartGen.h" />
     <ClInclude Include="Objects\ForceGenerators\ForceGenerator.h" />
     <ClInclude Include="Objects\ForceGenerators\GravityForce.h" />
+    <ClInclude Include="Systems\ForceSystem.h" />
+    <ClInclude Include="Utilities\SpPtr.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

@@ -8,6 +8,15 @@
 #include "Objects/ParticleGenerators/BasicFireworkGen.h"
 #include "Objects/Fireworks.h"
 
+#include "Utilities/SpPtr.h"
+
+class Muejeje : public Object {
+public:
+	void keyPressed(unsigned char key) {
+		if(key == 'H') Scene::get()->getSystem("particles")->alive = false;
+	}
+};
+
 void createScene() {
 	new ParticleSystem();
 
@@ -15,7 +24,9 @@ void createScene() {
 	new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
 	new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
 	
-	new GaussianPartGen(Vector3(0), 0.1, 5);
+	//new GaussianPartGen(Vector3(0), 0.1, 5);
 	//new UniformPartGen(Vector3(0), 0.1);
-	new BasicFireworkGen<Firework4>(Vector3(0), 1.5, 5, 2, -1, Vector3(0, 70, 0), Vector3(1, 5, 1));
+	new BasicFireworkGen<Firework4>(Vector3(0), 1.5, 5, 2, 1, Vector3(0, 70, 0), Vector3(1, 5, 1));
+
+	new Muejeje();
 }

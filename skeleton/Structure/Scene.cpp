@@ -5,14 +5,15 @@
 Scene::Scene() {
 	cam = GetCamera();
 	instance = this;
+	safeInstance = new SpPtr<Scene>(this);
 }
 
 Scene::~Scene() {
-	for(auto obj : objects) {
-		delete obj;
+	for(auto& obj : objects) {
+		obj.free();
 	}
-	for(auto& pair : systems) {
-		delete pair.second;
+	for(auto& sys : systems) {
+		sys.second.free();
 	}
 }
 
@@ -28,7 +29,7 @@ void Scene::update(double t) {
 	auto objIt = objects.begin();
 	while(objIt != objects.end()) {
 		if(!(*objIt)->alive) {
-			delete *objIt;
+			objIt->free();
 			objIt = objects.erase(objIt);
 		} else ++objIt;
 	}
@@ -36,7 +37,7 @@ void Scene::update(double t) {
 	auto sysIt = systems.begin();
 	while(sysIt != systems.end()) {
 		if(!sysIt->second->alive) {
-			delete sysIt->second;
+			sysIt->second.free();
 			sysIt = systems.erase(sysIt);
 		} else ++sysIt;
 	}
@@ -57,7 +58,7 @@ void Scene::commit() {
 	}
 	objToAdd.clear();
 	for(auto& sys : sysToAdd) {
-		systems.insert(sys);
+		systems[sys.first] = sys.second;
 	}
 	sysToAdd.clear();
 }
@@ -70,7 +71,7 @@ void Scene::addSystem(System* sys, std::string id) {
 	sysToAdd.push_back(std::make_pair(id, sys));
 }
 
-System* Scene::getSystem(std::string id) {
+SpPtr<System> Scene::getSystem(std::string id) {
 	// Busca en los sistemas ya establecidos
 	auto it = systems.find(id);
 	if(it != systems.end()) return it->second;
@@ -83,3 +84,5 @@ System* Scene::getSystem(std::string id) {
 }
 
 Scene* Scene::instance = nullptr;
+
+SpPtr<Scene>* Scene::safeInstance = nullptr;

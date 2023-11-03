@@ -5,9 +5,6 @@ ParticleSystem::~ParticleSystem() {
 	for(auto& data : particles) {
 		data.particle->alive = false;
 	}
-	for(auto force : forces) {
-		force->alive = false;
-	}
 }
 
 void ParticleSystem::addParticle(Particle* part, double maxTime, bool disappear) {

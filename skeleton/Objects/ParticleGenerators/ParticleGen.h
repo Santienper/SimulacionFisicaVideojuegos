@@ -13,5 +13,5 @@ protected:
 	virtual void createParticle(ParticleData& data) = 0;
 private:
 	double time, rate;
-	ParticleSystem* sys;
+	SpPtr<ParticleSystem> sys;
 };
