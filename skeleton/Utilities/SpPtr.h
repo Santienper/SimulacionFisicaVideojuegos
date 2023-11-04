@@ -91,9 +91,10 @@ public:
 		(*references)++;
 	}
 
-	SpPtr& operator=(SpPtr& other) {
+	template<typename T>
+	SpPtr& operator=(SpPtr<T>& other) {
 		this->~SpPtr();
-		pointer = other.pointer;
+		pointer = reinterpret_cast<void**>(other.pointer);
 		references = other.references;
 		(*references)++;
 		return *this;
