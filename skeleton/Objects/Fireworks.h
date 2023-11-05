@@ -6,37 +6,35 @@
 class Firework1 : public Particle {
 public:
 	Firework1(FIREWORK_ARGS);
-	~Firework1();
+	void callbackDelete();
 };
 
 class Firework2 : public Particle {
 public:
 	Firework2(FIREWORK_ARGS);
-	~Firework2();
 };
 
 class Firework3 : public Particle {
 public:
 	Firework3(FIREWORK_ARGS);
-	~Firework3();
+	void callbackDelete();
 };
 
 class Firework4 : public Particle {
 public:
 	Firework4(FIREWORK_ARGS);
-	~Firework4();
+	void callbackDelete();
 };
 
 class Firework5 : public Particle {
 public:
 	Firework5(FIREWORK_ARGS);
-	~Firework5();
+	void callbackDelete();
 };
 
 class Firework6 : public Particle {
 public:
 	Firework6(FIREWORK_ARGS);
-	~Firework6();
 };
 
 #undef FIREWORK_ARGS

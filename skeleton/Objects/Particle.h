@@ -9,6 +9,7 @@ public:
 
 	void update(double t);
 	void disappear();
+	virtual void callbackDelete() { };
 
 	void addForce(const Vector3&);
 	void clearAcum();

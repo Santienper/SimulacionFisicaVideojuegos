@@ -22,7 +22,12 @@ void ParticleSystem::update(double t) {
 	while(it != particles.end()) {
 		it->time += t;
 		if(it->time > it->maxTime) {
-			it->disappear ? it->particle->disappear() : it->particle->alive = false;
+			if(it->disappear) {
+				it->particle->disappear();
+			} else {
+				it->particle->alive = false;
+				it->particle->callbackDelete();
+			}
 			it = particles.erase(it);
 		} else ++it;
 	}
