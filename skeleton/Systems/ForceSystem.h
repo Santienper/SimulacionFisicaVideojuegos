@@ -11,18 +11,15 @@ public:
 	ForceSystem() : System("forces") { }
 	~ForceSystem();
 
-	void addParticle(Particle* part, double maxTime, bool disappear);
-
-	struct PartManaging {
-		Particle* particle;
-		double time, maxTime;
-		bool disappear;
-	};
-	void addParticle(PartManaging data);
+	void addConnection(Particle*, ForceGenerator*);
+	void deleteConnection(Particle*, ForceGenerator*);
+	void deleteParticle(Particle*);
+	void deleteForce(ForceGenerator*);
 
 	void update(double t);
 
 private:
 	std::vector<ForceGenerator*> forces;
-	std::unordered_map<ForceGenerator*, std::unordered_set<Particle*>> map;
+	std::unordered_map<ForceGenerator*, std::unordered_set<Particle*>> mapForce;
+	std::unordered_map<Particle*, std::unordered_set<ForceGenerator*>> mapPart;
 };

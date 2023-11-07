@@ -24,5 +24,4 @@ public:
 
 protected:
 	std::vector<PartManaging> particles;
-	std::unordered_map<Particle*, std::unordered_set<ForceGenerator*>> map;
 };

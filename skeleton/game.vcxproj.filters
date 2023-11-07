@@ -23,6 +23,7 @@
     <ClCompile Include="Objects\ParticleGenerators\UniformPartGen.cpp" />
     <ClCompile Include="Objects\ForceGenerators\ForceGenerator.cpp" />
     <ClCompile Include="Objects\ForceGenerators\GravityForce.cpp" />
+    <ClCompile Include="Systems\ForceSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />

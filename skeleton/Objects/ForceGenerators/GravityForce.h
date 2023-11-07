@@ -3,7 +3,7 @@
 
 class GravityForce : public ForceGenerator {
 public:
-	GravityForce();
+	GravityForce(const Vector3& gravity = Vector3(0));
 	~GravityForce();
 
 	void updateForce(Particle*);

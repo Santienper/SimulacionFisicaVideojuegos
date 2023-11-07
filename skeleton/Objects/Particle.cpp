@@ -13,7 +13,7 @@ Particle::~Particle() {
 }
 
 void Particle::update(double t) {
-	//acc = force * inv_mass;
+	acc = force * inv_mass;
 
 	vel += acc * t;
 	vel *= powf(damp, t);
@@ -44,5 +44,5 @@ void Particle::addForce(const Vector3& f) {
 }
 
 void Particle::clearAcum() {
-
+	force = Vector3(0);
 }

@@ -263,6 +263,7 @@
     <ClCompile Include="Objects\ParticleGenerators\ParticleGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\UniformPartGen.cpp" />
     <ClCompile Include="Objects\Shooter.cpp" />
+    <ClCompile Include="Systems\ForceSystem.cpp" />
     <ClCompile Include="Systems\ParticleSystem.cpp" />
     <ClCompile Include="Structure\Object.cpp" />
     <ClCompile Include="Objects\Particle.cpp" />
