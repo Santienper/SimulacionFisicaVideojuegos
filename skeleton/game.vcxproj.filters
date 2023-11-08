@@ -24,6 +24,8 @@
     <ClCompile Include="Objects\ForceGenerators\ForceGenerator.cpp" />
     <ClCompile Include="Objects\ForceGenerators\GravityForce.cpp" />
     <ClCompile Include="Systems\ForceSystem.cpp" />
+    <ClCompile Include="Objects\ForceGenerators\WindForce.cpp" />
+    <ClCompile Include="Objects\Trigger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -54,6 +56,8 @@
     <ClInclude Include="Objects\ForceGenerators\GravityForce.h" />
     <ClInclude Include="Systems\ForceSystem.h" />
     <ClInclude Include="Utilities\SpPtr.h" />
+    <ClInclude Include="Objects\ForceGenerators\WindForce.h" />
+    <ClInclude Include="Objects\Trigger.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

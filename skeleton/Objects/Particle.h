@@ -14,11 +14,12 @@ public:
 	void addForce(const Vector3&);
 	void clearAcum();
 	float getMass() const { return mass; }
+	Vector3 getVel() const { return vel; }
 protected:
 	Vector3 vel, acc, force;
 	float damp, mass, inv_mass;
 
-	bool disappearing;
+	bool disappearing, affectedByForce;
 	physx::PxShape* shape;
 	Vector4 color;
 };

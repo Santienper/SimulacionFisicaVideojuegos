@@ -1,7 +1,8 @@
 #include "Particle.h"
 
 Particle::Particle(const Vector3& pos, const Vector3& vel, const Vector3& acc, float radius, float damp, float mass)
-	: Object(pos), vel(vel), acc(acc), damp(damp), mass(mass), inv_mass(1 / mass), disappearing(false) {
+	: Object(pos), vel(vel), acc(acc), damp(damp), mass(mass), inv_mass(mass == 0 ? 0 : 1 / mass), disappearing(false),
+	  affectedByForce(false) {
 
 	physx::PxSphereGeometry a; a.radius = radius;
 	shape = CreateShape(a);
@@ -13,7 +14,7 @@ Particle::~Particle() {
 }
 
 void Particle::update(double t) {
-	acc = force * inv_mass;
+	if(affectedByForce) acc = force * inv_mass;
 
 	vel += acc * t;
 	vel *= powf(damp, t);
@@ -41,6 +42,7 @@ void Particle::disappear() {
 
 void Particle::addForce(const Vector3& f) {
 	force += f;
+	affectedByForce = true;
 }
 
 void Particle::clearAcum() {
