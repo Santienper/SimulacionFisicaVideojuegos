@@ -5,7 +5,7 @@
 
 class ForceGenerator : public Object {
 public:
-	ForceGenerator();
+	ForceGenerator(const Vector3& pos = Vector3(0));
 	~ForceGenerator();
 
 	virtual void updateForce(Particle* p) = 0;

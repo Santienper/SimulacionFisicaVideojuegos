@@ -2,7 +2,7 @@
 #include "Structure/Scene.h"
 #include <iostream>
 
-ForceGenerator::ForceGenerator() {
+ForceGenerator::ForceGenerator(const Vector3& pos) : Object(pos) {
 	sys = Scene::get()->getSystem("forces").cast<ForceSystem>();
 	if(sys == nullptr) {
 		alive = false;

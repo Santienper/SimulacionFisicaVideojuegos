@@ -26,6 +26,8 @@
     <ClCompile Include="Systems\ForceSystem.cpp" />
     <ClCompile Include="Objects\ForceGenerators\WindForce.cpp" />
     <ClCompile Include="Objects\Trigger.cpp" />
+    <ClCompile Include="Objects\ForceGenerators\WhirlwindForce.cpp" />
+    <ClCompile Include="Objects\ParticleGenerators\GaussianScriptGen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -58,6 +60,8 @@
     <ClInclude Include="Utilities\SpPtr.h" />
     <ClInclude Include="Objects\ForceGenerators\WindForce.h" />
     <ClInclude Include="Objects\Trigger.h" />
+    <ClInclude Include="Objects\ForceGenerators\WhirlwindForce.h" />
+    <ClInclude Include="Objects\ParticleGenerators\GaussianScriptGen.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

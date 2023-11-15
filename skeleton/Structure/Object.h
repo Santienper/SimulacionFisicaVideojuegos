@@ -13,6 +13,8 @@ public:
 	virtual void keyPressed(unsigned char key) { }
 
 	bool alive;
+
+	const physx::PxTransform getTransform() const { return trans; }
 protected:
 	physx::PxTransform trans;
 	RenderItem* render;

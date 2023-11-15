@@ -27,6 +27,7 @@ void Particle::update(double t) {
 		a.radius -= 0.05;
 		if(a.radius <= 0) {
 			alive = false;
+			callbackDelete();
 		} else {
 			shape = CreateShape(a);
 			auto color = render->color;

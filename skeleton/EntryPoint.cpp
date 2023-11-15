@@ -12,15 +12,10 @@
 
 #include "Objects/ForceGenerators/GravityForce.h"
 #include "Objects/ForceGenerators/WindForce.h"
+#include "Objects/ForceGenerators/WhirlwindForce.h"
+#include "Objects/ParticleGenerators/GaussianScriptGen.h"
 
 #include "Utilities/SpPtr.h"
-
-class Muejeje : public Object {
-public:
-	void keyPressed(unsigned char key) {
-		if(key == 'H') Scene::get()->getSystem("particles")->alive = false;
-	}
-};
 
 void createScene() {
 	auto particle = new ParticleSystem();
@@ -34,17 +29,23 @@ void createScene() {
 	//new UniformPartGen(Vector3(0), 0.1);
 	//new BasicFireworkGen<Firework4>(Vector3(0), 1.5, 5, 2, -1, Vector3(0, 70, 0), Vector3(1, 5, 1));
 
-	new Muejeje();
-
 	ForceGenerator* gen = new GravityForce(Vector3(0, -10, 0));
-	auto part = new Particle(Vector3(0), Vector3(0, 20, 0));
+	auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 20, 0));
 	force->addConnection(part, gen);
 	particle->addParticle(part, 10, true);
 
-	gen = new WindForce(Vector3(10, 0, 0));
+	//gen = new WindForce(Vector3(10, 0, 0));
+	gen = new WhirlwindForce();
 	force->addConnection(part, gen);
+
+	auto partGen = new GaussianScriptGen(Vector3(0), 0.01, 5);
+	partGen->setCallback([force, gen](Particle* p)-> void {
+		force->addConnection(p, gen);
+	});
 
 	//gen = new GravityForce(Vector3(0, 10, 0));
 	//part = new Particle(Vector3(1, 0, 0), Vector3(0, -20, 0));
 	//force->addConnection(part, gen);
+
+	
 }
