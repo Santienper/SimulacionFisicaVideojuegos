@@ -1,7 +1,7 @@
 #include "GaussianPartGen.h"
 
-GaussianPartGen::GaussianPartGen(const Vector3& pos, double rate, double sigma, const Vector3& startVel, const Vector3& rndVel)
-	: ParticleGen(pos, rate), rnd(0, sigma), startVel(startVel), rndVel(rndVel) {
+GaussianPartGen::GaussianPartGen(const Vector3& pos, double rate, const Vector3& rndVel, const Vector3& startVel)
+	: ParticleGen(pos, rate), rnd(0, 1), startVel(startVel), rndVel(rndVel) {
 
 	std::random_device rd;
 	gen = std::mt19937(rd());

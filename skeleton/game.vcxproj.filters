@@ -62,6 +62,7 @@
     <ClInclude Include="Objects\Trigger.h" />
     <ClInclude Include="Objects\ForceGenerators\WhirlwindForce.h" />
     <ClInclude Include="Objects\ParticleGenerators\GaussianScriptGen.h" />
+    <ClInclude Include="Objects\ForceEffectArea.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

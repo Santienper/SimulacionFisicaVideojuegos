@@ -283,6 +283,7 @@
     <ClInclude Include="Objects\FireworkGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\FireworkGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\Fireworks.h" />
+    <ClInclude Include="Objects\ForceEffectArea.h" />
     <ClInclude Include="Objects\ForceGenerators\ForceGenerator.h" />
     <ClInclude Include="Objects\ForceGenerators\GravityForce.h" />
     <ClInclude Include="Objects\ForceGenerators\WhirlwindForce.h" />

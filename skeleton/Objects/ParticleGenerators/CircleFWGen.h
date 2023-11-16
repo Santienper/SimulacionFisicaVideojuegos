@@ -4,8 +4,8 @@
 template<typename Firework>
 class CircleFWGen : public BasicFireworkGen<Firework> {
 public:
-	CircleFWGen(const Vector3& pos, double rate, double sigma, double maxTime = 1.5, int maxFireworks = 10, float disperseVel = 10, const Vector3& startVel = Vector3(0), const Vector3& rndVel = Vector3(1), bool disappear = false)
-		: BasicFireworkGen<Firework>(pos, rate, sigma, maxTime, maxFireworks, startVel, rndVel, disappear), disperseVel(disperseVel), i(0) {
+	CircleFWGen(const Vector3& pos, double rate, const Vector3& rndVel = Vector3(1), double maxTime = 1.5, int maxFireworks = 10, float disperseVel = 10, const Vector3& startVel = Vector3(0), bool disappear = false)
+		: BasicFireworkGen<Firework>(pos, rate, rndVel, maxTime, maxFireworks, startVel, disappear), disperseVel(disperseVel), i(0) {
 
 	}
 protected:

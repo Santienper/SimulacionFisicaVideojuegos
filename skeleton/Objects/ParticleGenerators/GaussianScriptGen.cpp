@@ -1,11 +1,11 @@
 #include "GaussianScriptGen.h"
 
-GaussianScriptGen::GaussianScriptGen(const Vector3& pos, double rate, double sigma, const Vector3& startVel, const Vector3& rndVel) :
-	GaussianPartGen(pos, rate, sigma, startVel, rndVel) {
+GaussianScriptGen::GaussianScriptGen(const Vector3& pos, double rate, const Vector3& rndVel, const Vector3& startVel) :
+	GaussianPartGen(pos, rate, rndVel, startVel) {
 	
 }
 
-void GaussianScriptGen::setCallback(std::function<void(Particle*)> callback) {
+void GaussianScriptGen::addCallback(std::function<void(Particle*)> callback) {
 	callbacks.push_back(callback);
 }
 

@@ -83,6 +83,10 @@ SpPtr<System> Scene::getSystem(std::string id) {
 	return nullptr;
 }
 
+const std::vector<SpPtr<Object>>* Scene::getObjects() const {
+	return &objects;
+}
+
 Scene* Scene::instance = nullptr;
 
 SpPtr<Scene>* Scene::safeInstance = nullptr;

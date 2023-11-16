@@ -16,6 +16,7 @@ public:
 	Camera* cam;
 
 	SpPtr<System> getSystem(std::string id);
+	const std::vector<SpPtr<Object>>* getObjects() const;
 
 	void update(double t);
 	void keyPressed(unsigned char key);

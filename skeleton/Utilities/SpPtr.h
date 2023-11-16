@@ -39,7 +39,15 @@ public:
 		return **pointer;
 	}
 
+	const T& operator*() const {
+		return **pointer;
+	}
+
 	T* operator->() {
+		return *pointer;
+	}
+
+	const T* operator->() const {
 		return *pointer;
 	}
 

@@ -25,9 +25,9 @@ void createScene() {
 	new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
 	new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
 	
-	//new GaussianPartGen(Vector3(0), 0.1, 5);
+	//new GaussianPartGen(Vector3(0), 0.1, Vector3(5));
 	//new UniformPartGen(Vector3(0), 0.1);
-	//new BasicFireworkGen<Firework4>(Vector3(0), 1.5, 5, 2, -1, Vector3(0, 70, 0), Vector3(1, 5, 1));
+	//new BasicFireworkGen<Firework4>(Vector3(0), 1.5, Vector3(5, 25, 5), 2, -1, Vector3(0, 70, 0));
 
 	ForceGenerator* gen = new GravityForce(Vector3(0, -10, 0));
 	auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 20, 0));
@@ -38,8 +38,8 @@ void createScene() {
 	gen = new WhirlwindForce();
 	force->addConnection(part, gen);
 
-	auto partGen = new GaussianScriptGen(Vector3(0), 0.01, 5);
-	partGen->setCallback([force, gen](Particle* p)-> void {
+	auto partGen = new GaussianScriptGen(Vector3(0), 0.01, Vector3(5));
+	partGen->addCallback([force, gen](Particle* p) -> void {
 		force->addConnection(p, gen);
 	});
 

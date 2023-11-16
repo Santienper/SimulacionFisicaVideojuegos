@@ -32,7 +32,7 @@ void ForceSystem::deleteForce(ForceGenerator* force) {
 void ForceSystem::update(double t) {
 	for(auto& data : mapPart) {
 		data.first->clearAcum();
-		for(auto force : data.second) {
+		for(auto& force : data.second) {
 			force->updateForce(data.first);
 		}
 	}
