@@ -5,16 +5,26 @@
 
 class Trigger : public Object {
 public:
-	Trigger(const Vector3& pos = Vector3(0), physx::PxGeometryHolder area = {});
+	Trigger(const Vector3& pos = Vector3(0));
+	~Trigger();
 	void update(double t);
-
-	void setCallbackEnter(const std::function<void(const Object*)>& callbackEnter);
-	void setCallbackLoop(const std::function<void(const Object*)>& callbackLoop);
-	void setCallbackExit(const std::function<void(const Object*)>& callbackExit);
 protected:
-	virtual bool isInside(const Object*) = 0;
+	virtual bool isInside(Object*) = 0;
+
+	void setCallbackEnter(const std::function<void(Object*)>& callbackEnter);
+	void setCallbackLoop(const std::function<void(Object*)>& callbackLoop);
+	void setCallbackExit(const std::function<void(Object*)>& callbackExit);
 private:
-	std::function<void(const Object*)> callbackEnter, callbackLoop, callbackExit;
-	physx::PxGeometryHolder area;
-	std::unordered_set<const Object*> objects;
+	std::function<void(Object*)> callbackEnter, callbackLoop, callbackExit;
+	std::unordered_set<SpPtr<Object>> objects;
+	std::vector<SpPtr<Object>>* sceneObjects;
+};
+
+class PublicTrigger : public Trigger {
+public:
+	PublicTrigger(const Vector3& pos = Vector3(0));
+
+	void setCallbackEnter(const std::function<void(Object*)>& callbackEnter);
+	void setCallbackLoop(const std::function<void(Object*)>& callbackLoop);
+	void setCallbackExit(const std::function<void(Object*)>& callbackExit);
 };

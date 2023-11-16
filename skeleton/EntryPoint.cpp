@@ -14,6 +14,7 @@
 #include "Objects/ForceGenerators/WindForce.h"
 #include "Objects/ForceGenerators/WhirlwindForce.h"
 #include "Objects/ParticleGenerators/GaussianScriptGen.h"
+#include "Objects/ForceEffectSphere.h"
 
 #include "Utilities/SpPtr.h"
 
@@ -33,6 +34,7 @@ void createScene() {
 	auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 20, 0));
 	force->addConnection(part, gen);
 	particle->addParticle(part, 10, true);
+	auto eff = new ForceEffectSphere(gen);
 
 	//gen = new WindForce(Vector3(10, 0, 0));
 	gen = new WhirlwindForce();

@@ -51,6 +51,14 @@ public:
 		return *pointer;
 	}
 
+	T* get() {
+		return *pointer;
+	}
+
+	const T* get() const {
+		return *pointer;
+	}
+
 	void free() {
 		if(*pointer) delete *pointer;
 		*pointer = nullptr;
@@ -62,16 +70,30 @@ public:
 	}
 
 	template<typename otherT>
-	bool operator==(otherT* other) {
+	bool operator==(const otherT* other) const {
 		return *pointer == other;
 	}
 
 	template<typename otherT>
-	bool operator==(SpPtr<otherT> other) {
-		return pointer == other.pointer;
+	bool operator==(const SpPtr<otherT>& other) const {
+		return (void*)*pointer == other.get();
 	}
 
-	bool operator==(std::nullptr_t) {
+	bool operator==(std::nullptr_t) const {
+		return *pointer == nullptr;
+	}
+
+	template<typename otherT>
+	bool operator!=(const otherT* other) const {
+		return (void*)*pointer != other;
+	}
+
+	template<typename otherT>
+	bool operator!=(const SpPtr<otherT>& other) const {
+		return (void*)*pointer != other.get();
+	}
+
+	bool operator!=(std::nullptr_t) const {
 		return *pointer == nullptr;
 	}
 private:

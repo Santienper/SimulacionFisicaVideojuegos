@@ -14,7 +14,7 @@ public:
 
 	bool alive;
 
-	const physx::PxTransform getTransform() const { return trans; }
+	const physx::PxTransform& getTransform() const { return trans; }
 protected:
 	physx::PxTransform trans;
 	RenderItem* render;

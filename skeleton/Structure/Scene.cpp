@@ -83,7 +83,7 @@ SpPtr<System> Scene::getSystem(std::string id) {
 	return nullptr;
 }
 
-const std::vector<SpPtr<Object>>* Scene::getObjects() const {
+std::vector<SpPtr<Object>>* Scene::getObjects() {
 	return &objects;
 }
 

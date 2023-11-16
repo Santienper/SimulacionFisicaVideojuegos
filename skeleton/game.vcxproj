@@ -257,6 +257,7 @@
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
     <ClCompile Include="Objects\Fireworks.cpp" />
+    <ClCompile Include="Objects\ForceEffectSphere.cpp" />
     <ClCompile Include="Objects\ForceGenerators\ForceGenerator.cpp" />
     <ClCompile Include="Objects\ForceGenerators\GravityForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\WhirlwindForce.cpp" />
@@ -283,7 +284,7 @@
     <ClInclude Include="Objects\FireworkGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\FireworkGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\Fireworks.h" />
-    <ClInclude Include="Objects\ForceEffectArea.h" />
+    <ClInclude Include="Objects\ForceEffectSphere.h" />
     <ClInclude Include="Objects\ForceGenerators\ForceGenerator.h" />
     <ClInclude Include="Objects\ForceGenerators\GravityForce.h" />
     <ClInclude Include="Objects\ForceGenerators\WhirlwindForce.h" />
