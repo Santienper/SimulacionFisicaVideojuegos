@@ -7,8 +7,9 @@
 class ForceGenerator;
 
 class ForceSystem : public System {
+	// id: forces
 public:
-	ForceSystem() : System("forces") { }
+	ForceSystem();
 	~ForceSystem();
 
 	void addConnection(Particle*, ForceGenerator*);
@@ -19,7 +20,7 @@ public:
 	void update(double t);
 
 private:
-	std::vector<ForceGenerator*> forces;
+	std::vector<ForceGenerator*> toDelete;
 	std::unordered_map<ForceGenerator*, std::unordered_set<Particle*>> mapForce;
 	std::unordered_map<Particle*, std::unordered_set<ForceGenerator*>> mapPart;
 };

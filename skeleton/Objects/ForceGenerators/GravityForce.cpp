@@ -8,6 +8,6 @@ GravityForce::~GravityForce() {
 
 }
 
-void GravityForce::updateForce(Particle* particle) {
+void GravityForce::updateForce(Particle* particle, double t) {
 	particle->addForce(gravity * particle->getMass());
 }

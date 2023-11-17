@@ -5,10 +5,11 @@
 #include <unordered_set>
 
 class ForceGenerator;
+class ForceSystem;
 
 class ParticleSystem : public System {
 public:
-	ParticleSystem() : System("particles") { }
+	ParticleSystem();
 	~ParticleSystem();
 
 	void addParticle(Particle* part, double maxTime, bool disappear);
@@ -22,6 +23,8 @@ public:
 
 	void update(double t);
 
+	void getOtherSystems();
 protected:
 	std::vector<PartManaging> particles;
+	SpPtr<ForceSystem> forceSys;
 };

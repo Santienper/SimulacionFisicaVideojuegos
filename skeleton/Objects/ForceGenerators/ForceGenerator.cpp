@@ -11,5 +11,9 @@ ForceGenerator::ForceGenerator(const Vector3& pos) : Object(pos) {
 }
 
 ForceGenerator::~ForceGenerator() {
+	
+}
 
+void ForceGenerator::deleteForce() {
+	sys->deleteForce(this);
 }

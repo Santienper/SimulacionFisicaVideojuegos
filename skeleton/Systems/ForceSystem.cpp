@@ -1,8 +1,12 @@
 #include "ForceSystem.h"
 #include "Objects/ForceGenerators/ForceGenerator.h"
 
+ForceSystem::ForceSystem() : System("forces"), mapForce(), mapPart() {
+
+}
+
 ForceSystem::~ForceSystem() {
-	for(auto force : forces) delete force;
+	for(auto& force : mapForce) delete force.first;
 }
 
 void ForceSystem::addConnection(Particle* part, ForceGenerator* force) {
@@ -16,6 +20,7 @@ void ForceSystem::deleteConnection(Particle* part, ForceGenerator* force) {
 }
 
 void ForceSystem::deleteParticle(Particle* part) {
+	if(mapPart.find(part) == mapPart.end()) return;
 	for(auto force : mapPart[part]) {
 		mapForce[force].erase(part);
 	}
@@ -23,17 +28,25 @@ void ForceSystem::deleteParticle(Particle* part) {
 }
 
 void ForceSystem::deleteForce(ForceGenerator* force) {
-	for(auto part : mapForce[force]) {
-		mapPart[part].erase(force);
-	}
-	mapForce.erase(force);
+	toDelete.push_back(force);
 }
 
 void ForceSystem::update(double t) {
+	auto it = toDelete.begin();
+	while(it != toDelete.end()) {
+		auto force = *it;
+		for(auto part : mapForce[force]) {
+			mapPart[part].erase(force);
+		}
+		mapForce.erase(force);
+		force->alive = false;
+		it = toDelete.erase(it);
+	}
+
 	for(auto& data : mapPart) {
 		data.first->clearAcum();
 		for(auto& force : data.second) {
-			force->updateForce(data.first);
+			force->updateForce(data.first, t);
 		}
 	}
 }

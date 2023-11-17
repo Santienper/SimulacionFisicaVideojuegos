@@ -15,12 +15,24 @@
 #include "Objects/ForceGenerators/WhirlwindForce.h"
 #include "Objects/ParticleGenerators/GaussianScriptGen.h"
 #include "Objects/ForceEffectSphere.h"
+#include "Objects/ForceGenerators/ExplosionForce.h"
 
 #include "Utilities/SpPtr.h"
+
+class Esug : public Object {
+public:
+	void keyPressed(unsigned char key) {
+		if(key == 'E') {
+			new ExplosionForce();
+		}
+	}
+};
 
 void createScene() {
 	auto particle = new ParticleSystem();
 	auto force = new ForceSystem();
+
+	particle->getOtherSystems();
 
 	new AxisSphere(Vector3(10, 0, 0), Vector4(1, 0, 0, 1));
 	new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
@@ -37,18 +49,20 @@ void createScene() {
 	//auto eff = new ForceEffectSphere(gen);
 
 	//gen = new WindForce(Vector3(10, 0, 0));
-	gen = new WhirlwindForce();
+	//gen = new WhirlwindForce();
 	force->addConnection(part, gen);
 	//eff = new ForceEffectSphere(gen);
 
-	auto partGen = new GaussianScriptGen(Vector3(0), 0.01, Vector3(5));
+	auto partGen = new GaussianScriptGen(Vector3(0, 10, 0), 0.01, Vector3(5), Vector3(0, 0, 0));
+	/*
 	partGen->addCallback([force, gen](Particle* p) -> void {
 		force->addConnection(p, gen);
 	});
+	//*/
 
 	//gen = new GravityForce(Vector3(0, 10, 0));
 	//part = new Particle(Vector3(1, 0, 0), Vector3(0, -20, 0));
 	//force->addConnection(part, gen);
 
-	
+	new Esug();
 }

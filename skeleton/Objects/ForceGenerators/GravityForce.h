@@ -6,7 +6,7 @@ public:
 	GravityForce(const Vector3& gravity = Vector3(0));
 	~GravityForce();
 
-	void updateForce(Particle*);
+	void updateForce(Particle*, double t);
 
 	inline Vector3 getGravity() const { return gravity; }
 	inline void setGravity(const Vector3& gravity) { this->gravity = gravity; }

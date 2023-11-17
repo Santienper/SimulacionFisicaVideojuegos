@@ -1,5 +1,11 @@
 #include "ParticleSystem.h"
 #include "Objects/ForceGenerators/ForceGenerator.h"
+#include "ForceSystem.h"
+#include "Structure/Scene.h"
+
+ParticleSystem::ParticleSystem() : System("particles") {
+	getOtherSystems();
+}
 
 ParticleSystem::~ParticleSystem() {
 	for(auto& data : particles) {
@@ -28,7 +34,12 @@ void ParticleSystem::update(double t) {
 				it->particle->alive = false;
 				it->particle->callbackDelete();
 			}
+			if(forceSys != nullptr) forceSys->deleteParticle(it->particle);
 			it = particles.erase(it);
 		} else ++it;
 	}
+}
+
+void ParticleSystem::getOtherSystems() {
+	forceSys = Scene::get()->getSystem("forces").cast<ForceSystem>();
 }
