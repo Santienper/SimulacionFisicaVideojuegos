@@ -34,11 +34,12 @@ void createScene() {
 	auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 20, 0));
 	force->addConnection(part, gen);
 	particle->addParticle(part, 10, true);
-	auto eff = new ForceEffectSphere(gen);
+	//auto eff = new ForceEffectSphere(gen);
 
 	//gen = new WindForce(Vector3(10, 0, 0));
 	gen = new WhirlwindForce();
 	force->addConnection(part, gen);
+	//eff = new ForceEffectSphere(gen);
 
 	auto partGen = new GaussianScriptGen(Vector3(0), 0.01, Vector3(5));
 	partGen->addCallback([force, gen](Particle* p) -> void {

@@ -15,7 +15,9 @@ public:
 	bool alive;
 
 	const physx::PxTransform& getTransform() const { return trans; }
+	std::string getType() const { return type; }
 protected:
 	physx::PxTransform trans;
 	RenderItem* render;
+	std::string type;
 };

@@ -3,6 +3,7 @@
 
 class Particle;
 class ForceGenerator;
+class ForceSystem;
 
 class ForceEffectSphere : public Trigger {
 public:
@@ -14,4 +15,5 @@ private:
 	std::vector<Particle*> particles;
 	ForceGenerator* force;
 	float radius;
+	SpPtr<ForceSystem> sys;
 };

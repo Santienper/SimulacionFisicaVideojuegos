@@ -4,31 +4,22 @@
 Trigger::Trigger(const Vector3& pos) : Object(pos) {
 	callbackEnter = callbackLoop = callbackExit = [](const Object*)->void{ };
 	sceneObjects = Scene::get()->getObjects();
-	SpPtr<Object> aa;
-}
-
-Trigger::~Trigger() {
-	for(auto obj : objects) {
-		if(obj != nullptr) {
-			callbackExit(obj.get());
-		}
-	}
 }
 
 void Trigger::update(double t) {
 	for(auto& obj : *sceneObjects) {
 		Object* object = obj.get();
 		if(isInside(object)) {
-			if(objects.find(obj) != objects.end()) {
+			if(objects.find(object) != objects.end()) {
 				callbackLoop(object);
 			} else {
 				callbackEnter(object);
-				objects.insert(obj);
+				objects.insert(object);
 			}
 		} else {
-			if(objects.find(obj) != objects.end()) {
+			if(objects.find(object) != objects.end()) {
 				callbackExit(object);
-				objects.erase(obj);
+				objects.erase(object);
 			}
 		}
 	}

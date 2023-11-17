@@ -7,6 +7,7 @@ Particle::Particle(const Vector3& pos, const Vector3& vel, const Vector3& acc, f
 	physx::PxSphereGeometry a; a.radius = radius;
 	shape = CreateShape(a);
 	render = new RenderItem(shape, &trans, Vector4{0.5, 1, 1, 1});
+	type = "particle";
 }
 
 Particle::~Particle() {
