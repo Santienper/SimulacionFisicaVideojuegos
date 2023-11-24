@@ -32,6 +32,7 @@
     <ClCompile Include="Objects\ForceGenerators\ExplosionForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\SpringForce.cpp" />
     <ClCompile Include="Objects\Box.cpp" />
+    <ClCompile Include="Objects\Keys.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -70,6 +71,7 @@
     <ClInclude Include="Objects\ForceGenerators\ExplosionForce.h" />
     <ClInclude Include="Objects\ForceGenerators\SpringForce.h" />
     <ClInclude Include="Objects\Box.h" />
+    <ClInclude Include="Objects\Keys.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

@@ -265,6 +265,7 @@
     <ClCompile Include="Objects\ForceGenerators\SpringForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\WhirlwindForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\WindForce.cpp" />
+    <ClCompile Include="Objects\Keys.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianPartGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\ParticleGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianScriptGen.cpp" />
@@ -295,6 +296,7 @@
     <ClInclude Include="Objects\ForceGenerators\SpringForce.h" />
     <ClInclude Include="Objects\ForceGenerators\WhirlwindForce.h" />
     <ClInclude Include="Objects\ForceGenerators\WindForce.h" />
+    <ClInclude Include="Objects\Keys.h" />
     <ClInclude Include="Objects\ParticleGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\GaussianPartGen.h" />
