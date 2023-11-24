@@ -6,6 +6,10 @@ ExplosionForce::ExplosionForce(const Vector3& pos, const Vector3& radius, float 
 	area = new ForceEffectSphere(this, pos, radius);
 }
 
+ExplosionForce::~ExplosionForce() {
+	area->alive = false;
+}
+
 void ExplosionForce::updateForce(Particle* p, double t) {
 	time += t;
 	if(time >= 4 * timeConst) deleteForce();
