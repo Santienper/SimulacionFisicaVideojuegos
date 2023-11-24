@@ -6,6 +6,16 @@ Trigger::Trigger(const Vector3& pos) : Object(pos) {
 	sceneObjects = Scene::get()->getObjects();
 }
 
+Trigger::~Trigger() {
+	if(!Scene::get()->isClosing()) {
+		for(auto& obj : *sceneObjects) {
+			if(obj != nullptr && objects.find(obj.get()) != objects.end()) {
+				callbackExit(obj.get());
+			}
+		}
+	}
+}
+
 void Trigger::update(double t) {
 	for(auto& obj : *sceneObjects) {
 		Object* object = obj.get();

@@ -256,11 +256,13 @@
     <ClCompile Include="Core\callbacks.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
+    <ClCompile Include="Objects\Box.cpp" />
     <ClCompile Include="Objects\Fireworks.cpp" />
     <ClCompile Include="Objects\ForceEffectSphere.cpp" />
     <ClCompile Include="Objects\ForceGenerators\ExplosionForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\ForceGenerator.cpp" />
     <ClCompile Include="Objects\ForceGenerators\GravityForce.cpp" />
+    <ClCompile Include="Objects\ForceGenerators\SpringForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\WhirlwindForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\WindForce.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianPartGen.cpp" />
@@ -282,6 +284,7 @@
   <ItemGroup>
     <ClInclude Include="Core\callbacks.hpp" />
     <ClInclude Include="core.hpp" />
+    <ClInclude Include="Objects\Box.h" />
     <ClInclude Include="Objects\FireworkGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\FireworkGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\Fireworks.h" />
@@ -289,6 +292,7 @@
     <ClInclude Include="Objects\ForceGenerators\ExplosionForce.h" />
     <ClInclude Include="Objects\ForceGenerators\ForceGenerator.h" />
     <ClInclude Include="Objects\ForceGenerators\GravityForce.h" />
+    <ClInclude Include="Objects\ForceGenerators\SpringForce.h" />
     <ClInclude Include="Objects\ForceGenerators\WhirlwindForce.h" />
     <ClInclude Include="Objects\ForceGenerators\WindForce.h" />
     <ClInclude Include="Objects\ParticleGenerators\BasicFireworkGen.h" />

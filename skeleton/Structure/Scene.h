@@ -21,6 +21,8 @@ public:
 	void update(double t);
 	void keyPressed(unsigned char key);
 	void commit();
+
+	bool isClosing() { return closing; }
 protected:
 	std::vector<SpPtr<Object>> objects, objToAdd;
 	std::unordered_map<std::string, SpPtr<System>> systems;
@@ -31,4 +33,6 @@ private:
 
 	static Scene* instance;
 	static SpPtr<Scene>* safeInstance;
+
+	bool closing;
 };

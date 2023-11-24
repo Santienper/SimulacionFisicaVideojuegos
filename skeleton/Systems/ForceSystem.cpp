@@ -6,7 +6,7 @@ ForceSystem::ForceSystem() : System("forces"), mapForce(), mapPart() {
 }
 
 ForceSystem::~ForceSystem() {
-	for(auto& force : mapForce) delete force.first;
+	
 }
 
 void ForceSystem::addConnection(Particle* part, ForceGenerator* force) {

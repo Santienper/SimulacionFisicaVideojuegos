@@ -8,7 +8,6 @@ class ForceSystem;
 class ForceEffectSphere : public Trigger {
 public:
 	ForceEffectSphere(ForceGenerator*, const Vector3& pos = Vector3(0), Vector3 radius = Vector3(100));
-	~ForceEffectSphere();
 protected:
 	virtual bool isInside(Object*);
 private:

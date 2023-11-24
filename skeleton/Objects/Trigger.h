@@ -6,6 +6,7 @@
 class Trigger : public Object {
 public:
 	Trigger(const Vector3& pos = Vector3(0));
+	~Trigger();
 	void update(double t);
 protected:
 	virtual bool isInside(Object*) = 0;

@@ -17,6 +17,8 @@
 #include "Objects/ForceEffectSphere.h"
 #include "Objects/ForceGenerators/ExplosionForce.h"
 
+#include "Objects/ForceGenerators/SpringForce.h"
+
 #include "Utilities/SpPtr.h"
 
 class Esug : public Object {
@@ -42,22 +44,30 @@ void createScene() {
 	//new UniformPartGen(Vector3(0), 0.1);
 	//new BasicFireworkGen<Firework4>(Vector3(0), 1.5, Vector3(5, 25, 5), 2, -1, Vector3(0, 70, 0));
 
-	ForceGenerator* gen = new GravityForce(Vector3(0, -10, 0));
-	auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 20, 0));
-	force->addConnection(part, gen);
-	particle->addParticle(part, 10, true);
+	//ForceGenerator* gen = new GravityForce(Vector3(0, -10, 0));
+	//auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 20, 0));
+	//force->addConnection(part, gen);
+	//particle->addParticle(part, 10, true);
 	//auto eff = new ForceEffectSphere(gen);
 
 	//gen = new WindForce(Vector3(10, 0, 0));
 	//gen = new WhirlwindForce();
-	force->addConnection(part, gen);
-	//eff = new ForceEffectSphere(gen);
+	//force->addConnection(part, gen);
+	//auto eff = new ForceEffectSphere(gen);
 
-	auto partGen = new GaussianScriptGen(Vector3(0, 10, 0), 0.01, Vector3(5), Vector3(0, 0, 0));
-	/*
-	partGen->addCallback([force, gen](Particle* p) -> void {
-		force->addConnection(p, gen);
+	SpringForce* gen = new SpringForce(2, 20);
+
+	auto partGen = new GaussianScriptGen(Vector3(0, 0, 0), 0.02, Vector3(5), Vector3(0, 0, 0), 10);
+	//*
+	static int i = 0;
+	partGen->addCallback([force, gen, partGen](Particle* p) -> void {
+		//force->addConnection(p, gen);
+		gen->addParticle(p);
+
+		if(++i == 1) partGen->alive = false;
 	});
+	//Object* obj = new Object();
+	//gen->addObject(obj);
 	//*/
 
 	//gen = new GravityForce(Vector3(0, 10, 0));

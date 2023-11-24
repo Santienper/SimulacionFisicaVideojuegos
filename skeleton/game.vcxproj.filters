@@ -30,6 +30,8 @@
     <ClCompile Include="Objects\ParticleGenerators\GaussianScriptGen.cpp" />
     <ClCompile Include="Objects\ForceEffectSphere.cpp" />
     <ClCompile Include="Objects\ForceGenerators\ExplosionForce.cpp" />
+    <ClCompile Include="Objects\ForceGenerators\SpringForce.cpp" />
+    <ClCompile Include="Objects\Box.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -66,6 +68,8 @@
     <ClInclude Include="Objects\ParticleGenerators\GaussianScriptGen.h" />
     <ClInclude Include="Objects\ForceEffectSphere.h" />
     <ClInclude Include="Objects\ForceGenerators\ExplosionForce.h" />
+    <ClInclude Include="Objects\ForceGenerators\SpringForce.h" />
+    <ClInclude Include="Objects\Box.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

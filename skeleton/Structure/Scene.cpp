@@ -2,13 +2,14 @@
 #include "Object.h"
 #include "System.h"
 
-Scene::Scene() {
+Scene::Scene() : closing(false) {
 	cam = GetCamera();
 	instance = this;
 	safeInstance = new SpPtr<Scene>(this);
 }
 
 Scene::~Scene() {
+	closing = true;
 	for(auto& obj : objects) {
 		obj.free();
 	}
