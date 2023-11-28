@@ -94,7 +94,7 @@ public:
 	}
 
 	bool operator!=(std::nullptr_t) const {
-		return *pointer == nullptr;
+		return *pointer != nullptr;
 	}
 private:
 	T** pointer;
@@ -164,6 +164,20 @@ public:
 
 	bool operator==(std::nullptr_t) {
 		return *pointer == nullptr;
+	}
+
+	template<typename otherT>
+	bool operator!=(const otherT* other) const {
+		return *pointer != other;
+	}
+
+	template<typename otherT>
+	bool operator!=(const SpPtr<otherT>& other) const {
+		return *pointer != other.get();
+	}
+
+	bool operator!=(std::nullptr_t) const {
+		return *pointer != nullptr;
 	}
 private:
 	void** pointer;

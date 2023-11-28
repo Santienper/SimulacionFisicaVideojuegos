@@ -9,6 +9,8 @@ class ForceSystem;
 
 class ParticleSystem : public System {
 public:
+	setID("particles");
+
 	ParticleSystem();
 	~ParticleSystem();
 

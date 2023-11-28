@@ -23,6 +23,8 @@
 
 #include "Utilities/SpPtr.h"
 
+static std::unordered_map<char, ForceEffectSphere*>* areas;
+
 void createScene() {
 	auto particle = new ParticleSystem();
 	auto force = new ForceSystem();
@@ -30,7 +32,7 @@ void createScene() {
 	particle->getOtherSystems();
 
 	new AxisSphere(Vector3(10, 0, 0), Vector4(1, 0, 0, 1));
-	new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
+	//new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
 	new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
 	
 	//new GaussianPartGen(Vector3(0), 0.1, Vector3(5));
@@ -46,17 +48,22 @@ void createScene() {
 	//force->addConnection(part, gen);
 	//auto eff = new ForceEffectSphere(gen);
 
-	SpringForce* gen = new SpringForce(2, 20);
-	auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 20, 0));
-	gen->addParticle(part);
+	//SpringForce* gen = new SpringForce(2, 20);
+	//auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 0, 0));
+	//gen->addParticle(part);
 	//part = new Particle();
 	//gen->addParticle(part);
-	Box* box = new Box();
-	gen->addObject(box);
+	//Box* box = new Box();
+	//gen->addObject(box);
+
+	//gen = new SpringForce(2, 20);
+	//gen->addParticle(part);
+	//part = new Particle(Vector3(-10, 0, 0), Vector3(0, -20, 0));
+	//gen->addParticle(part);
 	
 
-	auto partGen = new GaussianScriptGen(Vector3(0, 0, 0), 0.02, Vector3(5), Vector3(0, 0, 0), 10);
-	//*
+	//auto partGen = new GaussianScriptGen(Vector3(0, 0, 0), 0.02, Vector3(5), Vector3(0, 0, 0), 10);
+	/*
 	static int i = 0;
 	partGen->addCallback([force, gen, partGen](Particle* p) -> void {
 		//force->addConnection(p, gen);
@@ -70,18 +77,35 @@ void createScene() {
 	//part = new Particle(Vector3(1, 0, 0), Vector3(0, -20, 0));
 	//force->addConnection(part, gen);
 
+	//* Slinky
+	SpringForce* gen = new SpringForce(2, 20);
+	Box* box = new Box();
+	gen->addObject(box);
+	Particle* part;
+	const int particleNum = 5, particleDistance = 20;
+	for(int i = 1; i < particleNum; i++) {
+		part = new Particle(Vector3(0, particleDistance * i, 0), Vector3(0, 0, 0));
+		gen->addParticle(part);
+		gen = new SpringForce(2, 20);
+		gen->addParticle(part);
+	}
+	part = new Particle(Vector3(0, particleDistance * particleNum, 0), Vector3(0, 0, 0));
+	gen->addParticle(part);
+	//*/
+
 	auto keys = new Keys();
-	static auto areas = new std::unordered_map<char, ForceEffectSphere*>();
+	areas = new std::unordered_map<char, ForceEffectSphere*>();
 	keys->add('E', [](){ // nice
 		new ExplosionForce();
 	});
 	static bool windSwitch = false;
 	keys->add('V', [wind](){
 		if(windSwitch) {
+			areas->at('V')->alive = false;
 			areas->erase('V');
 		} else {
 			const Vector3 pos = Vector3(0);
-			const float radius = 2;
+			const float radius = 100;
 			auto sphere = new ForceEffectSphere(wind, pos, radius);
 			areas->insert({ 'V', sphere });
 		}
@@ -90,12 +114,18 @@ void createScene() {
 	static bool whirlwindSwitch = false;
 	keys->add('T', [whirlwind](){
 		if(whirlwindSwitch) {
+			areas->at('T')->alive = false;
 			areas->erase('T');
 		} else {
 			const Vector3 pos = Vector3(0);
-			const float radius = 2;
+			const float radius = 100;
 			auto sphere = new ForceEffectSphere(whirlwind, pos, radius);
-			areas->insert({ 'V', sphere });
+			areas->insert({ 'T', sphere });
 		}
+		whirlwindSwitch = !whirlwindSwitch;
 	});
+}
+
+void deleteScene() {
+	delete areas;
 }

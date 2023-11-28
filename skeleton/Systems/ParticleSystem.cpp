@@ -3,7 +3,7 @@
 #include "ForceSystem.h"
 #include "Structure/Scene.h"
 
-ParticleSystem::ParticleSystem() : System("particles") {
+ParticleSystem::ParticleSystem() : SystemConstr {
 	getOtherSystems();
 }
 

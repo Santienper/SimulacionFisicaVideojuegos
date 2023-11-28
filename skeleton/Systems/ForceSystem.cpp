@@ -1,7 +1,7 @@
 #include "ForceSystem.h"
 #include "Objects/ForceGenerators/ForceGenerator.h"
 
-ForceSystem::ForceSystem() : System("forces"), mapForce(), mapPart() {
+ForceSystem::ForceSystem() : SystemConstr, mapForce(), mapPart() {
 
 }
 

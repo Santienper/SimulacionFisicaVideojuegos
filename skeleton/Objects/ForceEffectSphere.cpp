@@ -22,5 +22,5 @@ ForceEffectSphere::ForceEffectSphere(ForceGenerator* force, const Vector3& pos, 
 
 bool ForceEffectSphere::isInside(Object* obj) {
 	Vector3 pos = (obj->getTransform().p - trans.p).abs();
-	return pos.magnitudeSquared() < radius;
+	return pos.magnitude() < radius;
 }

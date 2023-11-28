@@ -1,7 +1,7 @@
 #include "ExplosionForce.h"
 #include "../ForceEffectSphere.h"
 
-ExplosionForce::ExplosionForce(const Vector3& pos, const Vector3& radius, float intensity, float timeConst)
+ExplosionForce::ExplosionForce(const Vector3& pos, const float radius, float intensity, float timeConst)
 	: radius(radius), intensity(intensity), timeConst(timeConst), time(0) {
 	area = new ForceEffectSphere(this, pos, radius);
 }

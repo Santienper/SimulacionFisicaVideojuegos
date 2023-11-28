@@ -7,8 +7,9 @@
 class ForceGenerator;
 
 class ForceSystem : public System {
-	// id: forces
 public:
+	setID("forces");
+
 	ForceSystem();
 	~ForceSystem();
 

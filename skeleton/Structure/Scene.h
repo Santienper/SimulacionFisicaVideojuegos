@@ -4,6 +4,7 @@
 #include "Utilities/SpPtr.h"
 
 void createScene();
+void deleteScene();
 
 class Scene {
 	friend class Object;
@@ -28,8 +29,8 @@ protected:
 	std::unordered_map<std::string, SpPtr<System>> systems;
 	std::vector<std::pair<std::string, SpPtr<System>>> sysToAdd;
 private:
-	void addObject(Object* obj);
-	void addSystem(System* sys, std::string id);
+	void addObject(Object*);
+	void addSystem(System*, std::string id);
 
 	static Scene* instance;
 	static SpPtr<Scene>* safeInstance;

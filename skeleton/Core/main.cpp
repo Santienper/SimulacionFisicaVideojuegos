@@ -84,6 +84,7 @@ void cleanupPhysics(bool interactive)
 {
 	PX_UNUSED(interactive);
 
+	deleteScene();
 	delete sc;
 
 	// Rigid Body ++++++++++++++++++++++++++++++++++++++++++
