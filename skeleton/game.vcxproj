@@ -305,6 +305,7 @@
     <ClInclude Include="Objects\ParticleGenerators\UniformPartGen.h" />
     <ClInclude Include="Objects\Shooter.h" />
     <ClInclude Include="Objects\Trigger.h" />
+    <ClInclude Include="Utilities\ChangeText.h" />
     <ClInclude Include="Utilities\SpPtr.h" />
     <ClInclude Include="Systems\ForceSystem.h" />
     <ClInclude Include="Systems\ParticleSystem.h" />

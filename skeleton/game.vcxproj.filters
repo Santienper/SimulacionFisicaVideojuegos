@@ -72,6 +72,7 @@
     <ClInclude Include="Objects\ForceGenerators\SpringForce.h" />
     <ClInclude Include="Objects\Box.h" />
     <ClInclude Include="Objects\Keys.h" />
+    <ClInclude Include="Utilities\ChangeText.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

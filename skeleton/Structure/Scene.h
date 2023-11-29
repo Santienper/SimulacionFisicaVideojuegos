@@ -11,7 +11,7 @@ class Scene {
 	friend class System;
 public:
 	static SpPtr<Scene> get() { return *safeInstance; }
-	Scene();
+	Scene(std::string& display_text);
 	virtual ~Scene();
 
 	Camera* cam;
@@ -24,6 +24,7 @@ public:
 	void commit();
 
 	bool isClosing() { return closing; }
+	std::string& display_text;
 protected:
 	std::vector<SpPtr<Object>> objects, objToAdd;
 	std::unordered_map<std::string, SpPtr<System>> systems;

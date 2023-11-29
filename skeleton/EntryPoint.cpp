@@ -5,6 +5,7 @@
 
 #include "Objects/AxisSphere.h"
 #include "Objects/Keys.h"
+#include "Objects/Shooter.h"
 
 #include "Objects/ParticleGenerators/GaussianPartGen.h"
 #include "Objects/ParticleGenerators/UniformPartGen.h"
@@ -21,6 +22,7 @@
 #include "Objects/ForceGenerators/SpringForce.h"
 #include "Objects/Box.h"
 
+#include "Utilities/ChangeText.h"
 #include "Utilities/SpPtr.h"
 
 static std::unordered_map<char, ForceEffectSphere*>* areas;
@@ -34,12 +36,14 @@ void createScene() {
 	new AxisSphere(Vector3(10, 0, 0), Vector4(1, 0, 0, 1));
 	//new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
 	new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
+
+	new Shooter();
 	
 	//new GaussianPartGen(Vector3(0), 0.1, Vector3(5));
 	//new UniformPartGen(Vector3(0), 0.1);
 	//new BasicFireworkGen<Firework4>(Vector3(0), 1.5, Vector3(5, 25, 5), 2, -1, Vector3(0, 70, 0));
 
-	//ForceGenerator* gen = new GravityForce(Vector3(0, -10, 0));
+	auto gravity = new GravityForce(Vector3(0, -10, 0));
 	//particle->addParticle(part, 10, true);
 	//auto eff = new ForceEffectSphere(gen);
 
@@ -78,7 +82,8 @@ void createScene() {
 	//force->addConnection(part, gen);
 
 	//* Slinky
-	SpringForce* gen = new SpringForce(2, 20);
+	const int k = 100, restingLength = 20;
+	SpringForce* gen = new SpringForce(k, restingLength);
 	Box* box = new Box();
 	gen->addObject(box);
 	Particle* part;
@@ -86,7 +91,7 @@ void createScene() {
 	for(int i = 1; i < particleNum; i++) {
 		part = new Particle(Vector3(0, particleDistance * i, 0), Vector3(0, 0, 0));
 		gen->addParticle(part);
-		gen = new SpringForce(2, 20);
+		gen = new SpringForce(k, restingLength);
 		gen->addParticle(part);
 	}
 	part = new Particle(Vector3(0, particleDistance * particleNum, 0), Vector3(0, 0, 0));
@@ -98,32 +103,23 @@ void createScene() {
 	keys->add('E', [](){ // nice
 		new ExplosionForce();
 	});
-	static bool windSwitch = false;
-	keys->add('V', [wind](){
-		if(windSwitch) {
-			areas->at('V')->alive = false;
-			areas->erase('V');
-		} else {
-			const Vector3 pos = Vector3(0);
-			const float radius = 100;
-			auto sphere = new ForceEffectSphere(wind, pos, radius);
-			areas->insert({ 'V', sphere });
-		}
-		windSwitch = !windSwitch;
-	});
-	static bool whirlwindSwitch = false;
-	keys->add('T', [whirlwind](){
-		if(whirlwindSwitch) {
-			areas->at('T')->alive = false;
-			areas->erase('T');
-		} else {
-			const Vector3 pos = Vector3(0);
-			const float radius = 100;
-			auto sphere = new ForceEffectSphere(whirlwind, pos, radius);
-			areas->insert({ 'T', sphere });
-		}
-		whirlwindSwitch = !whirlwindSwitch;
-	});
+#define ADD_KEY(key, force, pos, radius) \
+static bool force##Switch = false; \
+keys->add(key, [force](){ \
+	if(force##Switch) { \
+		areas->at(key)->alive = false; \
+		areas->erase(key); \
+	} else { \
+		auto sphere = new ForceEffectSphere(force, pos, radius); \
+		areas->insert({ key, sphere }); \
+	} \
+	force##Switch = !force##Switch; \
+})
+	ADD_KEY('V', wind, Vector3(0), 100);
+	ADD_KEY('T', whirlwind, Vector3(0), 100);
+	ADD_KEY('G', gravity, Vector3(0), 100);
+
+	new ChangeText(display_text, windSwitch, whirlwindSwitch, gravitySwitch);
 }
 
 void deleteScene() {
