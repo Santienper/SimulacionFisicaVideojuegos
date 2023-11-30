@@ -268,6 +268,7 @@
     <ClCompile Include="Objects\ForceGenerators\WindForce.cpp" />
     <ClCompile Include="Objects\Keys.cpp" />
     <ClCompile Include="Objects\MovingBox.cpp" />
+    <ClCompile Include="Objects\MovingObject.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianPartGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\ParticleGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianScriptGen.cpp" />
@@ -301,6 +302,7 @@
     <ClInclude Include="Objects\ForceGenerators\WindForce.h" />
     <ClInclude Include="Objects\Keys.h" />
     <ClInclude Include="Objects\MovingBox.h" />
+    <ClInclude Include="Objects\MovingObject.h" />
     <ClInclude Include="Objects\ParticleGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\GaussianPartGen.h" />

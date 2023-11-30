@@ -10,11 +10,11 @@ ExplosionForce::~ExplosionForce() {
 	area->alive = false;
 }
 
-void ExplosionForce::updateForce(Particle* p, double t) {
+void ExplosionForce::updateForce(MovingObject* obj, double t) {
 	time += t;
 	if(time >= 4 * timeConst) deleteForce();
-	const Vector3 r = p->getTransform().p - trans.p;
+	const Vector3 r = obj->getTransform().p - trans.p;
 	if(r.magnitudeSquared() < radius.magnitudeSquared()) { // Se usa r^2 y R^2 ya que es más eficiente en cuanto a los cálculos.
-		p->addForce((intensity / r.magnitudeSquared()) * r * exp(-time / timeConst));
+		obj->addForce((intensity / r.magnitudeSquared()) * r * exp(-time / timeConst));
 	}
 }

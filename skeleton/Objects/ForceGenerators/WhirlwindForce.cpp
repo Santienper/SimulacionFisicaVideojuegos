@@ -4,7 +4,7 @@ WhirlwindForce::WhirlwindForce(const Vector3& pos, float windConst, float forceC
 	
 }
 
-void WhirlwindForce::getWindVel(Particle* p, double t) {
-	const physx::PxTransform partTrans = p->getTransform();
+void WhirlwindForce::getWindVel(MovingObject* obj, double t) {
+	const physx::PxTransform partTrans = obj->getTransform();
 	wind = forceConst * Vector3(trans.p.z - partTrans.p.z, trans.p.y + 50 - partTrans.p.y, partTrans.p.x - trans.p.x);
 }

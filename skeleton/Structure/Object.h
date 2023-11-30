@@ -9,8 +9,9 @@ public:
 	Object(const Vector3& pos = Vector3(0));
 	virtual ~Object();
 
-	virtual void update(double t) { }
-	virtual void keyPressed(unsigned char key) { }
+	virtual void update(double t) { };
+	virtual void keyPressed(unsigned char key) { };
+	virtual void callbackDelete() { };
 
 	bool alive;
 

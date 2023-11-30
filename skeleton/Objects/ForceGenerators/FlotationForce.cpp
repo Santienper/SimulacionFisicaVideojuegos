@@ -1,20 +1,22 @@
 #include "FlotationForce.h"
+#include "../MovingBox.h"
 
-FlotationForce::FlotationForce(const Vector3& pos) : ForceGenerator(pos) {
+FlotationForce::FlotationForce(const Vector3& pos, float liquidDensity) : ForceGenerator(pos), liquidDensity(liquidDensity) {
 	
 }
 
-void FlotationForce::updateForce(Particle* p, double t) {
+void FlotationForce::updateForce(MovingObject* obj, double t) {
+	// Se asume que el objeto es un MovingBox
+	MovingBox* box = static_cast<MovingBox*>(obj);
 	int immersed;
-	// TODO Hacer bien lo de height, liquid_density y volume
-	float height = 1, liquid_density = 1, volume = 1;
-	if(p->getTransform().p.y - trans.p.y > height * 0.5) {
+	const float halfHeight = box->getHalfExtents().y;
+	if(obj->getTransform().p.y - trans.p.y > halfHeight) {
 		immersed = 0.0;
-	} else if(trans.p.y - p->getTransform().p.y > height * 0.5) {
+	} else if(trans.p.y - obj->getTransform().p.y > halfHeight) {
 		immersed = 1.0;
 	} else {
-		immersed = (trans.p.y - p->getTransform().p.y) / height + 0.5;
+		immersed = (trans.p.y - obj->getTransform().p.y) / halfHeight * 2 + 0.5;
 	}
 
-	p->addForce({ 0, liquid_density * volume * immersed * 9.8, 0 });
+	obj->addForce({ 0, liquidDensity * box->getVolume() * immersed * 9.8f, 0 });
 }

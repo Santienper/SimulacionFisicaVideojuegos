@@ -22,6 +22,7 @@
 #include "Objects/ForceGenerators/SpringForce.h"
 #include "Objects/Box.h"
 #include "Objects/ForceGenerators/FlotationForce.h"
+#include "Objects/MovingBox.h"
 
 #include "Utilities/ChangeText.h"
 #include "Utilities/SpPtr.h"
@@ -44,7 +45,7 @@ void createScene() {
 	//new UniformPartGen(Vector3(0), 0.1);
 	//new BasicFireworkGen<Firework4>(Vector3(0), 1.5, Vector3(5, 25, 5), 2, -1, Vector3(0, 70, 0));
 
-	auto gravity = new GravityForce(Vector3(0, -10, 0));
+	auto gravity = new GravityForce(Vector3(0, -100, 0));
 	//particle->addParticle(part, 10, true);
 	//auto eff = new ForceEffectSphere(gen);
 
@@ -55,16 +56,16 @@ void createScene() {
 
 	//SpringForce* gen = new SpringForce(2, 20);
 	//auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 0, 0));
-	//gen->addParticle(part);
+	//gen->addMovingObject(part);
 	//part = new Particle();
-	//gen->addParticle(part);
+	//gen->addMovingObject(part);
 	//Box* box = new Box();
 	//gen->addObject(box);
 
 	//gen = new SpringForce(2, 20);
-	//gen->addParticle(part);
+	//gen->addMovingObject(part);
 	//part = new Particle(Vector3(-10, 0, 0), Vector3(0, -20, 0));
-	//gen->addParticle(part);
+	//gen->addMovingObject(part);
 	
 
 	//auto partGen = new GaussianScriptGen(Vector3(0, 0, 0), 0.02, Vector3(5), Vector3(0, 0, 0), 10);
@@ -72,7 +73,7 @@ void createScene() {
 	static int i = 0;
 	partGen->addCallback([force, gen, partGen](Particle* p) -> void {
 		//force->addConnection(p, gen);
-		gen->addParticle(p);
+		gen->addMovingObject(p);
 
 		if(++i == 1) partGen->alive = false;
 	});
@@ -91,18 +92,20 @@ void createScene() {
 	const int particleNum = 5, particleDistance = 20;
 	for(int i = 1; i < particleNum; i++) {
 		part = new Particle(Vector3(0, particleDistance * i, 0), Vector3(0, 0, 0));
-		gen->addParticle(part);
+		gen->addMovingObject(part);
 		gen = new SpringForce(k, restingLength);
-		gen->addParticle(part);
+		gen->addMovingObject(part);
 	}
 	part = new Particle(Vector3(0, particleDistance * particleNum, 0), Vector3(0, 0, 0));
-	gen->addParticle(part);
+	gen->addMovingObject(part);
 	//*/
 
 	//* Agua (Flotacion)
 	const Vector3 waterPos = Vector3(0);
 	Box* waterPlane = new Box(waterPos, Vector3(1000, 0.5, 1000));
-	FlotationForce* floater = new FlotationForce(waterPos);
+	// Estás loco si le pones a 1000 la densidad del agua
+	FlotationForce* floater = new FlotationForce(waterPos, 10);
+	MovingBox* waterFloating = new MovingBox(Vector3(0, 10, 0), Vector3(3), Vector3(0), Vector3(0), 0.5f, 1000);
 	//*/
 
 	auto keys = new Keys();
@@ -124,7 +127,21 @@ keys->add(key, [force](){ \
 })
 	FORCE_KEY('V', wind, Vector3(0), 100);
 	FORCE_KEY('T', whirlwind, Vector3(0), 100);
-	FORCE_KEY('G', gravity, Vector3(0), 100);
+	FORCE_KEY('G', gravity, Vector3(0), 100000);
+	FORCE_KEY('F', floater, Vector3(0), 1000);
+
+	keys->add('I', [waterFloating]() {
+		waterFloating->updateMass(-0.5);
+	});
+	keys->add('O', [waterFloating]() {
+		waterFloating->updateMass(0.5);
+	});
+	keys->add('K', [waterFloating]() {
+		waterFloating->updateBaseArea(-0.5);
+	});
+	keys->add('L', [waterFloating]() {
+		waterFloating->updateBaseArea(0.5);
+	});
 
 	new ChangeText(display_text, windSwitch, whirlwindSwitch, gravitySwitch);
 }

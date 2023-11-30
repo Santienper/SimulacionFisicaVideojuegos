@@ -1,7 +1,7 @@
 #include "ForceSystem.h"
 #include "Objects/ForceGenerators/ForceGenerator.h"
 
-ForceSystem::ForceSystem() : SystemConstr, mapForce(), mapPart() {
+ForceSystem::ForceSystem() : SystemConstr, mapForce(), mapObj() {
 
 }
 
@@ -9,22 +9,22 @@ ForceSystem::~ForceSystem() {
 	
 }
 
-void ForceSystem::addConnection(Particle* part, ForceGenerator* force) {
-	mapForce[force].insert(part);
-	mapPart[part].insert(force);
+void ForceSystem::addConnection(MovingObject* obj, ForceGenerator* force) {
+	mapForce[force].insert(obj);
+	mapObj[obj].insert(force);
 }
 
-void ForceSystem::deleteConnection(Particle* part, ForceGenerator* force) {
-	mapForce[force].erase(part);
-	mapPart[part].erase(force);
+void ForceSystem::deleteConnection(MovingObject* obj, ForceGenerator* force) {
+	mapForce[force].erase(obj);
+	mapObj[obj].erase(force);
 }
 
-void ForceSystem::deleteParticle(Particle* part) {
-	if(mapPart.find(part) == mapPart.end()) return;
-	for(auto force : mapPart[part]) {
-		mapForce[force].erase(part);
+void ForceSystem::deleteParticle(MovingObject* obj) {
+	if(mapObj.find(obj) == mapObj.end()) return;
+	for(auto force : mapObj[obj]) {
+		mapForce[force].erase(obj);
 	}
-	mapPart.erase(part);
+	mapObj.erase(obj);
 }
 
 void ForceSystem::deleteForce(ForceGenerator* force) {
@@ -36,14 +36,14 @@ void ForceSystem::update(double t) {
 	while(it != toDelete.end()) {
 		auto force = *it;
 		for(auto part : mapForce[force]) {
-			mapPart[part].erase(force);
+			mapObj[part].erase(force);
 		}
 		mapForce.erase(force);
 		force->alive = false;
 		it = toDelete.erase(it);
 	}
 
-	for(auto& data : mapPart) {
+	for(auto& data : mapObj) {
 		data.first->clearAcum();
 		for(auto& force : data.second) {
 			force->updateForce(data.first, t);
