@@ -21,11 +21,12 @@
 
 #include "Objects/ForceGenerators/SpringForce.h"
 #include "Objects/Box.h"
+#include "Objects/ForceGenerators/FlotationForce.h"
 
 #include "Utilities/ChangeText.h"
 #include "Utilities/SpPtr.h"
 
-static std::unordered_map<char, ForceEffectSphere*>* areas;
+static std::unordered_map<char, Object*>* keyObjects;
 
 void createScene() {
 	auto particle = new ParticleSystem();
@@ -34,7 +35,7 @@ void createScene() {
 	particle->getOtherSystems();
 
 	new AxisSphere(Vector3(10, 0, 0), Vector4(1, 0, 0, 1));
-	//new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
+	new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
 	new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
 
 	new Shooter();
@@ -81,7 +82,7 @@ void createScene() {
 	//part = new Particle(Vector3(1, 0, 0), Vector3(0, -20, 0));
 	//force->addConnection(part, gen);
 
-	//* Slinky
+	/* Slinky
 	const int k = 100, restingLength = 20;
 	SpringForce* gen = new SpringForce(k, restingLength);
 	Box* box = new Box();
@@ -98,30 +99,36 @@ void createScene() {
 	gen->addParticle(part);
 	//*/
 
+	//* Agua (Flotacion)
+	const Vector3 waterPos = Vector3(0);
+	Box* waterPlane = new Box(waterPos, Vector3(1000, 0.5, 1000));
+	FlotationForce* floater = new FlotationForce(waterPos);
+	//*/
+
 	auto keys = new Keys();
-	areas = new std::unordered_map<char, ForceEffectSphere*>();
+	keyObjects = new std::unordered_map<char, Object*>();
 	keys->add('E', [](){ // nice
 		new ExplosionForce();
 	});
-#define ADD_KEY(key, force, pos, radius) \
+#define FORCE_KEY(key, force, pos, radius) \
 static bool force##Switch = false; \
 keys->add(key, [force](){ \
 	if(force##Switch) { \
-		areas->at(key)->alive = false; \
-		areas->erase(key); \
+		keyObjects->at(key)->alive = false; \
+		keyObjects->erase(key); \
 	} else { \
 		auto sphere = new ForceEffectSphere(force, pos, radius); \
-		areas->insert({ key, sphere }); \
+		keyObjects->insert({ key, sphere }); \
 	} \
 	force##Switch = !force##Switch; \
 })
-	ADD_KEY('V', wind, Vector3(0), 100);
-	ADD_KEY('T', whirlwind, Vector3(0), 100);
-	ADD_KEY('G', gravity, Vector3(0), 100);
+	FORCE_KEY('V', wind, Vector3(0), 100);
+	FORCE_KEY('T', whirlwind, Vector3(0), 100);
+	FORCE_KEY('G', gravity, Vector3(0), 100);
 
 	new ChangeText(display_text, windSwitch, whirlwindSwitch, gravitySwitch);
 }
 
 void deleteScene() {
-	delete areas;
+	delete keyObjects;
 }

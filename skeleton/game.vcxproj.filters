@@ -33,6 +33,8 @@
     <ClCompile Include="Objects\ForceGenerators\SpringForce.cpp" />
     <ClCompile Include="Objects\Box.cpp" />
     <ClCompile Include="Objects\Keys.cpp" />
+    <ClCompile Include="Objects\ForceGenerators\FlotationForce.cpp" />
+    <ClCompile Include="Objects\MovingBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -73,6 +75,8 @@
     <ClInclude Include="Objects\Box.h" />
     <ClInclude Include="Objects\Keys.h" />
     <ClInclude Include="Utilities\ChangeText.h" />
+    <ClInclude Include="Objects\ForceGenerators\FlotationForce.h" />
+    <ClInclude Include="Objects\MovingBox.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
