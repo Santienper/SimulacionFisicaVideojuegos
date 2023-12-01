@@ -6,12 +6,20 @@
 void createScene();
 void deleteScene();
 
+struct pxData {
+	physx::PxFoundation* foundation;
+	physx::PxPhysics* physics;
+	physx::PxPvd* pvd;
+	physx::PxDefaultCpuDispatcher* dispatcher;
+	physx::PxScene* scene;
+};
+
 class Scene {
 	friend class Object;
 	friend class System;
 public:
 	static SpPtr<Scene> get() { return *safeInstance; }
-	Scene(std::string& display_text);
+	Scene(pxData physxData, std::string& display_text);
 	virtual ~Scene();
 
 	Camera* cam;
@@ -23,8 +31,11 @@ public:
 	void keyPressed(unsigned char key);
 	void commit();
 
-	bool isClosing() { return closing; }
+	bool isClosing() const { return closing; }
 	std::string& display_text;
+
+	physx::PxPhysics* getPhysics() const { return physxData.physics; }
+	void addActor(physx::PxActor& actor) { return physxData.scene->addActor(actor); }
 protected:
 	std::vector<SpPtr<Object>> objects, objToAdd;
 	std::unordered_map<std::string, SpPtr<System>> systems;
@@ -37,4 +48,5 @@ private:
 	static SpPtr<Scene>* safeInstance;
 
 	bool closing;
+	pxData physxData;
 };

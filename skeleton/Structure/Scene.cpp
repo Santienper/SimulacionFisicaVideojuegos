@@ -2,7 +2,7 @@
 #include "Object.h"
 #include "System.h"
 
-Scene::Scene(std::string& display_text) : closing(false), display_text(display_text) {
+Scene::Scene(pxData physxData, std::string& display_text) : closing(false), physxData(physxData), display_text(display_text) {
 	cam = GetCamera();
 	instance = this;
 	safeInstance = new SpPtr<Scene>(this);

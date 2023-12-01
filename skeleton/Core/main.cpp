@@ -59,9 +59,11 @@ void initPhysics(bool interactive)
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
 
-	sc = new Scene(display_text);
+	const pxData data = { gFoundation, gPhysics, gPvd, gDispatcher, gScene };
+
+	sc = new Scene(data, display_text);
 	createScene();
-	}
+}
 
 
 // Function to configure what happens in each step of physics
@@ -97,7 +99,7 @@ void cleanupPhysics(bool interactive)
 	transport->release();
 	
 	gFoundation->release();
-	}
+}
 
 // Function called when a key is pressed
 void keyPress(unsigned char key, const PxTransform& camera)

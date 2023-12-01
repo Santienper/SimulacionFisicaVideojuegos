@@ -10,7 +10,7 @@ public:
 	void add(char key, std::function<void(void)>);
 	void remove(char key);
 
-	void keyPressed(unsigned char key);
+	void keyPressed(unsigned char key) override;
 private:
 	std::unordered_map<char, std::vector<std::function<void(void)>>> map;
 };

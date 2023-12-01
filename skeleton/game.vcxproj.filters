@@ -36,6 +36,8 @@
     <ClCompile Include="Objects\ForceGenerators\FlotationForce.cpp" />
     <ClCompile Include="Objects\MovingBox.cpp" />
     <ClCompile Include="Objects\MovingObject.cpp" />
+    <ClCompile Include="Objects\RSObject.cpp" />
+    <ClCompile Include="Objects\RDObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -79,6 +81,8 @@
     <ClInclude Include="Objects\ForceGenerators\FlotationForce.h" />
     <ClInclude Include="Objects\MovingBox.h" />
     <ClInclude Include="Objects\MovingObject.h" />
+    <ClInclude Include="Objects\RSObject.h" />
+    <ClInclude Include="Objects\RDObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

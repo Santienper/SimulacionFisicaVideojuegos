@@ -24,6 +24,9 @@
 #include "Objects/ForceGenerators/FlotationForce.h"
 #include "Objects/MovingBox.h"
 
+#include "Objects/RSObject.h"
+#include "Objects/RDObject.h"
+
 #include "Utilities/ChangeText.h"
 #include "Utilities/SpPtr.h"
 
@@ -47,12 +50,9 @@ void createScene() {
 
 	auto gravity = new GravityForce(Vector3(0, -100, 0));
 	//particle->addParticle(part, 10, true);
-	//auto eff = new ForceEffectSphere(gen);
 
 	auto wind = new WindForce(Vector3(10, 0, 0));
 	auto whirlwind = new WhirlwindForce();
-	//force->addConnection(part, gen);
-	//auto eff = new ForceEffectSphere(gen);
 
 	//SpringForce* gen = new SpringForce(2, 20);
 	//auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 0, 0));
@@ -79,10 +79,6 @@ void createScene() {
 	});
 	//*/
 
-	//gen = new GravityForce(Vector3(0, 10, 0));
-	//part = new Particle(Vector3(1, 0, 0), Vector3(0, -20, 0));
-	//force->addConnection(part, gen);
-
 	/* Slinky
 	const int k = 100, restingLength = 20;
 	SpringForce* gen = new SpringForce(k, restingLength);
@@ -100,13 +96,19 @@ void createScene() {
 	gen->addMovingObject(part);
 	//*/
 
-	//* Agua (Flotacion)
+	/* Agua (Flotacion)
 	const Vector3 waterPos = Vector3(0);
 	Box* waterPlane = new Box(waterPos, Vector3(1000, 0.5, 1000));
 	// Estás loco si le pones a 1000 la densidad del agua
 	FlotationForce* floater = new FlotationForce(waterPos, 10);
-	MovingBox* waterFloating = new MovingBox(Vector3(0, 10, 0), Vector3(3), Vector3(0), Vector3(0), 0.5f, 1000);
+	MovingBox* waterFloatingBox = new MovingBox(Vector3(0, 10, 0), Vector3(3), Vector3(0), Vector3(0), 0.5f, 1000);
 	//*/
+
+	physx::PxBoxGeometry a; a.halfExtents = Vector3(3);
+	RSObject* objjj = new RSObject(&a);
+	RDObject* souith = new RDObject(Vector3(0, 10, 0), &a);
+
+
 
 	auto keys = new Keys();
 	keyObjects = new std::unordered_map<char, Object*>();
@@ -128,22 +130,24 @@ keys->add(key, [force](){ \
 	FORCE_KEY('V', wind, Vector3(0), 100);
 	FORCE_KEY('T', whirlwind, Vector3(0), 100);
 	FORCE_KEY('G', gravity, Vector3(0), 100000);
+	/* Agüis
 	FORCE_KEY('F', floater, Vector3(0), 1000);
 
-	keys->add('I', [waterFloating]() {
-		waterFloating->updateMass(-0.5);
+	keys->add('I', [waterFloatingBox]() {
+		waterFloatingBox->updateMass(-0.5);
 	});
-	keys->add('O', [waterFloating]() {
-		waterFloating->updateMass(0.5);
+	keys->add('O', [waterFloatingBox]() {
+		waterFloatingBox->updateMass(0.5);
 	});
-	keys->add('K', [waterFloating]() {
-		waterFloating->updateBaseArea(-0.5);
+	keys->add('K', [waterFloatingBox]() {
+		waterFloatingBox->updateBaseArea(-0.5);
 	});
-	keys->add('L', [waterFloating]() {
-		waterFloating->updateBaseArea(0.5);
-	});
+	keys->add('L', [waterFloatingBox]() {
+		waterFloatingBox->updateBaseArea(0.5);
+	});//*/
 
 	new ChangeText(display_text, windSwitch, whirlwindSwitch, gravitySwitch);
+#undef FORCE_KEY
 }
 
 void deleteScene() {
