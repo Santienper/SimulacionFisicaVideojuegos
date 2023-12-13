@@ -38,9 +38,9 @@ void createScene() {
 
 	particle->getOtherSystems();
 
-	new AxisSphere(Vector3(10, 0, 0), Vector4(1, 0, 0, 1));
-	new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
-	new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
+	//new AxisSphere(Vector3(10, 0, 0), Vector4(1, 0, 0, 1));
+	//new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
+	//new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
 
 	new Shooter();
 	
@@ -104,8 +104,9 @@ void createScene() {
 	MovingBox* waterFloatingBox = new MovingBox(Vector3(0, 10, 0), Vector3(3), Vector3(0), Vector3(0), 0.5f, 1000);
 	//*/
 
-	physx::PxBoxGeometry a; a.halfExtents = Vector3(3);
+	physx::PxBoxGeometry a; a.halfExtents = Vector3(10, 3, 10);
 	RSObject* objjj = new RSObject(&a);
+	a.halfExtents = Vector3(3);
 	RDObject* souith = new RDObject(Vector3(0, 10, 0), &a);
 
 

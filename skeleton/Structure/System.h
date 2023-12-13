@@ -19,5 +19,5 @@ public:
 	virtual std::string toString() const { return getID(); }
 };
 
-#define setID(id) static std::string getStaticID() { return id; } virtual std::string getID() const override { return getStaticID(); }
+#define setID(id) inline static std::string getStaticID() { return id; } virtual inline std::string getID() const override { return getStaticID(); }
 #define SystemConstr System(getStaticID())
