@@ -10,7 +10,7 @@ ExplosionForce::~ExplosionForce() {
 	area->alive = false;
 }
 
-void ExplosionForce::updateForce(MovingObject* obj, double t) {
+void ExplosionForce::updateForce(PhysicsObject* obj, double t) {
 	time += t;
 	if(time >= 4 * timeConst) deleteForce();
 	const Vector3 r = obj->getTransform().p - trans.p;

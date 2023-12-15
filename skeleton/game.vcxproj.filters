@@ -38,6 +38,7 @@
     <ClCompile Include="Objects\MovingObject.cpp" />
     <ClCompile Include="Objects\RSObject.cpp" />
     <ClCompile Include="Objects\RDObject.cpp" />
+    <ClCompile Include="Systems\RDSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -83,6 +84,9 @@
     <ClInclude Include="Objects\MovingObject.h" />
     <ClInclude Include="Objects\RSObject.h" />
     <ClInclude Include="Objects\RDObject.h" />
+    <ClInclude Include="Structure\PhysicsObject.h" />
+    <ClInclude Include="Objects\RDObjectGen.h" />
+    <ClInclude Include="Systems\RDSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

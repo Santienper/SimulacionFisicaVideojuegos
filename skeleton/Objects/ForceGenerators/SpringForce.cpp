@@ -10,14 +10,14 @@ SpringForce::~SpringForce() {
 
 }
 
-void SpringForce::updateForce(MovingObject* obj, double t) {
+void SpringForce::updateForce(PhysicsObject* obj, double t) {
 	if(obj1 == nullptr || obj2 == nullptr) return;
 	Object* other;
 	if(obj == obj1) other = obj2;
 	else if(obj == obj2) other = obj1;
 	else {
 		// Intruso!
-		//sys->deleteConnection(part, this);
+		//sys->deleteConnection(obj, this);
 		return;
 	}
 	Vector3 distance = other->getTransform().p - obj->getTransform().p;
@@ -40,8 +40,8 @@ bool SpringForce::addObject(Object* obj) {
 	return true;
 }
 
-bool SpringForce::addMovingObject(MovingObject* obj) {
-	bool done = addObject(obj);
+bool SpringForce::addPhysicsObject(PhysicsObject* obj) {
+	const bool done = addObject(obj);
 	if(done) sys->addConnection(obj, this);
 	return done;
 }

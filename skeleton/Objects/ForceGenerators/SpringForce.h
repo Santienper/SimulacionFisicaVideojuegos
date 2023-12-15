@@ -8,9 +8,9 @@ public:
 	SpringForce(float k = 1, float restingLength = 10);
 	~SpringForce();
 
-	void updateForce(MovingObject*, double t) override;
+	void updateForce(PhysicsObject*, double t) override;
 	bool addObject(Object*);
-	bool addMovingObject(MovingObject*);
+	bool addPhysicsObject(PhysicsObject*);
 private:
 	Object* obj1,* obj2;
 	float k, restingLength;

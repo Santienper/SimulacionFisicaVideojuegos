@@ -286,6 +286,7 @@
     <ClCompile Include="Render\Render.cpp" />
     <ClCompile Include="Structure\Scene.cpp" />
     <ClCompile Include="Structure\System.cpp" />
+    <ClCompile Include="Systems\RDSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\callbacks.hpp" />
@@ -312,9 +313,12 @@
     <ClInclude Include="Objects\ParticleGenerators\GaussianScriptGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\UniformPartGen.h" />
     <ClInclude Include="Objects\RDObject.h" />
+    <ClInclude Include="Objects\RDObjectGen.h" />
     <ClInclude Include="Objects\RSObject.h" />
     <ClInclude Include="Objects\Shooter.h" />
     <ClInclude Include="Objects\Trigger.h" />
+    <ClInclude Include="Structure\PhysicsObject.h" />
+    <ClInclude Include="Systems\RDSystem.h" />
     <ClInclude Include="Utilities\ChangeText.h" />
     <ClInclude Include="Utilities\SpPtr.h" />
     <ClInclude Include="Systems\ForceSystem.h" />

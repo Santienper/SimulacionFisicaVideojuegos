@@ -9,17 +9,17 @@ ForceSystem::~ForceSystem() {
 	
 }
 
-void ForceSystem::addConnection(MovingObject* obj, ForceGenerator* force) {
+void ForceSystem::addConnection(PhysicsObject* obj, ForceGenerator* force) {
 	mapForce[force].insert(obj);
 	mapObj[obj].insert(force);
 }
 
-void ForceSystem::deleteConnection(MovingObject* obj, ForceGenerator* force) {
+void ForceSystem::deleteConnection(PhysicsObject* obj, ForceGenerator* force) {
 	mapForce[force].erase(obj);
 	mapObj[obj].erase(force);
 }
 
-void ForceSystem::deleteParticle(MovingObject* obj) {
+void ForceSystem::deleteParticle(PhysicsObject* obj) {
 	if(mapObj.find(obj) == mapObj.end()) return;
 	for(auto force : mapObj[obj]) {
 		mapForce[force].erase(obj);

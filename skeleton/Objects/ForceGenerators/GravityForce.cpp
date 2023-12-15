@@ -8,6 +8,6 @@ GravityForce::~GravityForce() {
 
 }
 
-void GravityForce::updateForce(MovingObject* obj, double t) {
+void GravityForce::updateForce(PhysicsObject* obj, double t) {
 	obj->addForce(gravity * obj->getMass());
 }

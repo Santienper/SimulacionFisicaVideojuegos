@@ -1,7 +1,7 @@
 #include "MovingObject.h"
 
 MovingObject::MovingObject(const Vector3& pos, const Vector3& vel, const Vector3& acc, float damp, float mass)
-	: Object(pos), vel(vel), acc(acc), damp(damp), mass(mass), inv_mass(mass == 0 ? 0 : 1 / mass),
+	: PhysicsObject(pos), vel(vel), acc(acc), damp(damp), mass(mass), inv_mass(mass == 0 ? 0 : 1 / mass),
 	affectedByForce(false) {
 
 	type = "moving";

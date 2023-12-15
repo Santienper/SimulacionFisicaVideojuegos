@@ -4,7 +4,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-class ForceGenerator;
 class ForceSystem;
 
 class ParticleSystem : public System {

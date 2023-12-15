@@ -42,44 +42,41 @@ void createScene() {
 	//new AxisSphere(Vector3(0, 10, 0), Vector4(0, 1, 0, 1));
 	//new AxisSphere(Vector3(0, 0, 10), Vector4(0, 0, 1, 1));
 
-	new Shooter();
+	new Shooter(); // Usar la tecla 'Espacio' para "disparar" una partícula
 	
 	//new GaussianPartGen(Vector3(0), 0.1, Vector3(5));
 	//new UniformPartGen(Vector3(0), 0.1);
 	//new BasicFireworkGen<Firework4>(Vector3(0), 1.5, Vector3(5, 25, 5), 2, -1, Vector3(0, 70, 0));
 
-	auto gravity = new GravityForce(Vector3(0, -100, 0));
+	auto gravity = new GravityForce(Vector3(0, -100, 0)); // Aceleración que genera la gravedad
 	//particle->addParticle(part, 10, true);
 
 	auto wind = new WindForce(Vector3(10, 0, 0));
 	auto whirlwind = new WhirlwindForce();
 
-	//SpringForce* gen = new SpringForce(2, 20);
-	//auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 0, 0));
-	//gen->addMovingObject(part);
+	// ¡¡¡IMPORTANTE!!!
+	// En estos bloques de código comentados solo hace falta cambiar los carácteres '/*' a '//*' para descomentar el bloque de código
+	// Se recomienda tener sólo un bloque de código descomentado (para descomentar solo hace falta cambiar los carácteres a como estaban antes ('/*'))
+
+	/* Primer muelle Práctica 4
+	auto part = new Particle(Vector3(10, 0, 0), Vector3(0, 0, 0));
+	SpringForce* gen = new SpringForce(2, 20);
+	gen->addPhysicsObject(part);
 	//part = new Particle();
-	//gen->addMovingObject(part);
-	//Box* box = new Box();
-	//gen->addObject(box);
-
-	//gen = new SpringForce(2, 20);
-	//gen->addMovingObject(part);
-	//part = new Particle(Vector3(-10, 0, 0), Vector3(0, -20, 0));
-	//gen->addMovingObject(part);
-	
-
-	//auto partGen = new GaussianScriptGen(Vector3(0, 0, 0), 0.02, Vector3(5), Vector3(0, 0, 0), 10);
-	/*
-	static int i = 0;
-	partGen->addCallback([force, gen, partGen](Particle* p) -> void {
-		//force->addConnection(p, gen);
-		gen->addMovingObject(p);
-
-		if(++i == 1) partGen->alive = false;
-	});
+	//gen->addPhysicsObject(part);
+	Box* box = new Box();
+	gen->addObject(box);
 	//*/
 
-	/* Slinky
+	/* 2 partículas yendo hacia abajo (Práctica 4)
+	auto part = new Particle(Vector3(20, 0, 0), Vector3(0, 0, 0));
+	auto gen = new SpringForce(2, 20);
+	gen->addPhysicsObject(part);
+	part = new Particle(Vector3(-10, 0, 0), Vector3(0, -20, 0)); // Primer parámetro: posición, Segundo parámetro: velocidad
+	gen->addPhysicsObject(part);
+	//*/
+
+	/* Slinky (Práctica 4)
 	const int k = 100, restingLength = 20;
 	SpringForce* gen = new SpringForce(k, restingLength);
 	Box* box = new Box();
@@ -88,29 +85,37 @@ void createScene() {
 	const int particleNum = 5, particleDistance = 20;
 	for(int i = 1; i < particleNum; i++) {
 		part = new Particle(Vector3(0, particleDistance * i, 0), Vector3(0, 0, 0));
-		gen->addMovingObject(part);
+		gen->addPhysicsObject(part);
 		gen = new SpringForce(k, restingLength);
-		gen->addMovingObject(part);
+		gen->addPhysicsObject(part);
 	}
 	part = new Particle(Vector3(0, particleDistance * particleNum, 0), Vector3(0, 0, 0));
-	gen->addMovingObject(part);
+	gen->addPhysicsObject(part);
 	//*/
 
-	/* Agua (Flotacion)
+	// Para la flotación hace falta descomentar otro trozo de código donde se asignan las teclas
+	// Para activar la flotación hay que pulsar la 'f'
+	/* Agua (Flotacion) (Práctica 4)
 	const Vector3 waterPos = Vector3(0);
-	Box* waterPlane = new Box(waterPos, Vector3(1000, 0.5, 1000));
-	// Estás loco si le pones a 1000 la densidad del agua
-	FlotationForce* floater = new FlotationForce(waterPos, 10);
-	MovingBox* waterFloatingBox = new MovingBox(Vector3(0, 10, 0), Vector3(3), Vector3(0), Vector3(0), 0.5f, 1000);
+	Box* waterPlane = new Box(waterPos, Vector3(1000, 0.5, 1000), Vector4(0, 0.3, 0.5, 0.7));
+	FlotationForce* floater = new FlotationForce(waterPos, 1000);
+	MovingBox* waterFloatingBox = new MovingBox(Vector3(0, 10, 0), Vector3(3), Vector3(0), Vector3(0), 0.5f, 10000);
 	//*/
 
-	physx::PxBoxGeometry a; a.halfExtents = Vector3(10, 3, 10);
+	/* Primeros objetos de PhysX (Práctica 5)
+	physx::PxBoxGeometry a; a.halfExtents = Vector3(3); // Vector3(10, 3, 10);
 	RSObject* objjj = new RSObject(&a);
 	a.halfExtents = Vector3(3);
 	RDObject* souith = new RDObject(Vector3(0, 10, 0), &a);
+	//*/
+
+	/* Generador de objetos de PhysX
+	
+	//*/
 
 
 
+	// ¡Teclas! :D
 	auto keys = new Keys();
 	keyObjects = new std::unordered_map<char, Object*>();
 	keys->add('E', [](){ // nice
@@ -131,14 +136,14 @@ keys->add(key, [force](){ \
 	FORCE_KEY('V', wind, Vector3(0), 100);
 	FORCE_KEY('T', whirlwind, Vector3(0), 100);
 	FORCE_KEY('G', gravity, Vector3(0), 100000);
-	/* Agüis
+	/* Agüis (Práctica 4 - Flotación)
 	FORCE_KEY('F', floater, Vector3(0), 1000);
 
 	keys->add('I', [waterFloatingBox]() {
-		waterFloatingBox->updateMass(-0.5);
+		waterFloatingBox->updateMass(-100);
 	});
 	keys->add('O', [waterFloatingBox]() {
-		waterFloatingBox->updateMass(0.5);
+		waterFloatingBox->updateMass(100);
 	});
 	keys->add('K', [waterFloatingBox]() {
 		waterFloatingBox->updateBaseArea(-0.5);

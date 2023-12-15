@@ -5,7 +5,7 @@ FlotationForce::FlotationForce(const Vector3& pos, float liquidDensity) : ForceG
 	
 }
 
-void FlotationForce::updateForce(MovingObject* obj, double t) {
+void FlotationForce::updateForce(PhysicsObject* obj, double t) {
 	// Se asume que el objeto es un MovingBox
 	MovingBox* box = static_cast<MovingBox*>(obj);
 	int immersed;

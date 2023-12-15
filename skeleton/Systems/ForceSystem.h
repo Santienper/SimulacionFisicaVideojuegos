@@ -1,6 +1,6 @@
 #pragma once
 #include "Structure/System.h"
-#include "Objects/MovingObject.h"
+#include "Structure/PhysicsObject.h"
 #include <unordered_map>
 #include <unordered_set>
 
@@ -13,15 +13,15 @@ public:
 	ForceSystem();
 	~ForceSystem();
 
-	void addConnection(MovingObject*, ForceGenerator*);
-	void deleteConnection(MovingObject*, ForceGenerator*);
-	void deleteParticle(MovingObject*);
+	void addConnection(PhysicsObject*, ForceGenerator*);
+	void deleteConnection(PhysicsObject*, ForceGenerator*);
+	void deleteParticle(PhysicsObject*);
 	void deleteForce(ForceGenerator*);
 
 	void update(double t);
 
 private:
 	std::vector<ForceGenerator*> toDelete;
-	std::unordered_map<ForceGenerator*, std::unordered_set<MovingObject*>> mapForce;
-	std::unordered_map<MovingObject*, std::unordered_set<ForceGenerator*>> mapObj;
+	std::unordered_map<ForceGenerator*, std::unordered_set<PhysicsObject*>> mapForce;
+	std::unordered_map<PhysicsObject*, std::unordered_set<ForceGenerator*>> mapObj;
 };
