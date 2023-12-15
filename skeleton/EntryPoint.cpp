@@ -51,11 +51,11 @@ void createScene() {
 	//new UniformPartGen(Vector3(0), 0.1);
 	//new BasicFireworkGen<Firework4>(Vector3(0), 1.5, Vector3(5, 25, 5), 2, -1, Vector3(0, 70, 0));
 
-	auto gravity = new GravityForce(Vector3(0, -100, 0)); // Aceleración que genera la gravedad
+	//auto gravity = new GravityForce(Vector3(0, -100, 0)); // Aceleración que genera la gravedad
 	//particle->addParticle(part, 10, true);
 
 	auto wind = new WindForce(Vector3(10, 0, 0));
-	auto whirlwind = new WhirlwindForce();
+	//auto whirlwind = new WhirlwindForce();
 
 	// ¡¡¡IMPORTANTE!!!
 	// En estos bloques de código comentados solo hace falta cambiar los carácteres '/*' a '//*' para descomentar el bloque de código
@@ -72,7 +72,7 @@ void createScene() {
 	physx::PxGeometry *geo1 = new physx::PxSphereGeometry(3), *geo2 = new physx::PxBoxGeometry(Vector3(3)), *geo3 = new physx::PxCapsuleGeometry(1, 1);
 	RDGen::RDVisuals *vis1 = new RDGen::RDVisuals(geo1, Vector4(0.8f, 0.094f, 0.031f, 1)), *vis2 = new RDGen::RDVisuals(geo2, Vector4(1, 0.5, 1, 1)), *vis3 = new RDGen::RDVisuals(geo3, Vector4(0.239f, 0.722f, 0.671f, 1));
 	//                       pos              , visuals             , rate, rndVel           , startVel  , maxTime
-	RDGen* rdGen = new RDGen(Vector3(0, 10, 0), { vis1, vis2, vis3 }, 0.5, Vector3(10, 0, 10), Vector3(0), 5);
+	RDGen* rdGen = new RDGen(Vector3(0, 20, 0), { vis1, vis2, vis3 }, 0.5, Vector3(10, 0, 10), Vector3(0), 5);
 	//*/
 
 	/* Primer muelle Práctica 4
@@ -124,9 +124,9 @@ void createScene() {
 	// ¡Teclas! :D
 	auto keys = new Keys();
 	keyObjects = new std::unordered_map<char, Object*>();
-	keys->add('E', [](){ // nice
-		new ExplosionForce();
-	});
+	//keys->add('E', [](){ // nice
+	//	new ExplosionForce();
+	//});
 #define FORCE_KEY(key, force, pos, radius) \
 static bool force##Switch = false; \
 keys->add(key, [force](){ \
@@ -140,8 +140,8 @@ keys->add(key, [force](){ \
 	force##Switch = !force##Switch; \
 })
 	FORCE_KEY('V', wind, Vector3(0), 100);
-	FORCE_KEY('T', whirlwind, Vector3(0), 100);
-	FORCE_KEY('G', gravity, Vector3(0), 100000);
+	//FORCE_KEY('T', whirlwind, Vector3(0), 100);
+	//FORCE_KEY('G', gravity, Vector3(0), 100000);
 	/* Agüis (Práctica 4 - Flotación)
 	FORCE_KEY('F', floater, Vector3(0), 1000);
 
@@ -158,7 +158,7 @@ keys->add(key, [force](){ \
 		waterFloatingBox->updateBaseArea(0.5);
 	});//*/
 
-	new ChangeText(display_text, windSwitch, whirlwindSwitch, gravitySwitch);
+	//new ChangeText(display_text, windSwitch, whirlwindSwitch, gravitySwitch);
 #undef FORCE_KEY
 }
 
