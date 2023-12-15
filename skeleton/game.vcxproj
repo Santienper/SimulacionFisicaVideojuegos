@@ -273,6 +273,7 @@
     <ClCompile Include="Objects\ParticleGenerators\ParticleGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianScriptGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\UniformPartGen.cpp" />
+    <ClCompile Include="Objects\RDGen.cpp" />
     <ClCompile Include="Objects\RDObject.cpp" />
     <ClCompile Include="Objects\RSObject.cpp" />
     <ClCompile Include="Objects\Shooter.cpp" />
@@ -313,7 +314,7 @@
     <ClInclude Include="Objects\ParticleGenerators\GaussianScriptGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\UniformPartGen.h" />
     <ClInclude Include="Objects\RDObject.h" />
-    <ClInclude Include="Objects\RDObjectGen.h" />
+    <ClInclude Include="Objects\RDGen.h" />
     <ClInclude Include="Objects\RSObject.h" />
     <ClInclude Include="Objects\Shooter.h" />
     <ClInclude Include="Objects\Trigger.h" />

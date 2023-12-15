@@ -1,19 +1,19 @@
 #include "RDObject.h"
 #include "Structure/Scene.h"
 
-RDObject::RDObject(physx::PxGeometry* geo, float damp, float mass) : RDObject(Vector3(0), geo, damp, mass) {
+RDObject::RDObject(physx::PxGeometry* geo, const Vector3& vel, float damp, float mass, const Vector4& color) : RDObject(Vector3(0), geo, vel, damp, mass, color) {
 
 }
 
-RDObject::RDObject(const Vector3& pos, physx::PxGeometry* geo, float damp, float mass) : PhysicsObject(pos), disappearing(false) {
+RDObject::RDObject(const Vector3& pos, physx::PxGeometry* geo, const Vector3& vel, float damp, float mass, const Vector4& color) : PhysicsObject(pos), disappearing(false) {
 	rigid = Scene::get()->getPhysics()->createRigidDynamic(trans);
 	shape = CreateShape(*geo);
 	rigid->attachShape(*shape);
 	physx::PxRigidBodyExt::setMassAndUpdateInertia(*rigid, mass);
 	Scene::get()->addActor(*rigid);
-	Vector4 color = { 1, 0.5, 1, 1 };
 	render = new RenderItem(shape, rigid, color);
 	rigid->setLinearDamping(damp);
+	rigid->setLinearVelocity(vel);
 }
 
 RDObject::~RDObject() {

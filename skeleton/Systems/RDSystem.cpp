@@ -3,39 +3,39 @@
 #include "ForceSystem.h"
 #include "Structure/Scene.h"
 
-RDSystem::RDSystem() : SystemConstr{
+RDSystem::RDSystem() : SystemConstr {
 	getOtherSystems();
 }
 
 RDSystem::~RDSystem() {
-	for(auto& data : particles) {
-		data.particle->alive = false;
+	for(auto& data : rigids) {
+		data.rigid->alive = false;
 	}
 }
 
 void RDSystem::addRD(RDObject* part, double maxTime, bool disappear) {
 	RDManaging data = { part, 0, maxTime, disappear };
-	particles.push_back(data);
+	rigids.push_back(data);
 }
 
 void RDSystem::addRD(RDManaging data) {
 	data.time = 0;
-	particles.push_back(data);
+	rigids.push_back(data);
 }
 
 void RDSystem::update(double t) {
-	auto it = particles.begin();
-	while(it != particles.end()) {
+	auto it = rigids.begin();
+	while(it != rigids.end()) {
 		it->time += t;
 		if(it->time > it->maxTime) {
 			if(it->disappear) {
-				it->particle->disappear();
+				it->rigid->disappear();
 			} else {
-				it->particle->alive = false;
-				it->particle->callbackDelete();
+				it->rigid->alive = false;
+				it->rigid->callbackDelete();
 			}
-			if(forceSys != nullptr) forceSys->deleteParticle(it->particle);
-			it = particles.erase(it);
+			if(forceSys != nullptr) forceSys->deleteParticle(it->rigid);
+			it = rigids.erase(it);
 		} else ++it;
 	}
 }

@@ -3,8 +3,8 @@
 
 class RDObject : public PhysicsObject {
 public:
-	RDObject(physx::PxGeometry* geo, float damp = 0.8f, float mass = 0.15);
-	RDObject(const Vector3& pos, physx::PxGeometry* geo, float damp = 0.8f, float mass = 0.15);
+	RDObject(physx::PxGeometry* geo, const Vector3& vel = Vector3(0), float damp = 0.8f, float mass = 0.15, const Vector4& color = Vector4(1, 0.5, 1, 1));
+	RDObject(const Vector3& pos, physx::PxGeometry* geo, const Vector3& vel = Vector3(0), float damp = 0.8f, float mass = 0.15, const Vector4& color = Vector4(1, 0.5, 1, 1));
 	~RDObject();
 
 	void update(double t) override;

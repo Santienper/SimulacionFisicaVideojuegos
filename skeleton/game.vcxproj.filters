@@ -39,6 +39,7 @@
     <ClCompile Include="Objects\RSObject.cpp" />
     <ClCompile Include="Objects\RDObject.cpp" />
     <ClCompile Include="Systems\RDSystem.cpp" />
+    <ClCompile Include="Objects\RDGen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -85,7 +86,7 @@
     <ClInclude Include="Objects\RSObject.h" />
     <ClInclude Include="Objects\RDObject.h" />
     <ClInclude Include="Structure\PhysicsObject.h" />
-    <ClInclude Include="Objects\RDObjectGen.h" />
+    <ClInclude Include="Objects\RDGen.h" />
     <ClInclude Include="Systems\RDSystem.h" />
   </ItemGroup>
   <ItemGroup>

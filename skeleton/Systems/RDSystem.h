@@ -16,7 +16,7 @@ public:
 	void addRD(RDObject* part, double maxTime, bool disappear);
 
 	struct RDManaging {
-		RDObject* particle;
+		RDObject* rigid;
 		double time, maxTime;
 		bool disappear;
 	};
@@ -26,6 +26,6 @@ public:
 
 	void getOtherSystems();
 protected:
-	std::vector<RDManaging> particles;
+	std::vector<RDManaging> rigids;
 	SpPtr<ForceSystem> forceSys;
 };
