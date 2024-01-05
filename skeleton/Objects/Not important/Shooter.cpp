@@ -1,5 +1,5 @@
 #include "Shooter.h"
-#include "Particle.h"
+#include "../Particle.h"
 #include "Structure/Scene.h"
 
 Shooter::Shooter() {

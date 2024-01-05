@@ -255,8 +255,9 @@
   <ItemGroup>
     <ClCompile Include="Core\callbacks.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
+    <ClCompile Include="Previous EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
-    <ClCompile Include="Objects\Box.cpp" />
+    <ClCompile Include="Objects\Not important\Box.cpp" />
     <ClCompile Include="Objects\Fireworks.cpp" />
     <ClCompile Include="Objects\ForceEffectSphere.cpp" />
     <ClCompile Include="Objects\ForceGenerators\ExplosionForce.cpp" />
@@ -266,9 +267,9 @@
     <ClCompile Include="Objects\ForceGenerators\SpringForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\WhirlwindForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\WindForce.cpp" />
-    <ClCompile Include="Objects\Keys.cpp" />
-    <ClCompile Include="Objects\MovingBox.cpp" />
-    <ClCompile Include="Objects\MovingObject.cpp" />
+    <ClCompile Include="Objects\Not important\Keys.cpp" />
+    <ClCompile Include="Objects\Not important\MovingBox.cpp" />
+    <ClCompile Include="Objects\Not important\MovingObject.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianPartGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\ParticleGen.cpp" />
     <ClCompile Include="Objects\ParticleGenerators\GaussianScriptGen.cpp" />
@@ -276,7 +277,7 @@
     <ClCompile Include="Objects\RDGen.cpp" />
     <ClCompile Include="Objects\RDObject.cpp" />
     <ClCompile Include="Objects\RSObject.cpp" />
-    <ClCompile Include="Objects\Shooter.cpp" />
+    <ClCompile Include="Objects\Not important\Shooter.cpp" />
     <ClCompile Include="Objects\Trigger.cpp" />
     <ClCompile Include="Systems\ForceSystem.cpp" />
     <ClCompile Include="Systems\ParticleSystem.cpp" />
@@ -292,7 +293,7 @@
   <ItemGroup>
     <ClInclude Include="Core\callbacks.hpp" />
     <ClInclude Include="core.hpp" />
-    <ClInclude Include="Objects\Box.h" />
+    <ClInclude Include="Objects\Not important\Box.h" />
     <ClInclude Include="Objects\FireworkGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\FireworkGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\Fireworks.h" />
@@ -304,9 +305,9 @@
     <ClInclude Include="Objects\ForceGenerators\SpringForce.h" />
     <ClInclude Include="Objects\ForceGenerators\WhirlwindForce.h" />
     <ClInclude Include="Objects\ForceGenerators\WindForce.h" />
-    <ClInclude Include="Objects\Keys.h" />
-    <ClInclude Include="Objects\MovingBox.h" />
-    <ClInclude Include="Objects\MovingObject.h" />
+    <ClInclude Include="Objects\Not important\Keys.h" />
+    <ClInclude Include="Objects\Not important\MovingBox.h" />
+    <ClInclude Include="Objects\Not important\MovingObject.h" />
     <ClInclude Include="Objects\ParticleGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\CircleFWGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\GaussianPartGen.h" />
@@ -316,7 +317,7 @@
     <ClInclude Include="Objects\RDObject.h" />
     <ClInclude Include="Objects\RDGen.h" />
     <ClInclude Include="Objects\RSObject.h" />
-    <ClInclude Include="Objects\Shooter.h" />
+    <ClInclude Include="Objects\Not important\Shooter.h" />
     <ClInclude Include="Objects\Trigger.h" />
     <ClInclude Include="Structure\PhysicsObject.h" />
     <ClInclude Include="Systems\RDSystem.h" />
@@ -325,7 +326,7 @@
     <ClInclude Include="Systems\ForceSystem.h" />
     <ClInclude Include="Systems\ParticleSystem.h" />
     <ClInclude Include="Structure\Object.h" />
-    <ClInclude Include="Objects\AxisSphere.h" />
+    <ClInclude Include="Objects\Not important\AxisSphere.h" />
     <ClInclude Include="Objects\Particle.h" />
     <ClInclude Include="Core\RenderUtils.hpp" />
     <ClInclude Include="Render\Camera.h" />

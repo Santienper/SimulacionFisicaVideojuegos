@@ -13,8 +13,8 @@
     <ClCompile Include="Objects\Particle.cpp" />
     <ClCompile Include="Structure\Object.cpp" />
     <ClCompile Include="Structure\Scene.cpp" />
-    <ClCompile Include="EntryPoint.cpp" />
-    <ClCompile Include="Objects\Shooter.cpp" />
+    <ClCompile Include="Previous EntryPoint.cpp" />
+    <ClCompile Include="Objects\Not important\Shooter.cpp" />
     <ClCompile Include="Structure\System.cpp" />
     <ClCompile Include="Systems\ParticleSystem.cpp" />
     <ClCompile Include="Objects\Fireworks.cpp" />
@@ -31,15 +31,16 @@
     <ClCompile Include="Objects\ForceEffectSphere.cpp" />
     <ClCompile Include="Objects\ForceGenerators\ExplosionForce.cpp" />
     <ClCompile Include="Objects\ForceGenerators\SpringForce.cpp" />
-    <ClCompile Include="Objects\Box.cpp" />
-    <ClCompile Include="Objects\Keys.cpp" />
+    <ClCompile Include="Objects\Not important\Box.cpp" />
+    <ClCompile Include="Objects\Not important\Keys.cpp" />
     <ClCompile Include="Objects\ForceGenerators\FlotationForce.cpp" />
-    <ClCompile Include="Objects\MovingBox.cpp" />
-    <ClCompile Include="Objects\MovingObject.cpp" />
+    <ClCompile Include="Objects\Not important\MovingBox.cpp" />
+    <ClCompile Include="Objects\Not important\MovingObject.cpp" />
     <ClCompile Include="Objects\RSObject.cpp" />
     <ClCompile Include="Objects\RDObject.cpp" />
     <ClCompile Include="Systems\RDSystem.cpp" />
     <ClCompile Include="Objects\RDGen.cpp" />
+    <ClCompile Include="EntryPoint.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -53,9 +54,9 @@
     <ClInclude Include="Core\callbacks.hpp" />
     <ClInclude Include="Objects\Particle.h" />
     <ClInclude Include="Structure\Object.h" />
-    <ClInclude Include="Objects\AxisSphere.h" />
+    <ClInclude Include="Objects\Not important\AxisSphere.h" />
     <ClInclude Include="Structure\Scene.h" />
-    <ClInclude Include="Objects\Shooter.h" />
+    <ClInclude Include="Objects\Not important\Shooter.h" />
     <ClInclude Include="Structure\System.h" />
     <ClInclude Include="Systems\ParticleSystem.h" />
     <ClInclude Include="Objects\Fireworks.h" />
@@ -77,12 +78,12 @@
     <ClInclude Include="Objects\ForceEffectSphere.h" />
     <ClInclude Include="Objects\ForceGenerators\ExplosionForce.h" />
     <ClInclude Include="Objects\ForceGenerators\SpringForce.h" />
-    <ClInclude Include="Objects\Box.h" />
-    <ClInclude Include="Objects\Keys.h" />
+    <ClInclude Include="Objects\Not important\Box.h" />
+    <ClInclude Include="Objects\Not important\Keys.h" />
     <ClInclude Include="Utilities\ChangeText.h" />
     <ClInclude Include="Objects\ForceGenerators\FlotationForce.h" />
-    <ClInclude Include="Objects\MovingBox.h" />
-    <ClInclude Include="Objects\MovingObject.h" />
+    <ClInclude Include="Objects\Not important\MovingBox.h" />
+    <ClInclude Include="Objects\Not important\MovingObject.h" />
     <ClInclude Include="Objects\RSObject.h" />
     <ClInclude Include="Objects\RDObject.h" />
     <ClInclude Include="Structure\PhysicsObject.h" />
