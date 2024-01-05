@@ -2,6 +2,7 @@
 #include "Core/RenderUtils.hpp"
 #include <unordered_map>
 #include "Utilities/SpPtr.h"
+#include <concepts>
 
 void createScene();
 void deleteScene();
@@ -14,6 +15,9 @@ struct pxData {
 	physx::PxScene* scene;
 };
 
+class Object; // compatibilidad con c++20
+class System; // compatibilidad con c++20
+
 class Scene {
 	friend class Object;
 	friend class System;
@@ -24,7 +28,12 @@ public:
 
 	Camera* cam;
 
-	SpPtr<System> getSystem(std::string id);
+	template<typename Sys>
+	//requires std::derived_from<Sys, System> // <- para usar esto se necesita tener la versión c++20, la cual no se puede usar
+	                                          //    porque physx usa la palabra clave "requires" como nombre de método en varios lados
+	SpPtr<Sys> getSystem() {
+		return getSystem(Sys::getStaticID()).cast<Sys>();
+	}
 	std::vector<SpPtr<Object>>* getObjects();
 
 	void update(double t);
@@ -43,6 +52,8 @@ protected:
 private:
 	void addObject(Object*);
 	void addSystem(System*, std::string id);
+
+	SpPtr<System> getSystem(std::string id);
 
 	static Scene* instance;
 	static SpPtr<Scene>* safeInstance;

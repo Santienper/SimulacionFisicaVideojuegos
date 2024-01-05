@@ -1,13 +1,14 @@
 #include "RDGen.h"
 #include "Structure/Scene.h"
-#include <iostream>
+#include "Utilities/Log.h"
 
 RDGen::RDGen(const Vector3& pos, std::vector<RDVisuals*> visuals, double rate, const Vector3& rndVel, const Vector3& startVel, float maxTime)
 	: Object(pos), rnd(0, 1), intRnd(0, visuals.size() - 1), time(0), visuals(visuals), rate(rate), rndVel(rndVel), startVel(startVel), maxTime(maxTime), startRate(rate) {
-	sys = Scene::get()->getSystem("rigidDynamic").cast<RDSystem>();
+	sys = Scene::get()->getSystem<RDSystem>();
 	if(sys == nullptr) {
 		alive = false;
-		std::cout << "[ERROR] No hay sistema de solidos rigidos, omitiendo creacion de generador de solidos rigidos\n";
+		Logger::logError("No hay sistema de solidos rigidos, omitiendo creacion de generador de solidos rigidos");
+		return;
 	}
 	std::random_device rd;
 	gen = std::mt19937(rd());

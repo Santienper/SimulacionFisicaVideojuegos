@@ -41,5 +41,5 @@ void RDSystem::update(double t) {
 }
 
 void RDSystem::getOtherSystems() {
-	forceSys = Scene::get()->getSystem("forces").cast<ForceSystem>();
+	forceSys = Scene::get()->getSystem<ForceSystem>();
 }

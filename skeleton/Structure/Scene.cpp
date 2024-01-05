@@ -55,11 +55,13 @@ void Scene::keyPressed(unsigned char key) {
 
 void Scene::commit() {
 	for(auto obj : objToAdd) {
-		objects.push_back(obj);
+		if(obj->alive) objects.push_back(obj);
+		else obj.free();
 	}
 	objToAdd.clear();
 	for(auto& sys : sysToAdd) {
-		systems[sys.first] = sys.second;
+		if(sys.second->alive) systems[sys.first] = sys.second;
+		else sys.second.free();
 	}
 	sysToAdd.clear();
 }
@@ -72,6 +74,10 @@ void Scene::addSystem(System* sys, std::string id) {
 	sysToAdd.push_back(std::make_pair(id, sys));
 }
 
+std::vector<SpPtr<Object>>* Scene::getObjects() {
+	return &objects;
+}
+
 SpPtr<System> Scene::getSystem(std::string id) {
 	// Busca en los sistemas ya establecidos
 	auto it = systems.find(id);
@@ -82,10 +88,6 @@ SpPtr<System> Scene::getSystem(std::string id) {
 	}
 	// Si no lo encuentra, devuelve nullptr
 	return nullptr;
-}
-
-std::vector<SpPtr<Object>>* Scene::getObjects() {
-	return &objects;
 }
 
 Scene* Scene::instance = nullptr;

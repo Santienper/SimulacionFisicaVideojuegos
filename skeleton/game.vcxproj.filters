@@ -41,6 +41,9 @@
     <ClCompile Include="Systems\RDSystem.cpp" />
     <ClCompile Include="Objects\RDGen.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
+    <ClCompile Include="Objects\Target.cpp" />
+    <ClCompile Include="Systems\TargetSystem.cpp" />
+    <ClCompile Include="Utilities\Log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -89,6 +92,9 @@
     <ClInclude Include="Structure\PhysicsObject.h" />
     <ClInclude Include="Objects\RDGen.h" />
     <ClInclude Include="Systems\RDSystem.h" />
+    <ClInclude Include="Objects\Target.h" />
+    <ClInclude Include="Systems\TargetSystem.h" />
+    <ClInclude Include="Utilities\Log.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

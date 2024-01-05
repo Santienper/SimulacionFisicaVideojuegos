@@ -1,12 +1,12 @@
 #include "ForceGenerator.h"
 #include "Structure/Scene.h"
-#include <iostream>
+#include "Utilities/Log.h"
 
 ForceGenerator::ForceGenerator(const Vector3& pos) : Object(pos) {
-	sys = Scene::get()->getSystem("forces").cast<ForceSystem>();
+	sys = Scene::get()->getSystem<ForceSystem>();
 	if(sys == nullptr) {
 		alive = false;
-		std::cout << "[ERROR] No hay sistema de fuerzas, omitiendo creacion de generador de fuerzas\n";
+		Logger::logError("No hay sistema de fuerzas, omitiendo creacion de generador de fuerzas");
 	}
 }
 

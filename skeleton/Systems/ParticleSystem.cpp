@@ -41,5 +41,5 @@ void ParticleSystem::update(double t) {
 }
 
 void ParticleSystem::getOtherSystems() {
-	forceSys = Scene::get()->getSystem("forces").cast<ForceSystem>();
+	forceSys = Scene::get()->getSystem<ForceSystem>();
 }

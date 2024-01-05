@@ -83,6 +83,7 @@
       </PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(TargetDir)\$(TargetName).pdb</ProgramDataBaseFileName>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalOptions>
@@ -231,6 +232,7 @@
       </PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(TargetDir)\$(TargetName).pdb</ProgramDataBaseFileName>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalOptions>/INCREMENTAL:NO /LIBPATH:../../../Lib/vc14win64 PhysX3Common_x64.lib PhysX3_x64.lib PhysX3Cooking_x64.lib PhysX3CharacterKinematic_x64.lib PhysX3Extensions.lib PxTask_x64.lib PxFoundation_x64.lib PsFastXml_x64.lib PxPvdSDK_x64.lib /LIBPATH:../../lib/vc14win64 Utils.lib</AdditionalOptions>
@@ -255,6 +257,7 @@
   <ItemGroup>
     <ClCompile Include="Core\callbacks.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
+    <ClCompile Include="Objects\Target.cpp" />
     <ClCompile Include="Previous EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
     <ClCompile Include="Objects\Not important\Box.cpp" />
@@ -289,6 +292,8 @@
     <ClCompile Include="Structure\Scene.cpp" />
     <ClCompile Include="Structure\System.cpp" />
     <ClCompile Include="Systems\RDSystem.cpp" />
+    <ClCompile Include="Systems\TargetSystem.cpp" />
+    <ClCompile Include="Utilities\Log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\callbacks.hpp" />
@@ -318,10 +323,13 @@
     <ClInclude Include="Objects\RDGen.h" />
     <ClInclude Include="Objects\RSObject.h" />
     <ClInclude Include="Objects\Not important\Shooter.h" />
+    <ClInclude Include="Objects\Target.h" />
     <ClInclude Include="Objects\Trigger.h" />
     <ClInclude Include="Structure\PhysicsObject.h" />
     <ClInclude Include="Systems\RDSystem.h" />
+    <ClInclude Include="Systems\TargetSystem.h" />
     <ClInclude Include="Utilities\ChangeText.h" />
+    <ClInclude Include="Utilities\Log.h" />
     <ClInclude Include="Utilities\SpPtr.h" />
     <ClInclude Include="Systems\ForceSystem.h" />
     <ClInclude Include="Systems\ParticleSystem.h" />
