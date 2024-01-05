@@ -4,9 +4,9 @@
 #include "Systems/ForceSystem.h"
 #include "Systems/RDSystem.h"
 
-#include "Objects/AxisSphere.h"
-#include "Objects/Keys.h"
-#include "Objects/Shooter.h"
+#include "Objects/Not important/AxisSphere.h"
+#include "Objects/Not important/Keys.h"
+#include "Objects/Not important/Shooter.h"
 
 #include "Objects/ParticleGenerators/GaussianPartGen.h"
 #include "Objects/ParticleGenerators/UniformPartGen.h"
@@ -21,9 +21,9 @@
 #include "Objects/ForceGenerators/ExplosionForce.h"
 
 #include "Objects/ForceGenerators/SpringForce.h"
-#include "Objects/Box.h"
+#include "Objects/Not important/Box.h"
 #include "Objects/ForceGenerators/FlotationForce.h"
-#include "Objects/MovingBox.h"
+#include "Objects/Not important/MovingBox.h"
 
 #include "Objects/RSObject.h"
 #include "Objects/RDObject.h"
@@ -34,7 +34,7 @@
 
 static std::unordered_map<char, Object*>* keyObjects;
 
-void createScene() {
+void createDebugScene() {
 	auto particle = new ParticleSystem();
 	auto force = new ForceSystem();
 	auto rigidSystem = new RDSystem();
@@ -162,6 +162,6 @@ keys->add(key, [force](){ \
 #undef FORCE_KEY
 }
 
-void deleteScene() {
+void deleteDebugScene() {
 	delete keyObjects;
 }
