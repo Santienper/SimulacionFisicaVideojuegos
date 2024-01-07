@@ -38,9 +38,11 @@ public:
 
 	void update(double t);
 	void keyPressed(unsigned char key);
+	void mousePressed(int button, int state, int x, int y);
+	void mouseMoved(int x, int y);
 	void commit();
 
-	bool isClosing() const { return closing; }
+	bool isClosing() const noexcept { return closing; }
 	std::string& display_text;
 
 	physx::PxPhysics* getPhysics() const { return physxData.physics; }
@@ -49,11 +51,16 @@ protected:
 	std::vector<SpPtr<Object>> objects, objToAdd;
 	std::unordered_map<std::string, SpPtr<System>> systems;
 	std::vector<std::pair<std::string, SpPtr<System>>> sysToAdd;
+	std::vector<Object*> keySubs, mouseMoveSubs, mousePressSubs;
 private:
 	void addObject(Object*);
-	void addSystem(System*, std::string id);
+	void addSystem(System*, const std::string& id);
 
-	SpPtr<System> getSystem(std::string id);
+	void subKey(Object*, bool add);
+	void subMousePress(Object*, bool add);
+	void subMouseMove(Object*, bool add);
+
+	SpPtr<System> getSystem(const std::string& id);
 
 	static Scene* instance;
 	static SpPtr<Scene>* safeInstance;

@@ -1,12 +1,11 @@
 #include "Target.h"
 #include "Structure/Scene.h"
-#include "Utilities/Log.h"
 
-Target::Target(const Vector3& pos, const Vector4& color) : RSObject(pos, nullptr) {
+Target::Target(const Vector3& pos, const Vector4& color) : RSObject(pos, nullptr), sys(nullptr) {
 	sys = Scene::get()->getSystem<TargetSystem>();
 	if(sys == nullptr) {
 		alive = false;
-		Logger::logError("No hay sistema de dianas, omitiendo creacion de diana");
+		Log::logError("No hay sistema de dianas, omitiendo creacion de diana");
 		return;
 	}
 	sys->addTarget(this);

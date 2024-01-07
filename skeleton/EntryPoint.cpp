@@ -3,6 +3,11 @@
 #include "Objects/Target.h"
 #include "Systems/TargetSystem.h"
 
+#include "Utilities/MouseControl.h"
+
+#include "Objects/Player.h"
+#include "Objects/Fader.h"
+
 void createScene() {
 	auto sys = new TargetSystem();
 
@@ -10,10 +15,25 @@ void createScene() {
 	//new Target(Vector3(3));
 	//new Target(Vector3(-3));
 
-	physx::PxGeometry* geo = new physx::PxSphereGeometry(3);
-	new RSObject(Vector3(0), geo);
-	new RSObject(Vector3(3), geo);
-	delete geo;
+	auto 
+	
+	geo = physx::PxBoxGeometry(Vector3(1, 100, 100));
+	new RSObject(Vector3(100, 0, 0), &geo, { 1, 0, 0, 1 });
+	new RSObject(Vector3(-100, 0, 0), &geo, { 0, 1, 1, 1 });
+	geo = physx::PxBoxGeometry(Vector3(100, 100, 1));
+	new RSObject(Vector3(0, 0, 100), &geo, { 0, 0, 1, 1 });
+	new RSObject(Vector3(0, 0, -100), &geo, { 1, 1, 0, 1 });
+	geo = physx::PxBoxGeometry(Vector3(100, 1, 100));
+	new RSObject(Vector3(0, -50, 0), &geo, { 0, 1, 0, 1 });
+	//geo = physx::PxBoxGeometry(Vector3(5));
+	//new RDObject(Vector3(10), &geo);
+	Scene::get()->cam->changeDir(Vector3(0, -1, 0.00001f));
+	geo = physx::PxBoxGeometry(Vector3(100, 20, 1));
+	new Fader(Vector3(0), &geo, { 0, 0, 0, 0 });
+	geo = physx::PxBoxGeometry(Vector3(1, 1, 20));
+	new RSObject(Vector3(0, 0, 15), &geo, { 1, 0.5f, 1, 0.3f });
+
+	new Player(Vector3(10));
 
 	//sys->alive = false;
 }

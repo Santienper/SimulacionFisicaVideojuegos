@@ -35,27 +35,27 @@ public:
 		}
 	}
 
-	T& operator*() {
+	inline T& operator*() {
 		return **pointer;
 	}
 
-	const T& operator*() const {
+	const inline T& operator*() const {
 		return **pointer;
 	}
 
-	T* operator->() {
+	inline T* operator->() {
 		return *pointer;
 	}
 
-	const T* operator->() const {
+	const inline T* operator->() const {
 		return *pointer;
 	}
 
-	T* get() {
+	inline T* get() {
 		return *pointer;
 	}
 
-	const T* get() const {
+	const inline T* get() const {
 		return *pointer;
 	}
 
@@ -70,30 +70,30 @@ public:
 	}
 
 	template<typename otherT>
-	bool operator==(const otherT* other) const {
+	inline bool operator==(const otherT* other) const {
 		return *pointer == other;
 	}
 
 	template<typename otherT>
-	bool operator==(const SpPtr<otherT>& other) const {
+	inline bool operator==(const SpPtr<otherT>& other) const {
 		return (void*)*pointer == other.get();
 	}
 
-	bool operator==(std::nullptr_t) const {
+	inline bool operator==(std::nullptr_t) const {
 		return *pointer == nullptr;
 	}
 
 	template<typename otherT>
-	bool operator!=(const otherT* other) const {
+	inline bool operator!=(const otherT* other) const {
 		return (void*)*pointer != other;
 	}
 
 	template<typename otherT>
-	bool operator!=(const SpPtr<otherT>& other) const {
+	inline bool operator!=(const SpPtr<otherT>& other) const {
 		return (void*)*pointer != other.get();
 	}
 
-	bool operator!=(std::nullptr_t) const {
+	inline bool operator!=(std::nullptr_t) const {
 		return *pointer != nullptr;
 	}
 private:
@@ -153,30 +153,30 @@ public:
 	}
 
 	template<typename otherT>
-	bool operator==(otherT* other) {
+	inline bool operator==(otherT* other) {
 		return *pointer == other;
 	}
 
 	template<typename otherT>
-	bool operator==(SpPtr<otherT> other) {
+	inline bool operator==(SpPtr<otherT> other) {
 		return pointer == other.pointer;
 	}
 
-	bool operator==(std::nullptr_t) {
+	inline bool operator==(std::nullptr_t) {
 		return *pointer == nullptr;
 	}
 
 	template<typename otherT>
-	bool operator!=(const otherT* other) const {
+	inline bool operator!=(const otherT* other) const {
 		return *pointer != other;
 	}
 
 	template<typename otherT>
-	bool operator!=(const SpPtr<otherT>& other) const {
+	inline bool operator!=(const SpPtr<otherT>& other) const {
 		return *pointer != other.get();
 	}
 
-	bool operator!=(std::nullptr_t) const {
+	inline bool operator!=(std::nullptr_t) const {
 		return *pointer != nullptr;
 	}
 private:

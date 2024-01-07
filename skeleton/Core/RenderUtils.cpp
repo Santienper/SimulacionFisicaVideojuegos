@@ -5,6 +5,8 @@
 #include "core.hpp"
 #include "RenderUtils.hpp"
 
+#include "Structure/Scene.h"
+
 
 using namespace physx;
 
@@ -46,10 +48,16 @@ double GetCounter()
 namespace
 {
 	Camera*	sCamera;
+	Scene* sScene;
 
 void motionCallback(int x, int y)
 {
 	sCamera->handleMotion(x, y);
+	if(sScene) sScene->mouseMoved(x, y);
+}
+
+void passiveMotionCallback(int x, int y) {
+	if(sScene) sScene->mouseMoved(x, y);
 }
 
 void keyboardCallback(unsigned char key, int x, int y)
@@ -57,13 +65,15 @@ void keyboardCallback(unsigned char key, int x, int y)
 	if(key==27)
 		exit(0);
 
-	if(!sCamera->handleKey(key, x, y))
-		keyPress(key, sCamera->getTransform());
+	sCamera->handleKey(key, x, y);
+	//	keyPress(key, sCamera->getTransform());
+	if(sScene) sScene->keyPressed(key);
 }
 
 void mouseCallback(int button, int state, int x, int y)
 {
 	sCamera->handleMouse(button, state, x, y);
+	if(sScene) sScene->mousePressed(button, state, x, y);
 }
 
 void idleCallback()
@@ -139,7 +149,7 @@ void renderLoop()
 	StartCounter();
 	sCamera = new Camera(PxVec3(50.0f, 50.0f, 50.0f), PxVec3(-0.6f,-0.2f,-0.7f));
 
-	setupDefaultWindow("Simulacion Fisica Videojuegos");
+	setupDefaultWindow(WINDOW_NAME);
 	setupDefaultRenderState();
 
 	glutIdleFunc(idleCallback);
@@ -147,6 +157,7 @@ void renderLoop()
 	glutKeyboardFunc(keyboardCallback);
 	glutMouseFunc(mouseCallback);
 	glutMotionFunc(motionCallback);
+	glutPassiveMotionFunc(passiveMotionCallback);
 	motionCallback(0,0);
 
 	atexit(exitCallback);
@@ -184,4 +195,8 @@ PxShape* CreateShape(const PxGeometry& geo, const PxMaterial* mat)
 
 	PxShape* shape = gPhysics->createShape(geo, *mat);
 	return shape;
+}
+
+void _setScene(Scene* sc) noexcept {
+	sScene = sc;
 }

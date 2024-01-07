@@ -7,8 +7,9 @@ RSObject::RSObject(physx::PxGeometry* geo, const Vector4& color) : RSObject(Vect
 
 RSObject::RSObject(const Vector3& pos, physx::PxGeometry* geo, const Vector4& color) : Object(pos) {
 	rigid = Scene::get()->getPhysics()->createRigidStatic(trans);
+	Scene::get()->addActor(*rigid);
 	if(geo != nullptr) createShape(geo, color);
-	trans.p += pos;
+	//trans.p += pos;
 }
 
 RSObject::~RSObject() {
@@ -18,6 +19,5 @@ RSObject::~RSObject() {
 void RSObject::createShape(physx::PxGeometry* geo, const Vector4& color) {
 	physx::PxShape* shape = CreateShape(*geo);
 	rigid->attachShape(*shape);
-	Scene::get()->addActor(*rigid);
 	render = new RenderItem(shape, rigid, color);
 }

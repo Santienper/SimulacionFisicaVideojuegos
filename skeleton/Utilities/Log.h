@@ -4,7 +4,7 @@
 // Clase incluida para abstraer la escritura a consola
 // por si da tiempo a cambiar a una forma mejor de hacerlo.
 
-class Logger {
+class Log {
 public:
 	static void logInfo(std::string);
 	static void logWarning(std::string);
@@ -13,9 +13,9 @@ public:
 	static void createLoggers();
 	static void destroyLoggers();
 private:
-	static Logger* infoLog, * warnLog, * errorLog;
+	static Log* infoLog, * warnLog, * errorLog;
 
-	Logger(std::string start);
+	Log(std::string start);
 	void log(std::string);
 	std::string start;
 };

@@ -1,11 +1,13 @@
 #include "Scene.h"
 #include "Object.h"
 #include "System.h"
+#include "Core/RenderUtils.hpp"
 
 Scene::Scene(pxData physxData, std::string& display_text) : closing(false), physxData(physxData), display_text(display_text) {
 	cam = GetCamera();
 	instance = this;
 	safeInstance = new SpPtr<Scene>(this);
+	_setScene(this);
 }
 
 Scene::~Scene() {
@@ -16,6 +18,7 @@ Scene::~Scene() {
 	for(auto& sys : systems) {
 		sys.second.free();
 	}
+	_setScene(nullptr);
 }
 
 void Scene::update(double t) {
@@ -48,8 +51,26 @@ void Scene::keyPressed(unsigned char key) {
 	for(auto& pair : systems) {
 		pair.second->keyPressed(key);
 	}
-	for(auto obj : objects) {
+	for(auto& obj : keySubs) {
 		obj->keyPressed(key);
+	}
+}
+
+void Scene::mousePressed(int button, int state, int x, int y) {
+	for(auto& pair : systems) {
+		pair.second->mousePressed(button, state, x, y);
+	}
+	for(auto& obj : mousePressSubs) {
+		obj->mousePressed(button, state, x, y);
+	}
+}
+
+void Scene::mouseMoved(int x, int y) {
+	for(auto& pair : systems) {
+		pair.second->mouseMoved(x, y);
+	}
+	for(auto& obj : mouseMoveSubs) {
+		obj->mouseMoved(x, y);
 	}
 }
 
@@ -70,15 +91,51 @@ void Scene::addObject(Object* obj) {
 	objToAdd.push_back(obj);
 }
 
-void Scene::addSystem(System* sys, std::string id) {
+void Scene::addSystem(System* sys, const std::string& id) {
 	sysToAdd.push_back(std::make_pair(id, sys));
+}
+
+void Scene::subKey(Object* obj, bool add) {
+	if(add) keySubs.push_back(obj);
+	else {
+		for(auto it = keySubs.cbegin(); it != keySubs.cend(); ++it) {
+			if(*it == obj) {
+				keySubs.erase(it);
+				break;
+			}
+		}
+	}
+}
+
+void Scene::subMousePress(Object* obj, bool add) {
+	if(add) mousePressSubs.push_back(obj);
+	else {
+		for(auto it = mousePressSubs.cbegin(); it != mousePressSubs.cend(); ++it) {
+			if(*it == obj) {
+				mousePressSubs.erase(it);
+				break;
+			}
+		}
+	}
+}
+
+void Scene::subMouseMove(Object* obj, bool add) {
+	if(add) mouseMoveSubs.push_back(obj);
+	else {
+		for(auto it = mouseMoveSubs.cbegin(); it != mouseMoveSubs.cend(); ++it) {
+			if(*it == obj) {
+				mouseMoveSubs.erase(it);
+				break;
+			}
+		}
+	}
 }
 
 std::vector<SpPtr<Object>>* Scene::getObjects() {
 	return &objects;
 }
 
-SpPtr<System> Scene::getSystem(std::string id) {
+SpPtr<System> Scene::getSystem(const std::string& id) {
 	// Busca en los sistemas ya establecidos
 	auto it = systems.find(id);
 	if(it != systems.end()) return it->second;

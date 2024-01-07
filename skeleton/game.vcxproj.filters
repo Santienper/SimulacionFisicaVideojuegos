@@ -44,6 +44,8 @@
     <ClCompile Include="Objects\Target.cpp" />
     <ClCompile Include="Systems\TargetSystem.cpp" />
     <ClCompile Include="Utilities\Log.cpp" />
+    <ClCompile Include="Utilities\MouseControl.cpp" />
+    <ClCompile Include="Objects\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -95,6 +97,9 @@
     <ClInclude Include="Objects\Target.h" />
     <ClInclude Include="Systems\TargetSystem.h" />
     <ClInclude Include="Utilities\Log.h" />
+    <ClInclude Include="Utilities\MouseControl.h" />
+    <ClInclude Include="Objects\Player.h" />
+    <ClInclude Include="Objects\Fader.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

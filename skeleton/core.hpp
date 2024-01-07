@@ -17,5 +17,9 @@ typedef physx::PxVec4 Vector4;
 
 // New: Special Pointer
 #include "Utilities/SpPtr.h"
+// New: Window Name
+#define WINDOW_NAME "Simulacion Fisica Videojuegos"
+// New: Log
+#include "Utilities/Log.h"
 
 #endif

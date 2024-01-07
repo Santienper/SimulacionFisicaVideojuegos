@@ -257,6 +257,7 @@
   <ItemGroup>
     <ClCompile Include="Core\callbacks.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
+    <ClCompile Include="Objects\Player.cpp" />
     <ClCompile Include="Objects\Target.cpp" />
     <ClCompile Include="Previous EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
@@ -294,10 +295,12 @@
     <ClCompile Include="Systems\RDSystem.cpp" />
     <ClCompile Include="Systems\TargetSystem.cpp" />
     <ClCompile Include="Utilities\Log.cpp" />
+    <ClCompile Include="Utilities\MouseControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\callbacks.hpp" />
     <ClInclude Include="core.hpp" />
+    <ClInclude Include="Objects\Fader.h" />
     <ClInclude Include="Objects\Not important\Box.h" />
     <ClInclude Include="Objects\FireworkGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\FireworkGenerators\CircleFWGen.h" />
@@ -319,6 +322,7 @@
     <ClInclude Include="Objects\ParticleGenerators\ParticleGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\GaussianScriptGen.h" />
     <ClInclude Include="Objects\ParticleGenerators\UniformPartGen.h" />
+    <ClInclude Include="Objects\Player.h" />
     <ClInclude Include="Objects\RDObject.h" />
     <ClInclude Include="Objects\RDGen.h" />
     <ClInclude Include="Objects\RSObject.h" />
@@ -330,6 +334,7 @@
     <ClInclude Include="Systems\TargetSystem.h" />
     <ClInclude Include="Utilities\ChangeText.h" />
     <ClInclude Include="Utilities\Log.h" />
+    <ClInclude Include="Utilities\MouseControl.h" />
     <ClInclude Include="Utilities\SpPtr.h" />
     <ClInclude Include="Systems\ForceSystem.h" />
     <ClInclude Include="Systems\ParticleSystem.h" />

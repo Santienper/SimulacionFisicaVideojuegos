@@ -15,8 +15,10 @@ public:
 	float getMass() const override;
 
 	void disappear();
-private:
+protected:
+	void createShape(physx::PxGeometry* geo, const Vector4& color = { 1, 0.5, 1, 1 });
 	physx::PxRigidDynamic* rigid;
+private:
 	bool disappearing;
 	physx::PxShape* shape;
 };

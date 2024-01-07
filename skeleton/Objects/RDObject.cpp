@@ -7,13 +7,17 @@ RDObject::RDObject(physx::PxGeometry* geo, const Vector3& vel, float damp, float
 
 RDObject::RDObject(const Vector3& pos, physx::PxGeometry* geo, const Vector3& vel, float damp, float mass, const Vector4& color) : PhysicsObject(pos), disappearing(false) {
 	rigid = Scene::get()->getPhysics()->createRigidDynamic(trans);
-	shape = CreateShape(*geo);
-	rigid->attachShape(*shape);
-	physx::PxRigidBodyExt::setMassAndUpdateInertia(*rigid, mass);
 	Scene::get()->addActor(*rigid);
-	render = new RenderItem(shape, rigid, color);
+	physx::PxRigidBodyExt::setMassAndUpdateInertia(*rigid, mass);
 	rigid->setLinearDamping(damp);
 	rigid->setLinearVelocity(vel);
+	if(geo != nullptr) createShape(geo, color);
+}
+
+void RDObject::createShape(physx::PxGeometry* geo, const Vector4& color) {
+	shape = CreateShape(*geo);
+	rigid->attachShape(*shape);
+	render = new RenderItem(shape, rigid, color);
 }
 
 RDObject::~RDObject() {

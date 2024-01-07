@@ -9,6 +9,8 @@ public:
 
 	virtual void update(double t) { }
 	virtual void keyPressed(unsigned char key) { }
+	virtual void mousePressed(int button, int state, int x, int y) { }
+	virtual void mouseMoved(int x, int y) { }
 
 	// Para definir este método es mejor usar el macro "setID(id)"
 	virtual std::string getID() const = 0;

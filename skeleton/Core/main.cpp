@@ -10,6 +10,7 @@
 
 #include <iostream>
 
+#include "Utilities/MouseControl.h"
 #include "Structure/Scene.h"
 
 std::string display_text = "";
@@ -61,6 +62,8 @@ void initPhysics(bool interactive)
 
 	const pxData data = { gFoundation, gPhysics, gPvd, gDispatcher, gScene };
 
+	Log::createLoggers();
+	Mouse::init();
 	sc = new Scene(data, display_text);
 	createScene();
 }
@@ -88,6 +91,8 @@ void cleanupPhysics(bool interactive)
 
 	deleteScene();
 	delete sc;
+	Mouse::destroy();
+	Log::destroyLoggers();
 
 	// Rigid Body ++++++++++++++++++++++++++++++++++++++++++
 	gScene->release();

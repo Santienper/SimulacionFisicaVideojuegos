@@ -58,7 +58,7 @@ bool Camera::handleKey(unsigned char key, int x, int y, float speed)
 {
 	PX_UNUSED(x);
 	PX_UNUSED(y);
-	//*
+	/*
 	PxVec3 viewY = mDir.cross(PxVec3(0,1,0)).getNormalized();
 	switch(toupper(key))
 	{
@@ -80,7 +80,7 @@ void Camera::handleAnalogMove(float x, float y)
 
 void Camera::handleMotion(int x, int y)
 {
-	int dx = mMouseX - x;
+	/*int dx = mMouseX - x;
 	int dy = mMouseY - y;
 
 	PxVec3 viewY = mDir.cross(PxVec3(0,1,0)).getNormalized();
@@ -93,7 +93,7 @@ void Camera::handleMotion(int x, int y)
 	mDir.normalize();
 
 	mMouseX = x;
-	mMouseY = y;
+	mMouseY = y;*/
 }
 
 PxTransform Camera::getTransform() const
@@ -117,6 +117,17 @@ PxVec3 Camera::getDir() const
 	return mDir; 
 }
 
+void Camera::moveCam(const physx::PxVec3& vec) {
+	mEye += vec;
+}
+
+void Camera::changeCam(const physx::PxVec3& vec) {
+	mEye = vec;
+}
+
+void Camera::changeDir(const physx::PxVec3& dir) {
+	mDir = dir.getNormalized();
+}
 
 }
 
