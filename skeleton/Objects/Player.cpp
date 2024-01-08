@@ -10,7 +10,6 @@ Player::Player(const Vector3& pos, float mass) : RDObject(pos, nullptr, Vector3(
 	subMousePress(true);
 	auto geo = physx::PxBoxGeometry(Vector3(5));
 	createShape(&geo);
-	//render->release();
 }
 
 Player::~Player() {
@@ -46,17 +45,16 @@ void Player::keyPressed(unsigned char key) {
 		else {
 			RegisterRenderItem(render);
 			cam->changeCam(trans.p);
+			scene->resetRender();
 		}
 		break;
 	case 'r':
 		if(restricted = !restricted) {
-			if(mBlock) {
-				mBlock = mBlocked = false;
-				Mouse::showCursor(true);
-			}
+			mBlock = mBlocked = false;
+			Mouse::showCursor(true);
 		}
 		break;
-	default:               break;
+	default: break;
 	}
 	//Log::logInfo(std::to_string(key));
 }
@@ -81,7 +79,6 @@ void Player::mouseMoved(int x, int y) {
 			const physx::PxQuat qy(physx::PxPi * dy / 180.0f, viewY);
 			dir = qy.rotate(dir);
 
-			dir.normalize();
 			scene->cam->changeDir(dir);
 		}
 		mBlocked = true;

@@ -87,6 +87,13 @@ void Scene::commit() {
 	sysToAdd.clear();
 }
 
+void Scene::resetRender() {
+	for(auto obj : resetRenderSubs) {
+		DeregisterRenderItem(obj->render);
+		RegisterRenderItem(obj->render);
+	}
+}
+
 void Scene::addObject(Object* obj) {
 	objToAdd.push_back(obj);
 }
@@ -125,6 +132,18 @@ void Scene::subMouseMove(Object* obj, bool add) {
 		for(auto it = mouseMoveSubs.cbegin(); it != mouseMoveSubs.cend(); ++it) {
 			if(*it == obj) {
 				mouseMoveSubs.erase(it);
+				break;
+			}
+		}
+	}
+}
+
+void Scene::subResetRender(Object* obj, bool add) {
+	if(add) resetRenderSubs.push_back(obj);
+	else {
+		for(auto it = resetRenderSubs.cbegin(); it != resetRenderSubs.cend(); ++it) {
+			if(*it == obj) {
+				resetRenderSubs.erase(it);
 				break;
 			}
 		}

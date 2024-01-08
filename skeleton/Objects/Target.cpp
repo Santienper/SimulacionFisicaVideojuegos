@@ -2,7 +2,7 @@
 #include "Structure/Scene.h"
 
 Target::Target(const Vector3& pos, const Vector4& color) : RSObject(pos, nullptr), sys(nullptr) {
-	sys = Scene::get()->getSystem<TargetSystem>();
+	sys = scene->getSystem<TargetSystem>();
 	if(sys == nullptr) {
 		alive = false;
 		Log::logError("No hay sistema de dianas, omitiendo creacion de diana");

@@ -5,6 +5,7 @@
 class Scene;
 
 class Object {
+	friend class Scene;
 public:
 	Object(const Vector3& pos = Vector3(0));
 	virtual ~Object();
@@ -28,6 +29,7 @@ protected:
 	void subKey(bool add);
 	void subMousePress(bool add);
 	void subMouseMove(bool add);
+	void subRenderReset(bool add);
 
 	SpPtr<Scene> scene;
 
@@ -35,5 +37,5 @@ protected:
 	RenderItem* render;
 	std::string type;
 private:
-	bool subbedKey, subbedMousePress, subbedMouseMove;
+	bool subbedKey, subbedMousePress, subbedMouseMove, subbedResetRender;
 };

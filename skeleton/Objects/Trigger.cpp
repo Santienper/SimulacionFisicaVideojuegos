@@ -3,11 +3,11 @@
 
 Trigger::Trigger(const Vector3& pos) : Object(pos) {
 	callbackEnter = callbackLoop = callbackExit = [](const Object*)->void{ };
-	sceneObjects = Scene::get()->getObjects();
+	sceneObjects = scene->getObjects();
 }
 
 Trigger::~Trigger() {
-	if(!Scene::get()->isClosing()) {
+	if(!scene->isClosing()) {
 		for(auto& obj : *sceneObjects) {
 			if(obj != nullptr && objects.find(obj.get()) != objects.end()) {
 				callbackExit(obj.get());

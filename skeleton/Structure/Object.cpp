@@ -1,7 +1,7 @@
 #include "Object.h"
 #include "Scene.h"
 
-Object::Object(const Vector3& pos) : trans(pos), render(nullptr), alive(true), scene(nullptr), subbedKey(false), subbedMousePress(false), subbedMouseMove(false) {
+Object::Object(const Vector3& pos) : trans(pos), render(nullptr), alive(true), scene(nullptr), subbedKey(false), subbedMousePress(false), subbedMouseMove(false), subbedResetRender(false) {
 	scene = Scene::get();
 	scene->addObject(this);
 }
@@ -11,6 +11,7 @@ Object::~Object() {
 	subKey(false);
 	subMouseMove(false);
 	subMousePress(false);
+	subRenderReset(false);
 }
 
 void Object::subKey(bool add) {
@@ -28,5 +29,11 @@ void Object::subMousePress(bool add) {
 void Object::subMouseMove(bool add) {
 	if(subbedMouseMove != add) {
 		scene->subMouseMove(this, add);
+	}
+}
+
+void Object::subRenderReset(bool add) {
+	if(subbedResetRender != add) {
+		scene->subResetRender(this, add);
 	}
 }

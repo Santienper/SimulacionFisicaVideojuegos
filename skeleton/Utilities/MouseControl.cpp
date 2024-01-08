@@ -34,7 +34,7 @@ void Mouse::getPos(int& x, int& y) {
 void Mouse::setPos(int x, int y) {
 	RECT rect = { 0 };
 	GetWindowRect(win->window, &rect);
-	if(x > rect.right - rect.left || y > rect.bottom - rect.top) {
+	if(x > rect.right - rect.left || y > rect.bottom - rect.top || x < 0 || y < 0) {
 		Log::logError("Einc?");
 		return;
 	}

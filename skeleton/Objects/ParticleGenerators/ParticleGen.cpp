@@ -2,7 +2,7 @@
 #include "Structure/Scene.h"
 
 ParticleGen::ParticleGen(const Vector3& pos, double rate) : Object(pos), time(0), rate(rate) {
-	sys = Scene::get()->getSystem<ParticleSystem>();
+	sys = scene->getSystem<ParticleSystem>();
 	if(sys == nullptr) {
 		alive = false;
 		Log::logError("No hay sistema de particulas, omitiendo creacion de generador de particulas");

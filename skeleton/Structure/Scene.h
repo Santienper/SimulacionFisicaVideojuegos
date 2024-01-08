@@ -41,6 +41,7 @@ public:
 	void mousePressed(int button, int state, int x, int y);
 	void mouseMoved(int x, int y);
 	void commit();
+	void resetRender();
 
 	bool isClosing() const noexcept { return closing; }
 	std::string& display_text;
@@ -51,7 +52,7 @@ protected:
 	std::vector<SpPtr<Object>> objects, objToAdd;
 	std::unordered_map<std::string, SpPtr<System>> systems;
 	std::vector<std::pair<std::string, SpPtr<System>>> sysToAdd;
-	std::vector<Object*> keySubs, mouseMoveSubs, mousePressSubs;
+	std::vector<Object*> keySubs, mouseMoveSubs, mousePressSubs, resetRenderSubs;
 private:
 	void addObject(Object*);
 	void addSystem(System*, const std::string& id);
@@ -59,6 +60,7 @@ private:
 	void subKey(Object*, bool add);
 	void subMousePress(Object*, bool add);
 	void subMouseMove(Object*, bool add);
+	void subResetRender(Object*, bool add);
 
 	SpPtr<System> getSystem(const std::string& id);
 
