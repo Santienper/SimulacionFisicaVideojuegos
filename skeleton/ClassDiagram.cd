@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ParticleSystem">
+    <Position X="0.5" Y="0.5" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="ParticleSystem::PartManaging">
+        <TypeIdentifier>
+          <NewMemberFileName>Systems\ParticleSystem.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEAACAABEAAAAAAAAAgAQAIAAAAAAAAAAAAAAAAECAA=</HashCode>
+      <FileName>Systems\ParticleSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RDSystem">
+    <Position X="10.5" Y="0.5" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="RDSystem::RDManaging">
+        <TypeIdentifier>
+          <NewMemberFileName>Systems\RDSystem.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEAACACAEAAAAAAAAAAAAAAgAABAAAAAAAAAAAAECAQ=</HashCode>
+      <FileName>Systems\RDSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System">
+    <Position X="5.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>EGAAAAAAAIAAAAGAAAAABQAABAAAgAAAAEAAACAEAAA=</HashCode>
+      <FileName>Structure\System.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParticleGen">
+    <Position X="0.5" Y="8.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAEAAIAAAAABAAAAAAEAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Objects\ParticleGenerators\ParticleGen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GaussianPartGen">
+    <Position X="4.75" Y="7" Width="6.25" />
+    <TypeIdentifier>
+      <HashCode>EAAEAAAAJAAAAAAAAAAAQAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\ParticleGenerators\GaussianPartGen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GaussianScriptGen">
+    <Position X="4.25" Y="12" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAIAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAg=</HashCode>
+      <FileName>Objects\ParticleGenerators\GaussianScriptGen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BasicFireworkGen&lt;Firework&gt;">
+    <Position X="11.5" Y="7" Width="9.25" />
+    <TypeIdentifier>
+      <HashCode>QABAAABAIAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Objects\ParticleGenerators\BasicFireworkGen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CircleFWGen&lt;Firework&gt;">
+    <Position X="11" Y="9.75" Width="10" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAIAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Objects\ParticleGenerators\CircleFWGen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniformPartGen">
+    <Position X="0.5" Y="11.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AEAEAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\ParticleGenerators\UniformPartGen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RDGen">
+    <Position X="1.25" Y="15" Width="8.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="RDGen::RDVisuals">
+        <TypeIdentifier>
+          <NewMemberFileName>Objects\RDGen.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAFAEAARAAAAIBAAAAAYAAAAACAAEAAQAEAAAAEAAA=</HashCode>
+      <FileName>Objects\RDGen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

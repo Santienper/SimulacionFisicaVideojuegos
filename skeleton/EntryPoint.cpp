@@ -27,11 +27,11 @@ public:
 };
 
 std::vector<Map*> createMaps() {
-	//std::vector<Map*> maps = { new Map1(), new Map2(), new Map3(), new MapEnd() };
+	std::vector<Map*> maps = { new Map1(), new Map2(), new Map3(), new MapEnd() };
 #ifdef DEBUG
 	maps.insert(maps.cbegin(), new MapDebug());
 #endif
-	std::vector<Map*> maps = { new Map3(), new MapEnd() };
+	//std::vector<Map*> maps = { new Map3(), new MapEnd() };
 
 	new TargetSystem();
 	new ForceSystem();

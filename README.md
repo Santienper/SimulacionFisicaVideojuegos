@@ -7,3 +7,5 @@ Para mover la cámara, se usan las flechas. En el primer nivel la cámara no se 
 Al hacer clic izquierdo en la pantalla, se bloquea el ratón en la ventana y al mover el ratón así se gira la cámara (no hace falta arrastrarlo). Para desbloquear el ratón se debe hacer clic derecho.
 
 Al terminar el juego, se llegará a una pantalla con fuegos artificiales, en la cual pulsar la tecla R hará que se vuelva al primer nivel.
+
+Para activar o desactivar el modo de primera persona, se ha de pulsar la tecla P.
