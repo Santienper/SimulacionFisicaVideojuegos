@@ -25,6 +25,7 @@ public:
 	void update(double t);
 
 	void getOtherSystems();
+	void clear() override;
 protected:
 	std::vector<PartManaging> particles;
 	SpPtr<ForceSystem> forceSys;

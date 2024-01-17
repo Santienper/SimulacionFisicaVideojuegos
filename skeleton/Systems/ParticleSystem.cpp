@@ -43,3 +43,11 @@ void ParticleSystem::update(double t) {
 void ParticleSystem::getOtherSystems() {
 	forceSys = Scene::get()->getSystem<ForceSystem>();
 }
+
+void ParticleSystem::clear() {
+	auto it = particles.begin();
+	while(it != particles.end()) {
+		it->particle->alive = false;
+		it = particles.erase(it);
+	}
+}

@@ -70,6 +70,20 @@ void keyboardCallback(unsigned char key, int x, int y)
 	if(sScene) sScene->keyPressed(key);
 }
 
+void keyboardUpCallback(unsigned char key, int x, int y) {
+	if(sScene) sScene->keyReleased(key);
+}
+
+void specialCallback(int key, int x, int y) {
+	if(sScene) sScene->specialKeyPressed(key);
+
+	sCamera->handleSpecialKey(key, x, y);
+}
+
+void specialUpCallback(int key, int x, int y) {
+	if(sScene) sScene->specialKeyReleased(key);
+}
+
 void mouseCallback(int button, int state, int x, int y)
 {
 	sCamera->handleMouse(button, state, x, y);
@@ -155,6 +169,9 @@ void renderLoop()
 	glutIdleFunc(idleCallback);
 	glutDisplayFunc(renderCallback);
 	glutKeyboardFunc(keyboardCallback);
+	glutKeyboardUpFunc(keyboardUpCallback);
+	glutSpecialFunc(specialCallback);
+	glutSpecialUpFunc(specialUpCallback);
 	glutMouseFunc(mouseCallback);
 	glutMotionFunc(motionCallback);
 	glutPassiveMotionFunc(passiveMotionCallback);

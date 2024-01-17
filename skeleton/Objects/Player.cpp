@@ -2,24 +2,38 @@
 #include "Structure/Scene.h"
 #include "Utilities/MouseControl.h"
 
-Player::Player(const Vector3& pos, float mass) : RDObject(pos, nullptr, Vector3(0), mass), move(Vector3(0)), fpsMode(false), restricted(false), mBlock(false), mBlocked(false) {
+Player::Player(const Vector3& pos, const Vector3& camPos, float mass) : RDObject(pos, nullptr, Vector3(0), mass), move(Vector3(0)), cameraDir(Vector3(0)),
+	fpsMode(false), restricted(false), mBlock(false), mBlocked(false), wPressed(false), aPressed(false), sPressed(false), dPressed(false) {
+	trans.p = camPos;
+
 	cam = scene->cam;
 	cam->changeCam(trans.p);
-	subKey(true);
+	subKeyPress(true);
+	subKeyRelease(true);
 	subMouseMove(true);
 	subMousePress(true);
-	auto geo = physx::PxBoxGeometry(Vector3(5));
+	auto geo = physx::PxBoxGeometry(Vector3(2));
 	createShape(&geo);
+	Vector3 dir = pos - camPos;
+	if(dir.y == 1) dir.y += 0.00001f;
+	cam->changeDir(dir);
 }
 
 Player::~Player() {
 	if(fpsMode) RegisterRenderItem(render);
+	Mouse::showCursor(true);
 }
 
 void Player::update(double t) {
-	clearAcum();
+	//clearAcum();
 
+	move = Vector3(0);
+	if(wPressed) move.z =  1;
+	if(aPressed) move.x = -1;
+	if(sPressed) move.z = -1;
+	if(dPressed) move.x =  1;
 	move.normalize();
+
 	const Vector3 normal = cam->getDir().cross(Vector3(0, 1, 0)).getNormalized();
 	const Vector3 dir = restricted ? -(normal.cross(Vector3(0, 1, 0)).getNormalized()) : cam->getDir();
 	Vector3 force = dir * move.z + normal * move.x;
@@ -30,26 +44,34 @@ void Player::update(double t) {
 	RDObject::update(t);
 
 	if(fpsMode) cam->changeCam(rigid->getGlobalPose().p);
-	move = Vector3(0);
 }
 
 void Player::keyPressed(unsigned char key) {
 	switch(key) {
-	case 'w': move.z =  1; break;
-	case 'a': move.x = -1; break;
-	case 's': move.z = -1; break;
-	case 'd': move.x =  1; break;
+	case 'w': wPressed = true; break;
+	case 'a': aPressed = true; break;
+	case 's': sPressed = true; break;
+	case 'd': dPressed = true; break;
 	case 'p':
-		if(fpsMode = !fpsMode)
+		if(fpsMode = !fpsMode) {
 			DeregisterRenderItem(render);
+			if(restricted) {
+				cameraDir = cam->getDir();
+			}
+		}
 		else {
 			RegisterRenderItem(render);
 			cam->changeCam(trans.p);
 			scene->resetRender();
+			if(restricted) {
+				mBlock = mBlocked = false;
+				Mouse::showCursor(true);
+				cam->changeDir(cameraDir);
+			}
 		}
 		break;
 	case 'r':
-		if(restricted = !restricted) {
+		if(restricted = !restricted && !fpsMode) {
 			mBlock = mBlocked = false;
 			Mouse::showCursor(true);
 		}
@@ -57,6 +79,20 @@ void Player::keyPressed(unsigned char key) {
 	default: break;
 	}
 	//Log::logInfo(std::to_string(key));
+}
+
+void Player::keyReleased(unsigned char key) {
+	switch(key) {
+	case 'w': wPressed = false; break;
+	case 'a': aPressed = false; break;
+	case 's': sPressed = false; break;
+	case 'd': dPressed = false; break;
+	default:                    break;
+	}
+}
+
+void Player::specialKeyPressed(int key) {
+
 }
 
 void Player::mouseMoved(int x, int y) {
@@ -87,7 +123,7 @@ void Player::mouseMoved(int x, int y) {
 void Player::mousePressed(int button, int state, int x, int y) {
 	if(state == 0) {
 		if(button == 0) {
-			if(!restricted) {
+			if(!restricted || fpsMode) {
 				mBlock = true;
 				Mouse::showCursor(false);
 			}
@@ -96,4 +132,8 @@ void Player::mousePressed(int button, int state, int x, int y) {
 			Mouse::showCursor(true);
 		}
 	}
+}
+
+void Player::restrict(bool restricted) {
+	this->restricted = restricted;
 }

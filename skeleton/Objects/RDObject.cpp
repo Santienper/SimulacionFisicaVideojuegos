@@ -6,6 +6,8 @@ RDObject::RDObject(physx::PxGeometry* geo, const Vector3& vel, float damp, float
 }
 
 RDObject::RDObject(const Vector3& pos, physx::PxGeometry* geo, const Vector3& vel, float damp, float mass, const Vector4& color) : PhysicsObject(pos), disappearing(false) {
+	addType("rigid");
+
 	rigid = scene->getPhysics()->createRigidDynamic(trans);
 	scene->addActor(*rigid);
 	physx::PxRigidBodyExt::setMassAndUpdateInertia(*rigid, mass);
@@ -22,7 +24,7 @@ void RDObject::createShape(physx::PxGeometry* geo, const Vector4& color) {
 }
 
 RDObject::~RDObject() {
-
+	scene->removeActor(*rigid);
 }
 
 void RDObject::update(double t) {
@@ -62,8 +64,16 @@ Vector3 RDObject::getVel() const {
 	return rigid->getLinearVelocity();
 }
 
+Vector3 RDObject::getPos() const {
+	return rigid->getGlobalPose().p;
+}
+
 float RDObject::getMass() const {
 	return rigid->getMass();
+}
+
+void RDObject::setDensity(int density, const Vector3& massCenter) {
+	physx::PxRigidBodyExt::updateMassAndInertia(*rigid, 30, &massCenter);
 }
 
 void RDObject::disappear() {

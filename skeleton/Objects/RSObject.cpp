@@ -11,8 +11,12 @@ RSObject::RSObject(const Vector3& pos, physx::PxGeometry* geo, const Vector4& co
 	if(geo != nullptr) createShape(geo, color);
 }
 
+Vector3 RSObject::getPos() const {
+	return rigid->getGlobalPose().p;
+}
+
 RSObject::~RSObject() {
-	
+	scene->removeActor(*rigid);
 }
 
 void RSObject::createShape(physx::PxGeometry* geo, const Vector4& color) {

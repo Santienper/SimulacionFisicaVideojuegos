@@ -257,7 +257,13 @@
   <ItemGroup>
     <ClCompile Include="Core\callbacks.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
+    <ClCompile Include="Maps\Map1.cpp" />
+    <ClCompile Include="Maps\Map2.cpp" />
+    <ClCompile Include="Maps\Map3.cpp" />
+    <ClCompile Include="Maps\MapEnd.cpp" />
+    <ClCompile Include="Objects\ForceEffectBox.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
+    <ClCompile Include="Objects\SphereRigidTrigger.cpp" />
     <ClCompile Include="Objects\Target.cpp" />
     <ClCompile Include="Previous EntryPoint.cpp" />
     <ClCompile Include="Core\main.cpp" />
@@ -300,7 +306,12 @@
   <ItemGroup>
     <ClInclude Include="Core\callbacks.hpp" />
     <ClInclude Include="core.hpp" />
+    <ClInclude Include="Maps\Map1.h" />
+    <ClInclude Include="Maps\Map2.h" />
+    <ClInclude Include="Maps\Map3.h" />
+    <ClInclude Include="Maps\MapEnd.h" />
     <ClInclude Include="Objects\Fader.h" />
+    <ClInclude Include="Objects\ForceEffectBox.h" />
     <ClInclude Include="Objects\Not important\Box.h" />
     <ClInclude Include="Objects\FireworkGenerators\BasicFireworkGen.h" />
     <ClInclude Include="Objects\FireworkGenerators\CircleFWGen.h" />
@@ -327,8 +338,10 @@
     <ClInclude Include="Objects\RDGen.h" />
     <ClInclude Include="Objects\RSObject.h" />
     <ClInclude Include="Objects\Not important\Shooter.h" />
+    <ClInclude Include="Objects\SphereRigidTrigger.h" />
     <ClInclude Include="Objects\Target.h" />
     <ClInclude Include="Objects\Trigger.h" />
+    <ClInclude Include="Structure\Map.h" />
     <ClInclude Include="Structure\PhysicsObject.h" />
     <ClInclude Include="Systems\RDSystem.h" />
     <ClInclude Include="Systems\TargetSystem.h" />

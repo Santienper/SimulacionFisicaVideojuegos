@@ -43,3 +43,11 @@ void RDSystem::update(double t) {
 void RDSystem::getOtherSystems() {
 	forceSys = Scene::get()->getSystem<ForceSystem>();
 }
+
+void RDSystem::clear() {
+	auto it = rigids.begin();
+	while(it != rigids.end()) {
+		it->rigid->alive = false;
+		it = rigids.erase(it);
+	}
+}

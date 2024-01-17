@@ -4,7 +4,7 @@
 class PhysicsObject : public Object {
 	// type: physics
 public:
-	PhysicsObject(const Vector3& pos = Vector3(0)) : Object(pos) { type = "physics"; }
+	PhysicsObject(const Vector3& pos = Vector3(0)) : Object(pos) { addType("physics"); }
 
 	virtual void addForce(const Vector3&) = 0;
 	virtual void clearAcum() = 0;

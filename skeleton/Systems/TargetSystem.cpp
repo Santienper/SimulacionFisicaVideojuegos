@@ -1,7 +1,9 @@
 #include "TargetSystem.h"
 #include "Objects/Target.h"
+#include "Structure/Scene.h"
+#include "Structure/Map.h"
 
-TargetSystem::TargetSystem() : SystemConstr {
+TargetSystem::TargetSystem() : SystemConstr, mapIndex(0) {
 	
 }
 
@@ -26,6 +28,6 @@ void TargetSystem::targetHit(Target* tg) {
 	}
 	tg->alive = false;
 	if(targets.size() == 0) {
-		// TODO: Ganaste!!! :D
+		Scene::get()->getCurrentMap()->clearedTargets();
 	}
 }

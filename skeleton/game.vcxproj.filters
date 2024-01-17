@@ -46,6 +46,12 @@
     <ClCompile Include="Utilities\Log.cpp" />
     <ClCompile Include="Utilities\MouseControl.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
+    <ClCompile Include="Maps\Map1.cpp" />
+    <ClCompile Include="Maps\Map2.cpp" />
+    <ClCompile Include="Maps\Map3.cpp" />
+    <ClCompile Include="Objects\SphereRigidTrigger.cpp" />
+    <ClCompile Include="Objects\ForceEffectBox.cpp" />
+    <ClCompile Include="Maps\MapEnd.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -100,6 +106,13 @@
     <ClInclude Include="Utilities\MouseControl.h" />
     <ClInclude Include="Objects\Player.h" />
     <ClInclude Include="Objects\Fader.h" />
+    <ClInclude Include="Structure\Map.h" />
+    <ClInclude Include="Maps\Map1.h" />
+    <ClInclude Include="Maps\Map2.h" />
+    <ClInclude Include="Maps\Map3.h" />
+    <ClInclude Include="Objects\SphereRigidTrigger.h" />
+    <ClInclude Include="Objects\ForceEffectBox.h" />
+    <ClInclude Include="Maps\MapEnd.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

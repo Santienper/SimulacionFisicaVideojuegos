@@ -32,6 +32,7 @@
 #include "Camera.h"
 #include <ctype.h>
 #include "foundation/PxMat33.h"
+#include "core.hpp"
 
 using namespace physx;
 
@@ -70,6 +71,8 @@ bool Camera::handleKey(unsigned char key, int x, int y, float speed)
 	}//*/
 	return true;
 }
+
+
 
 void Camera::handleAnalogMove(float x, float y)
 {
@@ -127,6 +130,18 @@ void Camera::changeCam(const physx::PxVec3& vec) {
 
 void Camera::changeDir(const physx::PxVec3& dir) {
 	mDir = dir.getNormalized();
+}
+
+bool Camera::handleSpecialKey(int key, int x, int y, float speed) {
+	PxVec3 viewY = mDir.cross(PxVec3(0, 1, 0)).getNormalized();
+	switch(key) {
+	case GLUT_KEY_UP:		mEye += mDir * 2.0f * speed;		break;
+	case GLUT_KEY_DOWN:		mEye -= mDir * 2.0f * speed;		break;
+	case GLUT_KEY_LEFT:		mEye -= viewY * 2.0f * speed;		break;
+	case GLUT_KEY_RIGHT:	mEye += viewY * 2.0f * speed;		break;
+	default:											return false;
+		return false;
+	}
 }
 
 }

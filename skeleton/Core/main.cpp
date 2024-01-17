@@ -53,7 +53,7 @@ void initPhysics(bool interactive)
 
 	// For Solid Rigids +++++++++++++++++++++++++++++++++++++
 	PxSceneDesc sceneDesc(gPhysics->getTolerancesScale());
-	sceneDesc.gravity = PxVec3(0.0f, -9.8f, 0.0f);
+	sceneDesc.gravity = PxVec3(0.0f, -98.0f, 0.0f);
 	gDispatcher = PxDefaultCpuDispatcherCreate(2);
 	sceneDesc.cpuDispatcher = gDispatcher;
 	sceneDesc.filterShader = contactReportFilterShader;
@@ -65,7 +65,7 @@ void initPhysics(bool interactive)
 	Log::createLoggers();
 	Mouse::init();
 	sc = new Scene(data, display_text);
-	createScene();
+	sc->init();
 }
 
 
@@ -89,8 +89,7 @@ void cleanupPhysics(bool interactive)
 {
 	PX_UNUSED(interactive);
 
-	deleteScene();
-	delete sc;
+	sc->get().free();
 	Mouse::destroy();
 	Log::destroyLoggers();
 

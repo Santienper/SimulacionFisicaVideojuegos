@@ -2,8 +2,9 @@
 #include "Object.h"
 #include "System.h"
 #include "Core/RenderUtils.hpp"
+#include "Map.h"
 
-Scene::Scene(pxData physxData, std::string& display_text) : closing(false), physxData(physxData), display_text(display_text) {
+Scene::Scene(pxData physxData, std::string& display_text) : closing(false), physxData(physxData), display_text(display_text), currentMap(-1) {
 	cam = GetCamera();
 	instance = this;
 	safeInstance = new SpPtr<Scene>(this);
@@ -12,13 +13,23 @@ Scene::Scene(pxData physxData, std::string& display_text) : closing(false), phys
 
 Scene::~Scene() {
 	closing = true;
+	loadMap(-1);
 	for(auto& obj : objects) {
 		obj.free();
 	}
 	for(auto& sys : systems) {
 		sys.second.free();
 	}
+	for(Map* map : maps) {
+		delete map;
+	}
+	instance = nullptr;
 	_setScene(nullptr);
+}
+
+void Scene::init() {
+	maps = createMaps();
+	loadMap(0);
 }
 
 void Scene::update(double t) {
@@ -51,8 +62,35 @@ void Scene::keyPressed(unsigned char key) {
 	for(auto& pair : systems) {
 		pair.second->keyPressed(key);
 	}
-	for(auto& obj : keySubs) {
+	for(auto& obj : keyPressSubs) {
 		obj->keyPressed(key);
+	}
+}
+
+void Scene::keyReleased(unsigned char key) {
+	for(auto& pair : systems) {
+		pair.second->keyReleased(key);
+	}
+	for(auto& obj : keyReleaseSubs) {
+		obj->keyReleased(key);
+	}
+}
+
+void Scene::specialKeyPressed(int key) {
+	for(auto& pair : systems) {
+		pair.second->specialKeyPressed(key);
+	}
+	for(auto& obj : keyPressSubs) {
+		obj->specialKeyPressed(key);
+	}
+}
+
+void Scene::specialKeyReleased(int key) {
+	for(auto& pair : systems) {
+		pair.second->specialKeyReleased(key);
+	}
+	for(auto& obj : keyReleaseSubs) {
+		obj->specialKeyReleased(key);
 	}
 }
 
@@ -94,6 +132,25 @@ void Scene::resetRender() {
 	}
 }
 
+void Scene::nextMap() {
+	loadMap(currentMap + 1);
+}
+
+void Scene::loadMap(int mapIndex) {
+	if(currentMap > -1) {
+		maps[currentMap]->deleteMap();
+		for(auto& sys : systems) {
+			sys.second->clear();
+		}
+		for(auto& obj : objects) {
+			obj->alive = false;
+		}
+	}
+	if(mapIndex > -1) maps[mapIndex]->createMap();
+	resetRender();
+	currentMap = mapIndex;
+}
+
 void Scene::addObject(Object* obj) {
 	objToAdd.push_back(obj);
 }
@@ -102,12 +159,24 @@ void Scene::addSystem(System* sys, const std::string& id) {
 	sysToAdd.push_back(std::make_pair(id, sys));
 }
 
-void Scene::subKey(Object* obj, bool add) {
-	if(add) keySubs.push_back(obj);
+void Scene::subKeyPress(Object* obj, bool add) {
+	if(add) keyPressSubs.push_back(obj);
 	else {
-		for(auto it = keySubs.cbegin(); it != keySubs.cend(); ++it) {
+		for(auto it = keyPressSubs.cbegin(); it != keyPressSubs.cend(); ++it) {
 			if(*it == obj) {
-				keySubs.erase(it);
+				keyPressSubs.erase(it);
+				break;
+			}
+		}
+	}
+}
+
+void Scene::subKeyRelease(Object* obj, bool add) {
+	if(add) keyReleaseSubs.push_back(obj);
+	else {
+		for(auto it = keyReleaseSubs.cbegin(); it != keyReleaseSubs.cend(); ++it) {
+			if(*it == obj) {
+				keyReleaseSubs.erase(it);
 				break;
 			}
 		}

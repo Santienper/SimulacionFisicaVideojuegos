@@ -16,4 +16,6 @@ private:
 	void addTarget(Target*);
 	void targetHit(Target*);
 	std::vector<Target*> targets;
+
+	int mapIndex;
 };

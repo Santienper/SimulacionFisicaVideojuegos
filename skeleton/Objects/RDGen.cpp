@@ -43,4 +43,6 @@ void RDGen::createRD(RDData& data) {
 	data.maxTime = maxTime; data.disappear = false;
 
 	rate = rnd(gen) * 0.2f + startRate;
+
+	data.rigid->setDensity(rnd(gen) * 3, Vector3(rnd(gen), rnd(gen), rnd(gen)));
 }

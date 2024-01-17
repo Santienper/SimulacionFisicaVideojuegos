@@ -4,7 +4,7 @@ MovingObject::MovingObject(const Vector3& pos, const Vector3& vel, const Vector3
 	: PhysicsObject(pos), vel(vel), acc(acc), damp(damp), mass(mass), inv_mass(mass == 0 ? 0 : 1 / mass),
 	affectedByForce(false) {
 
-	type = "moving";
+	addType("moving");
 }
 
 MovingObject::~MovingObject() {

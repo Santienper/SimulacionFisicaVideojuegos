@@ -288,7 +288,7 @@ void startRender(const PxVec3& cameraEye, const PxVec3& cameraDir, PxReal clipNe
 
 	// Display text
 	glColor4f(1.0f, 0.2f, 0.2f, 1.0f);
-	drawText(display_text, 0, 0);
+	drawText(display_text, GLUT_INIT_WINDOW_WIDTH / 2.0f - display_text.size(), GLUT_INIT_WINDOW_HEIGHT / 2.0f);
 
 	// Setup camera
 	glMatrixMode(GL_PROJECTION);
@@ -318,7 +318,7 @@ void renderShape(const PxShape& shape, const PxTransform& transform, const PxVec
 	assert(glGetError() == GL_NO_ERROR);
 	glColor4f(color.x, color.y, color.z, color.w);
 	assert(glGetError() == GL_NO_ERROR);
-	renderGeometry(h, color.w < 0.999f);
+	renderGeometry(h, false);
 	assert(glGetError() == GL_NO_ERROR);
 	glPopMatrix();
 	assert(glGetError() == GL_NO_ERROR);

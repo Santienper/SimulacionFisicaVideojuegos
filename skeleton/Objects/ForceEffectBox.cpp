@@ -1,9 +1,9 @@
-#include "ForceEffectSphere.h"
+#include "ForceEffectBox.h"
 #include "Structure/Scene.h"
 #include "Systems/ForceSystem.h"
 #include "ForceGenerators/ForceGenerator.h"
 
-ForceEffectSphere::ForceEffectSphere(ForceGenerator* force, const Vector3& pos, float radius) : Trigger(pos), force(force), radius(radius) {
+ForceEffectBox::ForceEffectBox(ForceGenerator* force, const Vector3& pos, const Vector3& halfExtents) : Trigger(pos), force(force), halfExtents(halfExtents) {
 	sys = scene->getSystem<ForceSystem>();
 	setCallbackEnter([&, force](Object* obj) -> void {
 		if(sys == nullptr) { alive = false; return; }
@@ -20,7 +20,7 @@ ForceEffectSphere::ForceEffectSphere(ForceGenerator* force, const Vector3& pos, 
 	});
 }
 
-bool ForceEffectSphere::isInside(Object* obj) {
+bool ForceEffectBox::isInside(Object* obj) {
 	Vector3 pos = (obj->getPos() - trans.p).abs();
-	return pos.magnitude() < radius;
+	return pos.x > -halfExtents.x && pos.x < halfExtents.x && pos.y > -halfExtents.y && pos.y < halfExtents.y && pos.z > -halfExtents.z && pos.z < halfExtents.z;
 }

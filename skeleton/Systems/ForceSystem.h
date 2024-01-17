@@ -20,6 +20,7 @@ public:
 
 	void update(double t);
 
+	void clear() override;
 private:
 	std::vector<ForceGenerator*> toDelete;
 	std::unordered_map<ForceGenerator*, std::unordered_set<PhysicsObject*>> mapForce;

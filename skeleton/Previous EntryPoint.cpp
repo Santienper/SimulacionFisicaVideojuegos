@@ -68,7 +68,7 @@ void createDebugScene() {
 	RDObject* souith = new RDObject(Vector3(0, 10, 0), &a);
 	//*/
 	
-	//* Generador de objetos de PhysX
+	/* Generador de objetos de PhysX
 	physx::PxGeometry *geo1 = new physx::PxSphereGeometry(3), *geo2 = new physx::PxBoxGeometry(Vector3(3)), *geo3 = new physx::PxCapsuleGeometry(1, 1);
 	RDGen::RDVisuals *vis1 = new RDGen::RDVisuals(geo1, Vector4(0.8f, 0.094f, 0.031f, 1)), *vis2 = new RDGen::RDVisuals(geo2, Vector4(1, 0.5, 1, 1)), *vis3 = new RDGen::RDVisuals(geo3, Vector4(0.239f, 0.722f, 0.671f, 1));
 	//                       pos              , visuals             , rate, rndVel           , startVel  , maxTime

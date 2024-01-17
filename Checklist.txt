@@ -1,0 +1,11 @@
+- [X] Un generador de partículas que no sea de fuegos artificiales (Map2)
+- [X] Un generador de fuegos artificiales (MapEnd)
+- [X] Gestión de creación y destrucción de instancias (ParticleSystem, RDSystem)
+- [X] Destrucción de todos los elementos al salir de la escena
+- [X] Partículas con distinta masa (GaussianPartGen)
+- [X] Sistema de sólidos rígidos (RDSystem)
+- [ ] Sólidos rígidos con distinto tamaño, forma, masa y tensor de inercia
+- [X] Dos generadores de fuerzas distintos (no muelles), con fórmula y
+       restricciones de aplicación (Map2)
+- [X] Interacción con el usuario a través del teclado y/o ratón (Player)
+- [X] Un ejemplo de muelle o flotación (Map3)

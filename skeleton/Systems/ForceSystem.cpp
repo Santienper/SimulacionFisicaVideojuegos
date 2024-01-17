@@ -15,6 +15,7 @@ void ForceSystem::addConnection(PhysicsObject* obj, ForceGenerator* force) {
 }
 
 void ForceSystem::deleteConnection(PhysicsObject* obj, ForceGenerator* force) {
+	if(mapObj.find(obj) == mapObj.end()) return;
 	mapForce[force].erase(obj);
 	mapObj[obj].erase(force);
 }
@@ -49,4 +50,19 @@ void ForceSystem::update(double t) {
 			force->updateForce(data.first, t);
 		}
 	}
+}
+
+void ForceSystem::clear() {
+	for(auto it = toDelete.begin(); it != toDelete.end();) {
+		auto force = *it;
+		for(auto part : mapForce[force]) {
+			mapObj[part].erase(force);
+		}
+		mapForce.erase(force);
+		force->alive = false;
+		it = toDelete.erase(it);
+	}
+
+	mapObj.clear();
+	mapForce.clear();
 }
