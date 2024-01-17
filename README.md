@@ -1,8 +1,9 @@
-# SimulacionFisicaVideojuegos
-Repositorio de las prácticas de la asignatura de Simulación Física de Videojuegos
+# Manual de usuario
+Debido a ciertas mecánicas y falta de tiempo, el juego sólo funciona en Windows.
 
-En la carpeta skeleton estará vuestro código fuente
+Para controlar el jugador, se usan las teclas WASD. En el primer nivel, estas mueven el cubo en los ejes X y Z, mientras que en el resto se mueven teniendo en cuenta la posición de la cámara. Para ello, W aleja al cubo de la cámara mientras que S lo atrae. En cuanto a A y D, mueven el cubo a la izquierda y a la derecha respectivamente.
 
-Necesitaréis además descomprimir el archivo que se indica a continuación en la raíz del repositorio:
+Para mover la cámara, se usan las flechas. En el primer nivel la cámara no se puede mover.
+Al hacer clic izquierdo en la pantalla, se bloquea el ratón en la ventana y al mover el ratón así se gira la cámara (no hace falta arrastrarlo). Para desbloquear el ratón se debe hacer clic derecho.
 
-Carpetas bin y common https://ucomplutense-my.sharepoint.com/:u:/g/personal/davalejo_ucm_es/EZcsdyIoqTFOrF4hdfkVYk0BJZ9IycJ3QqXQFwaXVrlSKg?e=pfs6IO
+Al terminar el juego, se llegará a una pantalla con fuegos artificiales, en la cual pulsar la tecla R hará que se vuelva al primer nivel.
